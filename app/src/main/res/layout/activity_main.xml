@@ -7,51 +7,36 @@
     tools:context=".MainActivity">
 
     <LinearLayout
-        android:id="@+id/linearLayout"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:background="#C9C9C9"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
         android:orientation="vertical"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        tools:layout_editor_absoluteY="144dp">
 
         <Button
             android:id="@+id/button7"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="20dp"
-            android:layout_marginTop="10dp"
-            android:layout_marginRight="20dp"
             android:layout_weight="1"
+            android:textSize="40sp"
             android:backgroundTint="@color/blue"
-            android:text="@string/map"
-            android:textSize="35sp" />
+            android:text="@string/map" />
 
         <Button
             android:id="@+id/button8"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="20dp"
-            android:layout_marginTop="10dp"
-            android:layout_marginRight="20dp"
             android:layout_weight="1"
+            android:textSize="40sp"
             android:backgroundTint="@color/blue"
-            android:text="@string/add_construction_site"
-            android:textSize="35sp" />
+            android:text="@string/add_construction_site" />
 
         <Button
             android:id="@+id/button9"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="20dp"
-            android:layout_marginTop="10dp"
-            android:layout_marginRight="20dp"
-            android:layout_marginBottom="10dp"
             android:layout_weight="1"
+            android:textSize="40sp"
             android:backgroundTint="@color/blue"
-            android:text="@string/view_reports"
-            android:textSize="35sp" />
+            android:text="@string/view_reports" />
     </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>
