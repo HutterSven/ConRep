@@ -3,4 +3,20 @@
     <string name="map">Map</string>
     <string name="view_reports">View Reports</string>
     <string name="add_construction_site">Add Construction Site</string>
+    <string name="title_activity_view_construction_site">ViewConstructionSite</string>
+    <!-- Strings used for fragments for navigation -->
+    <string name="first_fragment_label">First Fragment</string>
+    <string name="second_fragment_label">Second Fragment</string>
+    <string name="next">Next</string>
+    <string name="previous">Previous</string>
+
+    <string name="hello_first_fragment">Hello first fragment</string>
+    <string name="hello_second_fragment">Hello second fragment. Arg: %1$s</string>
+
+    <string name="file_report">File Report</string>
+    <string name="add_task">Add Task</string>
+    <string name="view_tasks">View Tasks</string>
+    <string name="edit_site">Edit Construction Site</string>
+    <string name="delete_site">Delete Construction Site</string>
+
 </resources>
