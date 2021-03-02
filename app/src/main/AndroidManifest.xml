@@ -9,17 +9,21 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.ConRep">
-        <activity
-            android:name=".ViewConstructionSite"
-            android:label="@string/title_activity_view_construction_site"
-            android:theme="@style/Theme.ConRep.NoActionBar"></activity>
-        <activity android:name=".MainActivity">
+        <activity android:name=".ViewTask"></activity>
+        <activity android:name=".TaskList" />
+        <activity android:name=".AddTask">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name=".FileReport" />
+        <activity
+            android:name=".ViewConstructionSite"
+            android:label="@string/title_activity_view_construction_site"
+            android:theme="@style/Theme.ConRep.NoActionBar" />
+        <activity android:name=".MainActivity" />
     </application>
 
 </manifest>

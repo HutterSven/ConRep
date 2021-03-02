@@ -18,5 +18,8 @@
     <string name="view_tasks">View Tasks</string>
     <string name="edit_site">Edit Construction Site</string>
     <string name="delete_site">Delete Construction Site</string>
+    <string name="back_to_list">Back To List</string>
+    <string name="delete_task">Delete Task</string>
+    <string name="edit_task">Edit Task</string>
 
 </resources>
