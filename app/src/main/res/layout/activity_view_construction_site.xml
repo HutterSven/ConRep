@@ -29,24 +29,24 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_gravity="left"
-            android:layout_weight="0.5"
+            android:layout_weight="1"
             android:text="TextView"
-            android:layout_marginVertical="3dp"
+            android:layout_marginVertical="5dp"
             android:layout_marginLeft="20dp"
             android:layout_marginRight="20dp"
-            android:textSize="18sp"/>
+            android:textSize="14sp"/>
 
         <TextView
             android:id="@+id/textView17"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_gravity="right"
-            android:layout_weight="0.5"
-            android:layout_marginVertical="3dp"
+            android:layout_weight="1"
+            android:layout_marginVertical="5dp"
             android:layout_marginLeft="20dp"
             android:layout_marginRight="20dp"
             android:text="TextView"
-            android:textSize="18sp"/>
+            android:textSize="14sp"/>
     </LinearLayout>
 
     <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
@@ -59,11 +59,11 @@
             android:id="@+id/textView9"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_marginVertical="3dp"
+            android:layout_marginVertical="5dp"
             android:layout_marginLeft="20dp"
             android:layout_marginRight="20dp"
             android:layout_gravity="left"
-            android:layout_weight="0.5"
+            android:layout_weight="1"
             android:text="TextView"
             android:textSize="18sp" />
 
@@ -72,10 +72,10 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_gravity="right"
-            android:layout_marginVertical="3dp"
+            android:layout_marginVertical="5dp"
             android:layout_marginLeft="20dp"
             android:layout_marginRight="20dp"
-            android:layout_weight="0.5"
+            android:layout_weight="1"
             android:text="TextView"
             android:textSize="18sp" />
     </LinearLayout>
@@ -91,10 +91,10 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_marginLeft="20dp"
-            android:layout_marginVertical="3dp"
+            android:layout_marginVertical="5dp"
             android:layout_marginRight="20dp"
             android:layout_gravity="left"
-            android:layout_weight="0.5"
+            android:layout_weight="1"
             android:text="TextView"
             android:textSize="18sp" />
 
@@ -105,7 +105,7 @@
             android:layout_gravity="right"
             android:layout_marginLeft="20dp"
             android:layout_marginRight="20dp"
-            android:layout_weight="0.5"
+            android:layout_weight="1"
             android:text="TextView"
             android:textSize="18sp" />
     </LinearLayout>
@@ -123,8 +123,8 @@
             android:layout_marginLeft="20dp"
             android:layout_marginRight="20dp"
             android:layout_gravity="left"
-            android:layout_marginVertical="3dp"
-            android:layout_weight="0.5"
+            android:layout_marginVertical="5dp"
+            android:layout_weight="1"
             android:text="TextView"
             android:textSize="18sp" />
 
@@ -133,10 +133,10 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_gravity="right"
-            android:layout_marginVertical="3dp"
+            android:layout_marginVertical="5dp"
             android:layout_marginLeft="20dp"
             android:layout_marginRight="20dp"
-            android:layout_weight="0.5"
+            android:layout_weight="1"
             android:text="TextView"
             android:textSize="18sp" />
     </LinearLayout>
@@ -154,8 +154,8 @@
             android:layout_marginLeft="20dp"
             android:layout_marginRight="20dp"
             android:layout_gravity="left"
-            android:layout_marginVertical="3dp"
-            android:layout_weight="0.5"
+            android:layout_marginVertical="5dp"
+            android:layout_weight="1"
             android:text="TextView"
             android:textSize="18sp" />
 
@@ -166,7 +166,7 @@
             android:layout_gravity="right"
             android:layout_marginLeft="20dp"
             android:layout_marginRight="20dp"
-            android:layout_weight="0.5"
+            android:layout_weight="1"
             android:text="TextView"
             android:textSize="18sp" />
     </LinearLayout>
@@ -183,9 +183,9 @@
             android:layout_height="match_parent"
             android:layout_marginLeft="20dp"
             android:layout_marginRight="20dp"
-            android:layout_marginVertical="3dp"
+            android:layout_marginVertical="5dp"
             android:layout_gravity="left"
-            android:layout_weight="0.5"
+            android:layout_weight="1"
             android:text="TextView"
             android:textSize="18sp" />
 
@@ -196,7 +196,7 @@
             android:layout_gravity="right"
             android:layout_marginLeft="20dp"
             android:layout_marginRight="20dp"
-            android:layout_weight="0.5"
+            android:layout_weight="1"
             android:text="TextView"
             android:textSize="18sp" />
     </LinearLayout>
@@ -213,9 +213,9 @@
             android:layout_height="match_parent"
             android:layout_marginLeft="20dp"
             android:layout_marginRight="20dp"
-            android:layout_marginVertical="3dp"
+            android:layout_marginVertical="5dp"
             android:layout_gravity="left"
-            android:layout_weight="0.5"
+            android:layout_weight="1"
             android:text="TextView"
             android:textSize="18sp" />
 
@@ -226,7 +226,7 @@
             android:layout_gravity="right"
             android:layout_marginLeft="20dp"
             android:layout_marginRight="20dp"
-            android:layout_weight="0.5"
+            android:layout_weight="1"
             android:text="TextView"
             android:textSize="18sp" />
     </LinearLayout>
@@ -234,7 +234,7 @@
     <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="20dp"
         android:orientation="horizontal">
 
         <Button
@@ -260,7 +260,7 @@
             android:id="@+id/ViewTasks"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_weight="0.5"
+            android:layout_weight="1"
             android:backgroundTint="@color/blue"
             android:layout_marginLeft="20dp"
             android:layout_marginRight="20dp"
@@ -271,7 +271,7 @@
             android:id="@+id/AddTask"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_weight="0.5"
+            android:layout_weight="1"
             android:backgroundTint="@color/blue"
             android:layout_marginLeft="20dp"
             android:layout_marginRight="20dp"
