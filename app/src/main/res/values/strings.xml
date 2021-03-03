@@ -21,5 +21,8 @@
     <string name="back_to_list">Back To List</string>
     <string name="delete_task">Delete Task</string>
     <string name="edit_task">Edit Task</string>
+    <string name="deadline">Deadline</string>
+    <string name="status">Status</string>
+    <string name="title_activity_map">Map</string>
 
 </resources>
