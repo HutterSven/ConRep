@@ -8,113 +8,60 @@
     android:gravity="center">
 
 
-        <TextView
-            android:id="@+id/NameTitle"
-            android:layout_width="match_parent"
-            android:layout_height="30dp"
-            android:layout_gravity="left"
-            android:layout_weight="1"
-            android:text="@string/name_title"
-            android:layout_marginVertical="5dp"
-            android:layout_marginLeft="20dp"
-            android:layout_marginRight="20dp"
-            android:textSize="14sp"/>
+    <EditText
+        android:id="@+id/editTextTextPersonName7"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_margin="10dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:ems="10"
+        android:hint="Name"
+        android:inputType="textPersonName" />
 
-        <EditText
-            android:id="@+id/NameData"
-            android:layout_width="match_parent"
-            android:layout_height="30dp"
-            android:layout_gravity="right"
-            android:layout_marginVertical="5dp"
-            android:layout_marginLeft="20dp"
-            android:layout_marginRight="20dp"
-            android:text="TextView"
-            android:textSize="14sp"/>
+    <EditText
+        android:id="@+id/editTextTextPersonName9"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_margin="10dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:ems="10"
+        android:hint="City"
+        android:inputType="textPersonName" />
+
+    <EditText
+        android:id="@+id/editTextTextPersonName10"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_margin="10dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:ems="10"
+        android:hint="Address"
+        android:inputType="textPersonName" />
+
+    <EditText
+        android:id="@+id/editTextTextPersonName11"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_margin="10dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:ems="10"
+        android:hint="Overseer"
+        android:inputType="textPersonName" />
 
     <TextView
-        android:id="@+id/CityTitle"
+        android:id="@+id/textView3"
         android:layout_width="match_parent"
-        android:layout_height="30dp"
-        android:layout_gravity="left"
-        android:layout_weight="1"
-        android:text="@string/city_title"
-        android:layout_marginVertical="5dp"
+        android:layout_height="50dp"
+        android:layout_margin="10dp"
         android:layout_marginLeft="20dp"
         android:layout_marginRight="20dp"
-        android:textSize="14sp"/>
-
-    <PlainText
-        android:id="@+id/CityData"
-        android:layout_width="match_parent"
-        android:layout_height="30dp"
-        android:layout_gravity="right"
-        android:layout_weight="1"
-        android:layout_marginVertical="5dp"
-        android:layout_marginLeft="20dp"
-        android:layout_marginRight="20dp"
-        android:text="TextView"
-        android:textSize="14sp"/>
-
-    <TextView
-        android:id="@+id/AdressTitle"
-        android:layout_width="match_parent"
-        android:layout_height="30dp"
-        android:layout_gravity="left"
-        android:layout_weight="1"
-        android:text="@string/adress_title"
-        android:layout_marginVertical="5dp"
-        android:layout_marginLeft="20dp"
-        android:layout_marginRight="20dp"
-        android:textSize="14sp"/>
-
-    <PlainText
-        android:id="@+id/AdressData"
-        android:layout_width="match_parent"
-        android:layout_height="30dp"
-        android:layout_gravity="right"
-        android:layout_weight="1"
-        android:layout_marginVertical="5dp"
-        android:layout_marginLeft="20dp"
-        android:layout_marginRight="20dp"
-        android:text="TextView"
-        android:textSize="14sp"/>
-
-    <TextView
-        android:id="@+id/OverseerTitle"
-        android:layout_width="match_parent"
-        android:layout_height="30dp"
-        android:layout_gravity="left"
-        android:layout_weight="1"
-        android:text="@string/overseer_title"
-        android:layout_marginVertical="5dp"
-        android:layout_marginLeft="20dp"
-        android:layout_marginRight="20dp"
-        android:textSize="14sp"/>
-
-    <PlainText
-        android:id="@+id/OverseerData"
-        android:layout_width="match_parent"
-        android:layout_height="30dp"
-        android:layout_gravity="right"
-        android:layout_weight="1"
-        android:layout_marginVertical="5dp"
-        android:layout_marginLeft="20dp"
-        android:layout_marginRight="20dp"
-        android:text="TextView"
-        android:textSize="14sp"/>
-
-    <TextView
-        android:id="@+id/PictureTitle"
-        android:layout_width="match_parent"
-        android:layout_height="30dp"
-        android:layout_gravity="left"
-        android:layout_weight="1"
-        android:text="@string/image_title"
-        android:layout_marginVertical="5dp"
-        android:layout_marginLeft="20dp"
-        android:layout_marginRight="20dp"
-        android:textSize="14sp"/>
-
+        android:paddingLeft="5dp"
+        android:text="Picture:"
+        android:textSize="20dp" />
 
     <ImageView
         android:layout_width="match_parent"
