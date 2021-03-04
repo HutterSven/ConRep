@@ -20,7 +20,7 @@
             android:layout_marginRight="20dp"
             android:textSize="14sp"/>
 
-        <PlainText
+        <EditText
             android:id="@+id/NameData"
             android:layout_width="match_parent"
             android:layout_height="30dp"
