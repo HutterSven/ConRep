@@ -19,10 +19,15 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.ConRep">
+        <activity android:name=".ReportList"><intent-filter>
+            <action android:name="android.intent.action.MAIN" />
+
+            <category android:name="android.intent.category.LAUNCHER" />
+        </intent-filter></activity>
+
         <uses-library
             android:name="com.google.android.wearable"
             android:required="true" />
-
         <!--
                Set to true if your app is Standalone, that is, it does not require the handheld
                app to run.
@@ -34,20 +39,11 @@
         <activity
             android:name=".EditConstructionSite"
             android:label="@string/title_activity_edit_construction_site">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
         </activity>
         <activity
             android:name=".AddConstructionSite"
             android:label="@string/title_activity_add_construction_site">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
 
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
         </activity>
         <!--
              The API key for Google Maps-based APIs is defined as a string resource.
@@ -76,11 +72,6 @@
         <activity android:name=".ViewTask" />
         <activity android:name=".TaskList" />
         <activity android:name=".AddTask">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
         </activity>
         <activity android:name=".FileReport" />
         <activity
