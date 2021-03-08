@@ -8,7 +8,7 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="20dp"
+        android:layout_height="match_parent"
         android:orientation="vertical"
         tools:layout_editor_absoluteX="0dp"
         tools:layout_editor_absoluteY="0dp">
@@ -33,7 +33,7 @@
                     android:layout_marginLeft="20dp"
                     android:layout_marginRight="20dp"
                     android:layout_weight="1"
-                    android:text="Name"
+                    android:text="@string/name"
                     android:textSize="18sp" />
 
                 <TextView
@@ -62,7 +62,7 @@
                     android:layout_marginLeft="20dp"
                     android:layout_marginRight="20dp"
                     android:layout_weight="1"
-                    android:text="Hours"
+                    android:text="@string/hours"
                     android:textSize="18sp" />
 
                 <TextView
@@ -91,7 +91,7 @@
                     android:layout_marginLeft="20dp"
                     android:layout_marginRight="20dp"
                     android:layout_weight="1"
-                    android:text="Report Date"
+                    android:text="@string/report_date"
                     android:textSize="18sp" />
 
                 <TextView
@@ -120,7 +120,7 @@
                     android:layout_marginLeft="20dp"
                     android:layout_marginRight="20dp"
                     android:layout_weight="1"
-                    android:text="Site"
+                    android:text="@string/site"
                     android:textSize="18sp" />
 
                 <TextView
@@ -150,7 +150,7 @@
                     android:layout_marginLeft="20dp"
                     android:layout_marginRight="20dp"
                     android:layout_weight="1"
-                    android:text="Tasks"
+                    android:text="@string/tasks"
                     android:textSize="18sp" />
 
                 <TextView
@@ -172,14 +172,14 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="10dp"
-            android:text="Edit Report" />
+            android:text="@string/edit_report" />
 
         <Button
             android:id="@+id/button3"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="10dp"
-            android:text="Delete Report" />
+            android:text="@string/delete_report" />
 
         <Button
             android:id="@+id/button4"

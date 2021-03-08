@@ -16,7 +16,7 @@
         android:layout_marginLeft="20dp"
         android:layout_marginRight="20dp"
         android:ems="10"
-        android:hint="Name"
+        android:hint="@string/name"
         android:inputType="textPersonName" />
 
     <EditText
@@ -27,7 +27,7 @@
         android:layout_marginLeft="20dp"
         android:layout_marginRight="20dp"
         android:ems="10"
-        android:hint="City"
+        android:hint="@string/city"
         android:inputType="textPersonName" />
 
     <EditText
@@ -38,7 +38,7 @@
         android:layout_marginLeft="20dp"
         android:layout_marginRight="20dp"
         android:ems="10"
-        android:hint="Address"
+        android:hint="@string/address"
         android:inputType="textPersonName" />
 
     <EditText
@@ -49,7 +49,7 @@
         android:layout_marginLeft="20dp"
         android:layout_marginRight="20dp"
         android:ems="10"
-        android:hint="Overseer"
+        android:hint="@string/overseer"
         android:inputType="textPersonName" />
 
     <TextView
@@ -60,7 +60,7 @@
         android:layout_marginLeft="20dp"
         android:layout_marginRight="20dp"
         android:paddingLeft="5dp"
-        android:text="Picture:"
+        android:text="@string/picture"
         android:textSize="20dp" />
 
     <ImageView

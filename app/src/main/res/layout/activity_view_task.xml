@@ -33,7 +33,7 @@
                     android:layout_marginLeft="20dp"
                     android:layout_marginRight="20dp"
                     android:layout_weight="1"
-                    android:text="Name"
+                    android:text="@string/name"
                     android:textSize="18sp" />
 
                 <TextView
@@ -62,7 +62,7 @@
                     android:layout_marginLeft="20dp"
                     android:layout_marginRight="20dp"
                     android:layout_weight="1"
-                    android:text="Description"
+                    android:text="@string/description"
                     android:textSize="18sp" />
 
                 <TextView

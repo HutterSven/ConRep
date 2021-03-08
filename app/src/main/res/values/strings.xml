@@ -40,5 +40,21 @@
     -->
     <string name="hello_world">Hello Square World!</string>
     <string name="title_activity_edit_construction_site">EditConstructionSite</string>
+    <string name="name">Name</string>
+    <string name="city">City</string>
+    <string name="address">Address</string>
+    <string name="overseer">Overseer</string>
+    <string name="picture">Picture:</string>
+    <string name="description">Description</string>
+    <string name="hours">Hours</string>
+    <string name="site">Site</string>
+    <string name="edit_report">Edit Report</string>
+    <string name="construction_site">Construction Site</string>
+    <string name="search">Search</string>
+    <string name="date">Date</string>
+    <string name="type">Type</string>
+    <string name="report_date">Report Date</string>
+    <string name="tasks">Tasks</string>
+    <string name="delete_report">Delete Report</string>
 
 </resources>

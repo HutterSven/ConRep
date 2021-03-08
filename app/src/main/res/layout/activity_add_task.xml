@@ -15,7 +15,7 @@
         android:layout_marginLeft="20dp"
         android:layout_marginRight="20dp"
         android:ems="10"
-        android:hint="Name"
+        android:hint="@string/name"
         android:inputType="textPersonName" />
 
     <EditText
@@ -26,7 +26,7 @@
         android:layout_marginLeft="20dp"
         android:layout_marginRight="20dp"
         android:ems="10"
-        android:hint="Description"
+        android:hint="@string/description"
         android:inputType="textPersonName" />
 
     <TextView
@@ -38,7 +38,7 @@
         android:layout_marginRight="20dp"
         android:paddingLeft="5dp"
         android:textSize="20dp"
-        android:text="Deadline:" />
+        android:text="@string/deadline" />
 
     <CalendarView
         android:id="@+id/calendarView"

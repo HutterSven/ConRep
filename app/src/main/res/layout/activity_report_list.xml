@@ -25,12 +25,12 @@
                 android:orientation="horizontal">
 
                 <EditText
-                    android:id="@+id/editTextTextPersonName16"
+                    android:id="@+id/editTextTextPersonName1"
                     android:layout_width="327dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="9"
                     android:ems="10"
-                    android:hint="Construction Site"
+                    android:hint="@string/construction_site"
                     android:inputType="textPersonName" />
 
                 <ImageButton
@@ -43,11 +43,11 @@
             </LinearLayout>
 
             <EditText
-                android:id="@+id/editTextTextPersonName17"
+                android:id="@+id/editTextTextPersonName2"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:ems="10"
-                android:hint="Name"
+                android:hint="@string/name"
                 android:inputType="textPersonName" />
 
             <LinearLayout
@@ -56,12 +56,12 @@
                 android:orientation="horizontal">
 
                 <EditText
-                    android:id="@+id/editTextTextPersonName16"
+                    android:id="@+id/editTextTextPersonName3"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_weight="9"
                     android:ems="10"
-                    android:hint="Date"
+                    android:hint="@string/date"
                     android:inputType="textPersonName" />
 
                 <ImageButton
@@ -79,10 +79,9 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-        <LinearLayout
+        <ListView
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical" />
+            android:layout_height="wrap_content" />
     </ScrollView>
 
 </LinearLayout>
