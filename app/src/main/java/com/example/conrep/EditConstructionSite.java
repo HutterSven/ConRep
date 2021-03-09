@@ -3,6 +3,7 @@ package com.example.conrep;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
+import android.view.View;
 
 public class EditConstructionSite extends AppCompatActivity {
 
@@ -11,4 +12,5 @@ public class EditConstructionSite extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_edit_construction_site);
     }
+
 }

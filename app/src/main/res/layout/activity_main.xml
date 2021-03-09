@@ -27,7 +27,8 @@
             android:layout_weight="1"
             android:backgroundTint="@color/blue"
             android:text="@string/map"
-            android:textSize="35sp" />
+            android:textSize="35sp"
+            android:onClick="Map"/>
 
         <Button
             android:id="@+id/button8"
@@ -39,7 +40,9 @@
             android:layout_weight="1"
             android:backgroundTint="@color/blue"
             android:text="@string/add_construction_site"
-            android:textSize="35sp" />
+            android:textSize="35sp"
+            android:onClick="AddConstructionSite"
+            />
 
         <Button
             android:id="@+id/button9"
@@ -52,6 +55,7 @@
             android:layout_weight="1"
             android:backgroundTint="@color/blue"
             android:text="@string/view_reports"
-            android:textSize="35sp" />
+            android:textSize="35sp"
+            android:onClick="ViewReports"/>
     </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

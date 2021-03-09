@@ -79,5 +79,6 @@
         android:layout_marginLeft="20dp"
         android:layout_marginRight="20dp"
         android:text="@string/edit_site"
-        android:textSize="14sp" />
+        android:textSize="14sp"
+        />
 </LinearLayout>
