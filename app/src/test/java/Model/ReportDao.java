@@ -8,7 +8,7 @@ import java.util.List;
 @Dao
 public interface ReportDao {
 
-    @Query("SELECT * FROM ConstructionSite")
+    @Query("SELECT * FROM Report")
     List<ConstructionSite> getAll();
 
 }
