@@ -13,6 +13,24 @@ import java.util.List;
 public interface ReportDao {
 
     @Query("SELECT * FROM Report")
-    List<ConstructionSite> getAll();
+    List<Report> getAll();
+
+    @Query("SELECT * FROM Report WHERE siteID = :siteID")
+    List<Report> getBySite(int siteID);
+
+    @Query("SELECT * FROM Report WHERE workerName = :name")
+    List<Report> getByName(String name);
+
+    @Query("SELECT * FROM Report WHERE date = :date")
+    List<Report> getByDate(String date);
+
+    @Insert(onConflict = OnConflictStrategy.REPLACE)
+    void insertFavorite(Report report);
+
+    @Update
+    void updateFavorite(Report report);
+
+    @Delete
+    void deleteFavorite(Report report);
 
 }
