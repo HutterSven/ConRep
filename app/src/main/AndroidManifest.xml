@@ -11,10 +11,10 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.ConRep">
+        <activity android:name=".About"></activity>
         <activity android:name=".EditConstructionSite" />
         <activity android:name=".AddConstructionSite" />
         <activity android:name=".ReportList" />
-
         <!--
              The API key for Google Maps-based APIs is defined as a string resource.
              (See the file "res/values/google_maps_api.xml").
@@ -29,9 +29,7 @@
 
         <activity
             android:name=".Map"
-            android:label="@string/title_activity_map">
-
-        </activity>
+            android:label="@string/title_activity_map"></activity>
         <activity android:name=".EditReport" />
         <activity android:name=".ViewReport" />
         <activity android:name=".EditTask" />
