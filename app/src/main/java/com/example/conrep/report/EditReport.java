@@ -1,14 +1,16 @@
-package com.example.conrep;
+package com.example.conrep.report;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
 
-public class TaskList extends AppCompatActivity {
+import com.example.conrep.R;
+
+public class EditReport extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_task_list);
+        setContentView(R.layout.activity_edit_report);
     }
 }

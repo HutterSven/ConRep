@@ -1,4 +1,4 @@
-package com.example.conrep;
+package com.example.conrep.site;
 
 import android.os.Bundle;
 

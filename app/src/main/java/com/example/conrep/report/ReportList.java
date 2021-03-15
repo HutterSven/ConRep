@@ -1,8 +1,10 @@
-package com.example.conrep;
+package com.example.conrep.report;
+
+import android.os.Bundle;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.os.Bundle;
+import com.example.conrep.R;
 
 public class ReportList extends AppCompatActivity {
 

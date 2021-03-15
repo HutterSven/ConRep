@@ -12,9 +12,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.ConRep">
         <activity android:name=".About"></activity>
-        <activity android:name=".EditConstructionSite" />
-        <activity android:name=".AddConstructionSite" />
-        <activity android:name=".ReportList" />
+        <activity android:name=".site.EditConstructionSite" />
+        <activity android:name=".site.AddConstructionSite" />
+        <activity android:name=".report.ReportList" />
         <!--
              The API key for Google Maps-based APIs is defined as a string resource.
              (See the file "res/values/google_maps_api.xml").
@@ -28,16 +28,16 @@
             android:value="@string/google_maps_key" />
 
         <activity
-            android:name=".Map"
+            android:name=".site.Map"
             android:label="@string/title_activity_map"></activity>
-        <activity android:name=".EditReport" />
-        <activity android:name=".ViewReport" />
-        <activity android:name=".EditTask" />
-        <activity android:name=".ViewTask" />
-        <activity android:name=".TaskList" />
-        <activity android:name=".AddTask" />
-        <activity android:name=".FileReport" />
-        <activity android:name=".ViewConstructionSite" />
+        <activity android:name=".report.EditReport" />
+        <activity android:name=".report.ViewReport" />
+        <activity android:name=".task.EditTask" />
+        <activity android:name=".task.ViewTask" />
+        <activity android:name=".task.TaskList" />
+        <activity android:name=".task.AddTask" />
+        <activity android:name=".report.FileReport" />
+        <activity android:name=".site.ViewConstructionSite" />
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
