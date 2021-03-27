@@ -24,4 +24,51 @@ public class Report {
     private int siteID;
     private Date date;
 
+    public int getReportID() {
+        return reportID;
+    }
+
+    public void setReportID(int reportID) {
+        this.reportID = reportID;
+    }
+
+    public int getHours() {
+        return hours;
+    }
+
+    public void setHours(int hours) {
+        this.hours = hours;
+    }
+
+    public String getWorkerName() {
+        return workerName;
+    }
+
+    public void setWorkerName(String workerName) {
+        this.workerName = workerName;
+    }
+
+    public int getTaskID() {
+        return taskID;
+    }
+
+    public void setTaskID(int taskID) {
+        this.taskID = taskID;
+    }
+
+    public int getSiteID() {
+        return siteID;
+    }
+
+    public void setSiteID(int siteID) {
+        this.siteID = siteID;
+    }
+
+    public Date getDate() {
+        return date;
+    }
+
+    public void setDate(Date date) {
+        this.date = date;
+    }
 }
