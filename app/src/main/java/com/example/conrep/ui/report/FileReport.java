@@ -1,16 +1,16 @@
-package com.example.conrep.task;
-
-import android.os.Bundle;
+package com.example.conrep.ui.report;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.os.Bundle;
+
 import com.example.conrep.R;
 
-public class AddTask extends AppCompatActivity {
+public class FileReport extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_add_task);
+        setContentView(R.layout.activity_file_report);
     }
 }

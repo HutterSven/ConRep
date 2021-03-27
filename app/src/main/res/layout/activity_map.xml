@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".task.ViewTask">
+    tools:context=".ui.task.ViewTask">
 
     <LinearLayout
         android:layout_width="match_parent"

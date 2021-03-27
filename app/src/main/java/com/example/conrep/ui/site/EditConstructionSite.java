@@ -1,9 +1,8 @@
-package com.example.conrep.site;
+package com.example.conrep.ui.site;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
-import android.view.View;
 
 import com.example.conrep.R;
 

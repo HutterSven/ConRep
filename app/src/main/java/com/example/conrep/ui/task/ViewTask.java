@@ -1,4 +1,4 @@
-package com.example.conrep.task;
+package com.example.conrep.ui.task;
 
 import android.os.Bundle;
 

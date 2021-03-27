@@ -1,4 +1,4 @@
-package com.example.conrep.report;
+package com.example.conrep.ui.report;
 
 import androidx.appcompat.app.AppCompatActivity;
 

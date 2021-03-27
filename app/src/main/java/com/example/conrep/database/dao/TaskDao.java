@@ -1,12 +1,15 @@
-package Model;
+package com.example.conrep.database.dao;
 
 import androidx.room.Dao;
 import androidx.room.Delete;
 import androidx.room.Insert;
 import androidx.room.OnConflictStrategy;
 import androidx.room.Query;
-import androidx.room.Relation;
 import androidx.room.Update;
+
+import com.example.conrep.database.site.ConstructionSite;
+import com.example.conrep.database.task.Task;
+import com.example.conrep.database.task.TaskAndSite;
 
 import java.util.List;
 
@@ -27,6 +30,9 @@ public interface TaskDao {
 
     @Delete
     void deleteTask(Task task);
+
+    @Query("DELETE FROM task")
+    void deleteAll();
 
 
 }

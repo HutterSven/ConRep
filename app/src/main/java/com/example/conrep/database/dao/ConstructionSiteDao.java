@@ -1,4 +1,4 @@
-package Model;
+package com.example.conrep.database.dao;
 
 import androidx.room.Dao;
 import androidx.room.Delete;
@@ -6,6 +6,8 @@ import androidx.room.Insert;
 import androidx.room.OnConflictStrategy;
 import androidx.room.Query;
 import androidx.room.Update;
+
+import com.example.conrep.database.site.ConstructionSite;
 
 import java.util.List;
 
@@ -24,4 +26,6 @@ public interface ConstructionSiteDao {
     @Delete
     void deleteConstruction(ConstructionSite constructionSite);
 
+    @Query("DELETE FROM constructionsite")
+    void deleteAll();
 }

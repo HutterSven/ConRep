@@ -1,4 +1,4 @@
-package com.example.conrep.site;
+package com.example.conrep.ui.site;
 
 import android.content.Intent;
 import android.os.Bundle;

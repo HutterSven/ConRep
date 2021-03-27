@@ -1,4 +1,4 @@
-package com.example.conrep.site;
+package com.example.conrep.ui.site;
 
 import androidx.fragment.app.FragmentActivity;
 

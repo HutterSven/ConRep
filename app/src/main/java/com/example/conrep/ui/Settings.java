@@ -1,4 +1,4 @@
-package com.example.conrep;
+package com.example.conrep.ui;
 
 import android.app.Activity;
 import android.os.Bundle;
@@ -10,6 +10,8 @@ import android.widget.Spinner;
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.preference.PreferenceFragmentCompat;
+
+import com.example.conrep.R;
 
 public class Settings extends AppCompatActivity {
 

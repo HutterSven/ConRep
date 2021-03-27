@@ -1,7 +1,10 @@
-package Model;
+package com.example.conrep.database.report;
 
 import androidx.room.Entity;
 import androidx.room.ForeignKey;
+
+import com.example.conrep.database.task.Task;
+import com.example.conrep.database.site.ConstructionSite;
 
 import java.util.Date;
 

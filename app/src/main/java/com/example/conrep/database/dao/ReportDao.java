@@ -1,4 +1,4 @@
-package Model;
+package com.example.conrep.database.dao;
 
 import androidx.room.Dao;
 import androidx.room.Delete;
@@ -6,6 +6,8 @@ import androidx.room.Insert;
 import androidx.room.OnConflictStrategy;
 import androidx.room.Query;
 import androidx.room.Update;
+
+import com.example.conrep.database.report.Report;
 
 import java.util.List;
 
@@ -25,6 +27,8 @@ public interface ReportDao {
     List<Report> getByDate(String date);
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
+    void insertReport(Report report);
+
     void insertFavorite(Report report);
 
     @Update
@@ -33,4 +37,6 @@ public interface ReportDao {
     @Delete
     void deleteFavorite(Report report);
 
+    @Query("DELETE FROM report")
+    void deleteAll();
 }

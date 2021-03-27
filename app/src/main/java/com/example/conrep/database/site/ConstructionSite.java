@@ -1,7 +1,9 @@
-package Model;
+package com.example.conrep.database.site;
 
 import androidx.room.Entity;
 import androidx.room.ForeignKey;
+
+import com.example.conrep.database.task.Task;
 
 @Entity(primaryKeys = {"siteID"}, foreignKeys = {@ForeignKey(entity = Task.class,
         parentColumns = "taskID",

@@ -1,4 +1,4 @@
-package com.example.conrep;
+package com.example.conrep.ui;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -8,9 +8,10 @@ import android.widget.Button;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.example.conrep.report.ReportList;
-import com.example.conrep.site.AddConstructionSite;
-import com.example.conrep.site.Map;
+import com.example.conrep.R;
+import com.example.conrep.ui.report.ReportList;
+import com.example.conrep.ui.site.AddConstructionSite;
+import com.example.conrep.ui.site.Map;
 
 public class MainActivity extends AppCompatActivity {
 

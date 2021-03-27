@@ -1,4 +1,4 @@
-package com.example.conrep.report;
+package com.example.conrep.ui;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -6,11 +6,11 @@ import android.os.Bundle;
 
 import com.example.conrep.R;
 
-public class EditReport extends AppCompatActivity {
+public class About extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_edit_report);
+        setContentView(R.layout.activity_about);
     }
 }
