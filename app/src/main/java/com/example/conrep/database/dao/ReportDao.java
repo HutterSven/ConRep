@@ -29,13 +29,11 @@ public interface ReportDao {
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     void insertReport(Report report);
 
-    void insertFavorite(Report report);
-
     @Update
-    void updateFavorite(Report report);
+    void updateReport(Report report);
 
     @Delete
-    void deleteFavorite(Report report);
+    void deleteReport(Report report);
 
     @Query("DELETE FROM report")
     void deleteAll();

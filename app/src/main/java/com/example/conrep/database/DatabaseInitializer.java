@@ -55,7 +55,7 @@ public class DatabaseInitializer {
         db.constructionSiteDao().deleteAll();
 
         addConstructionSite(db,
-                1, "Visperterminen", "Europas höchster Weinberg.");
+                1, "test", "this is a test");
         addConstructionSite(db,
                 2, "Varen","Die Weininsel im Wallis.");
         addConstructionSite(db,
