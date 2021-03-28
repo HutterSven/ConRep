@@ -12,10 +12,10 @@ import java.util.Date;
 
 @Entity(primaryKeys = {"reportID"}, foreignKeys = {@ForeignKey(entity = Task.class,
         parentColumns = "taskID",
-        childColumns = "taskID",
+        childColumns = "taskReport",
         onDelete = ForeignKey.SET_NULL), @ForeignKey(entity = ConstructionSite.class,
         parentColumns = "siteID",
-        childColumns = "siteID",
+        childColumns = "siteReport",
         onDelete = ForeignKey.SET_NULL)})
 @TypeConverters(DateTypeConverter.class)
 public class Report {
@@ -23,8 +23,8 @@ public class Report {
     private int reportID;
     private int hours;
     private String workerName;
-    private int taskID;
-    private int siteID;
+    private int taskReport;
+    private int siteReport;
     private Date date;
 
     public int getReportID() {
@@ -51,20 +51,20 @@ public class Report {
         this.workerName = workerName;
     }
 
-    public int getTaskID() {
-        return taskID;
+    public int getTaskReport() {
+        return taskReport;
     }
 
-    public void setTaskID(int taskID) {
-        this.taskID = taskID;
+    public void setTaskReport(int taskReport) {
+        this.taskReport = taskReport;
     }
 
-    public int getSiteID() {
-        return siteID;
+    public int getSiteReport() {
+        return siteReport;
     }
 
-    public void setSiteID(int siteID) {
-        this.siteID = siteID;
+    public void setSiteReport(int siteReport) {
+        this.siteReport = siteReport;
     }
 
     public Date getDate() {

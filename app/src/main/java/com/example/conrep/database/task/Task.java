@@ -9,7 +9,7 @@ import java.util.Date;
 
 @Entity(primaryKeys = {"taskID"}, foreignKeys = {@ForeignKey(entity = ConstructionSite.class,
         parentColumns = "siteID",
-        childColumns = "siteID",
+        childColumns = "siteTask",
         onDelete = ForeignKey.SET_NULL)
 })
 public class Task {
@@ -53,12 +53,12 @@ public class Task {
         this.status = status;
     }
 
-    public int getSiteID() {
-        return siteID;
+    public int getSiteTask() {
+        return siteTask;
     }
 
-    public void setSiteID(int siteID) {
-        this.siteID = siteID;
+    public void setSiteTask(int siteTask) {
+        this.siteTask = siteTask;
     }
 
     private int taskID;
@@ -66,6 +66,6 @@ public class Task {
     private String description;
     private Date deadline;
     private boolean status;
-    private int siteID;
+    private int siteTask;
 
 }

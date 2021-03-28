@@ -7,7 +7,7 @@ import com.example.conrep.database.task.Task;
 
 @Entity(primaryKeys = {"siteID"}, foreignKeys = {@ForeignKey(entity = Task.class,
         parentColumns = "taskID",
-        childColumns = "taskID",
+        childColumns = "taskSite",
         onDelete = ForeignKey.SET_NULL)
 })
 public class ConstructionSite {
@@ -18,7 +18,16 @@ public class ConstructionSite {
     private String address;
     private String overseer;
     private int hours;
-    private int taskID;
+
+    public int getTaskSite() {
+        return taskSite;
+    }
+
+    public void setTaskSite(int taskSite) {
+        this.taskSite = taskSite;
+    }
+
+    private int taskSite;
 
     public int getSiteID() {
         return siteID;
@@ -68,11 +77,4 @@ public class ConstructionSite {
         this.hours = hours;
     }
 
-    public int getTaskID() {
-        return taskID;
-    }
-
-    public void setTaskID(int taskID) {
-        this.taskID = taskID;
-    }
 }

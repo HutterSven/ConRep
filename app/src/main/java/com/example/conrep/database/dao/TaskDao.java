@@ -16,10 +16,7 @@ import java.util.List;
 @Dao
 public interface TaskDao {
 
-    @Query("SELECT * FROM Task")
-    List<ConstructionSite> getAll();
-
-    @Query("Select * FROM Task, ConstructionSite WHERE Task.siteID = ConstructionSite.siteID")
+    @Query("Select * FROM Task, ConstructionSite WHERE Task.siteTask = ConstructionSite.siteID")
     List<TaskAndSite> getAllTaskAndSite();
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)

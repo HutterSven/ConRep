@@ -8,9 +8,9 @@ import com.example.conrep.database.task.Task;
 public class TaskAndSite {
 
     @Embedded
-    ConstructionSite site;
+    public ConstructionSite site;
 
     @Embedded
-    Task task;
+    public Task task;
 
 }
