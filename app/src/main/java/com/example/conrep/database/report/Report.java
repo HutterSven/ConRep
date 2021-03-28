@@ -2,7 +2,9 @@ package com.example.conrep.database.report;
 
 import androidx.room.Entity;
 import androidx.room.ForeignKey;
+import androidx.room.TypeConverters;
 
+import com.example.conrep.database.DateTypeConverter;
 import com.example.conrep.database.task.Task;
 import com.example.conrep.database.site.ConstructionSite;
 
@@ -15,6 +17,7 @@ import java.util.Date;
         parentColumns = "siteID",
         childColumns = "siteID",
         onDelete = ForeignKey.SET_NULL)})
+@TypeConverters(DateTypeConverter.class)
 public class Report {
 
     private int reportID;

@@ -9,6 +9,7 @@ import androidx.lifecycle.MutableLiveData;
 import androidx.room.Database;
 import androidx.room.Room;
 import androidx.room.RoomDatabase;
+import androidx.room.TypeConverters;
 import androidx.sqlite.db.SupportSQLiteDatabase;
 
 import com.example.conrep.database.dao.ConstructionSiteDao;
@@ -22,6 +23,7 @@ import java.util.concurrent.Executors;
 
 
 @Database(entities = {Report.class, ConstructionSite.class, Task.class}, version = 1)
+@TypeConverters(DateTypeConverter.class)
 
     public abstract class AppDatabase extends RoomDatabase {
 
@@ -51,15 +53,6 @@ import java.util.concurrent.Executors;
             }
             return instance;
         }
-
-    /*
-        Datenbank machen, neue
-        Instance,
-        SQLite datenbank
-        erst wirklich
-        beim ersten
-        aufruf
-     */
 
         private static AppDatabase buildDatabase(final Context appContext) {
             Log.i(TAG, "Database will be initialized.");
