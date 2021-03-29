@@ -5,6 +5,9 @@ import android.util.Pair;
 
 import androidx.lifecycle.LiveData;
 
+import com.example.conrep.database.async.constructionSite.CreateConstructionSite;
+import com.example.conrep.database.async.constructionSite.DeleteConstructionSite;
+import com.example.conrep.database.async.constructionSite.UpdateConstructionSite;
 import com.example.conrep.database.site.ConstructionSiteEntity;
 import com.example.conrep.ui.BaseApp;
 import com.example.conrep.ui.util.OnAsyncEventListener;
@@ -52,11 +55,5 @@ public class ConstructionSiteRepository {
     public void delete(final ConstructionSiteEntity constructionSite, OnAsyncEventListener callback,
                        Application application) {
         new DeleteConstructionSite(application, callback).execute( constructionSite);
-    }
-
-    @SuppressWarnings("unchecked")
-    public void transaction(final ConstructionSiteEntity sender, final ConstructionSiteEntity recipient,
-                            OnAsyncEventListener callback, Application application) {
-        new Transaction(application, callback).execute(new Pair<>(sender, recipient));
     }
 }

@@ -6,6 +6,9 @@ import android.util.Pair;
 import androidx.lifecycle.LiveData;
 import androidx.room.Transaction;
 
+import com.example.conrep.database.async.report.CreateReport;
+import com.example.conrep.database.async.report.DeleteReport;
+import com.example.conrep.database.async.report.UpdateReport;
 import com.example.conrep.database.report.ReportEntity;
 import com.example.conrep.ui.BaseApp;
 import com.example.conrep.ui.util.OnAsyncEventListener;
@@ -56,9 +59,4 @@ public class ReportRepository {
         new DeleteReport(application, callback).execute(report);
     }
 
-    @SuppressWarnings("unchecked")
-    public void transaction(final ReportEntity sender, final ReportEntity recipient,
-                            OnAsyncEventListener callback, Application application) {
-        new Transaction(application, callback).execute(new Pair<>(sender, recipient));
-    }
 }

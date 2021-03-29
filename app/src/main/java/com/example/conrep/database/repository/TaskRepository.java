@@ -5,6 +5,9 @@ import android.util.Pair;
 
 import androidx.lifecycle.LiveData;
 
+import com.example.conrep.database.async.task.CreateTask;
+import com.example.conrep.database.async.task.DeleteTask;
+import com.example.conrep.database.async.task.UpdateTask;
 import com.example.conrep.database.task.TaskEntity;
 import com.example.conrep.ui.BaseApp;
 import com.example.conrep.ui.util.OnAsyncEventListener;
@@ -50,12 +53,6 @@ public class TaskRepository {
     public void delete(final TaskEntity task, OnAsyncEventListener callback,
                        Application application) {
         new DeleteTask(application, callback).execute(task);
-    }
-
-    @SuppressWarnings("unchecked")
-    public void transaction(final TaskEntity sender, final TaskEntity recipient,
-                            OnAsyncEventListener callback, Application application) {
-        new Transaction(application, callback).execute(new Pair<>(sender, recipient));
     }
 
 

@@ -17,6 +17,9 @@ import java.util.List;
 @Dao
 public interface TaskDao {
 
+    @Query("SELECT * FROM TaskEntity")
+    LiveData<List<TaskEntity>> getAll();
+
     @Query("Select * FROM TaskEntity, ConstructionSiteEntity WHERE TaskEntity.siteTask = ConstructionSiteEntity.siteID")
     LiveData<List<TaskAndSiteEntity>> getAllTaskAndSite();
 

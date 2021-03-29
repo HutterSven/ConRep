@@ -20,7 +20,7 @@ public interface ConstructionSiteDao {
     LiveData<List<ConstructionSiteEntity>> getAll();
 
     @Query("SELECT * FROM ConstructionSiteEntity WHERE siteID = :siteID")
-    LiveData<ConstructionSiteEntity> getById(int reportID);
+    LiveData<ConstructionSiteEntity> getById(int siteID);
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     void insertConstruction(ConstructionSiteEntity constructionSiteEntity);
