@@ -5,11 +5,7 @@ import androidx.room.ForeignKey;
 
 import com.example.conrep.database.task.TaskEntity;
 
-@Entity(primaryKeys = {"siteID"}, foreignKeys = {@ForeignKey(entity = TaskEntity.class,
-        parentColumns = "taskID",
-        childColumns = "taskSite",
-        onDelete = ForeignKey.SET_NULL)
-})
+@Entity(primaryKeys = {"siteID"})
 public class ConstructionSiteEntity {
 
     private int siteID;
@@ -18,16 +14,6 @@ public class ConstructionSiteEntity {
     private String address;
     private String overseer;
     private int hours;
-
-    public int getTaskSite() {
-        return taskSite;
-    }
-
-    public void setTaskSite(int taskSite) {
-        this.taskSite = taskSite;
-    }
-
-    private int taskSite;
 
     public int getSiteID() {
         return siteID;

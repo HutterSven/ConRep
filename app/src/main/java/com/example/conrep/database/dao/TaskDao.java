@@ -8,9 +8,8 @@ import androidx.room.OnConflictStrategy;
 import androidx.room.Query;
 import androidx.room.Update;
 
-import com.example.conrep.database.report.ReportEntity;
+import com.example.conrep.database.task.TaskAndReportEntity;
 import com.example.conrep.database.task.TaskEntity;
-import com.example.conrep.database.task.TaskAndSiteEntity;
 
 import java.util.List;
 
@@ -21,7 +20,7 @@ public interface TaskDao {
     LiveData<List<TaskEntity>> getAll();
 
     @Query("Select * FROM TaskEntity, ConstructionSiteEntity WHERE TaskEntity.siteTask = ConstructionSiteEntity.siteID")
-    LiveData<List<TaskAndSiteEntity>> getAllTaskAndSite();
+    LiveData<List<TaskAndReportEntity>> getAllTaskAndSite();
 
     @Query("SELECT * FROM TaskEntity WHERE taskID = :taskID")
     LiveData<TaskEntity> getById(int taskID);
