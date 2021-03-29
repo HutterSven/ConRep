@@ -3,9 +3,9 @@ package com.example.conrep.database;
 import android.os.AsyncTask;
 import android.util.Log;
 
-import com.example.conrep.database.report.Report;
-import com.example.conrep.database.site.ConstructionSite;
-import com.example.conrep.database.task.Task;
+import com.example.conrep.database.report.ReportEntity;
+import com.example.conrep.database.site.ConstructionSiteEntity;
+import com.example.conrep.database.task.TaskEntity;
 
 public class DatabaseInitializer {
 
@@ -19,20 +19,20 @@ public class DatabaseInitializer {
 
     private static void addReport(final AppDatabase db, int id, int wid){
 
-        Report report = new Report();
-        db.reportDao().insertReport(report);
+        ReportEntity reportEntity = new ReportEntity();
+        db.reportDao().insertReport(reportEntity);
     }
 
     private static void addConstructionSite(final AppDatabase db, final int id, final String constructionSitename, final String info){
 
-        ConstructionSite constructionSite = new ConstructionSite();
-        db.constructionSiteDao().insertConstruction(constructionSite);
+        ConstructionSiteEntity constructionSiteEntity = new ConstructionSiteEntity();
+        db.constructionSiteDao().insertConstruction(constructionSiteEntity);
     }
 
     private static void addTask(final AppDatabase db, int id, String name, String taskry){
 
-        Task task = new Task();
-        db.taskDao().insertTask(task);
+        TaskEntity taskEntity = new TaskEntity();
+        db.taskDao().insertTask(taskEntity);
     }
 
 

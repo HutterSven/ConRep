@@ -3,16 +3,16 @@ package com.example.conrep.database.task;
 import androidx.room.Entity;
 import androidx.room.ForeignKey;
 
-import com.example.conrep.database.site.ConstructionSite;
+import com.example.conrep.database.site.ConstructionSiteEntity;
 
 import java.util.Date;
 
-@Entity(primaryKeys = {"taskID"}, foreignKeys = {@ForeignKey(entity = ConstructionSite.class,
+@Entity(primaryKeys = {"taskID"}, foreignKeys = {@ForeignKey(entity = ConstructionSiteEntity.class,
         parentColumns = "siteID",
         childColumns = "siteTask",
         onDelete = ForeignKey.SET_NULL)
 })
-public class Task {
+public class TaskEntity {
     public int getTaskID() {
         return taskID;
     }

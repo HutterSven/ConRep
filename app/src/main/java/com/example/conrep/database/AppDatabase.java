@@ -15,14 +15,14 @@ import androidx.sqlite.db.SupportSQLiteDatabase;
 import com.example.conrep.database.dao.ConstructionSiteDao;
 import com.example.conrep.database.dao.ReportDao;
 import com.example.conrep.database.dao.TaskDao;
-import com.example.conrep.database.report.Report;
-import com.example.conrep.database.site.ConstructionSite;
-import com.example.conrep.database.task.Task;
+import com.example.conrep.database.report.ReportEntity;
+import com.example.conrep.database.site.ConstructionSiteEntity;
+import com.example.conrep.database.task.TaskEntity;
 
 import java.util.concurrent.Executors;
 
 
-@Database(entities = {Report.class, ConstructionSite.class, Task.class}, version = 1)
+@Database(entities = {ReportEntity.class, ConstructionSiteEntity.class, TaskEntity.class}, version = 1)
 @TypeConverters(DateTypeConverter.class)
 
     public abstract class AppDatabase extends RoomDatabase {
@@ -32,7 +32,6 @@ import java.util.concurrent.Executors;
         private static AppDatabase instance;
 
         private static final String DATABASE_NAME = "taskIndex-database";
-
 
         public abstract ReportDao reportDao();
 
@@ -106,5 +105,4 @@ import java.util.concurrent.Executors;
             return mIsDatabaseCreated;
         }
 
-
-    }
+}

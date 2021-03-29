@@ -1,5 +1,6 @@
 package com.example.conrep.database.dao;
 
+import androidx.lifecycle.LiveData;
 import androidx.room.Dao;
 import androidx.room.Delete;
 import androidx.room.Insert;
@@ -7,25 +8,29 @@ import androidx.room.OnConflictStrategy;
 import androidx.room.Query;
 import androidx.room.Update;
 
-import com.example.conrep.database.site.ConstructionSite;
+import com.example.conrep.database.report.ReportEntity;
+import com.example.conrep.database.site.ConstructionSiteEntity;
 
 import java.util.List;
 
 @Dao
 public interface ConstructionSiteDao {
 
-    @Query("SELECT * FROM constructionsite")
-    List<ConstructionSite> getAll();
+    @Query("SELECT * FROM ConstructionSiteEntity")
+    LiveData<List<ConstructionSiteEntity>> getAll();
+
+    @Query("SELECT * FROM ConstructionSiteEntity WHERE siteID = :siteID")
+    LiveData<ConstructionSiteEntity> getById(int reportID);
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    void insertConstruction(ConstructionSite constructionSite);
+    void insertConstruction(ConstructionSiteEntity constructionSiteEntity);
 
     @Update
-    void updateConstruction(ConstructionSite constructionSite);
+    void updateConstruction(ConstructionSiteEntity constructionSiteEntity);
 
     @Delete
-    void deleteConstruction(ConstructionSite constructionSite);
+    void deleteConstruction(ConstructionSiteEntity constructionSiteEntity);
 
-    @Query("DELETE FROM constructionsite")
+    @Query("DELETE FROM ConstructionSiteEntity")
     void deleteAll();
 }

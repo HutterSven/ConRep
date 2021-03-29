@@ -1,46 +1,45 @@
 package com.example.conrep.database.dao;
 
+import androidx.lifecycle.LiveData;
 import androidx.room.Dao;
 import androidx.room.Delete;
 import androidx.room.Insert;
 import androidx.room.OnConflictStrategy;
 import androidx.room.Query;
-import androidx.room.TypeConverter;
-import androidx.room.TypeConverters;
 import androidx.room.Update;
 
-import com.example.conrep.database.report.Report;
-import com.google.android.gms.common.util.NumberUtils;
+import com.example.conrep.database.report.ReportEntity;
 
-import java.util.Calendar;
-import java.util.GregorianCalendar;
 import java.util.List;
 
 @Dao
 public interface ReportDao {
 
-    @Query("SELECT * FROM Report")
-    List<Report> getAll();
+    @Query("SELECT * FROM ReportEntity")
+    LiveData<List<ReportEntity>> getAll();
 
-    @Query("SELECT * FROM Report WHERE siteReport = :siteID")
-    List<Report> getBySite(int siteID);
+    @Query("SELECT * FROM ReportEntity WHERE reportID = :reportID")
+    LiveData<ReportEntity> getById(int reportID);
 
-    @Query("SELECT * FROM Report WHERE workerName = :name")
-    List<Report> getByName(String name);
+    @Query("SELECT * FROM ReportEntity WHERE siteReport = :siteID")
+    LiveData<List<ReportEntity>> getBySite(int siteID);
 
-    @Query("SELECT * FROM Report WHERE date = :date")
-    List<Report> getByDate(String date);
+    @Query("SELECT * FROM ReportEntity WHERE workerName = :name")
+    LiveData<List<ReportEntity>> getByName(String name);
+
+    @Query("SELECT * FROM ReportEntity WHERE date = :date")
+    LiveData<List<ReportEntity>> getByDate(String date);
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    void insertReport(Report report);
+    void insertReport(ReportEntity reportEntity);
 
     @Update
-    void updateReport(Report report);
+    void updateReport(ReportEntity reportEntity);
 
     @Delete
-    void deleteReport(Report report);
+    void deleteReport(ReportEntity reportEntity);
 
-    @Query("DELETE FROM report")
+    @Query("DELETE FROM ReportEntity")
     void deleteAll();
 
 }

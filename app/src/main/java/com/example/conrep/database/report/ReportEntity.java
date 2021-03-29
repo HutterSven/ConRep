@@ -5,20 +5,20 @@ import androidx.room.ForeignKey;
 import androidx.room.TypeConverters;
 
 import com.example.conrep.database.DateTypeConverter;
-import com.example.conrep.database.task.Task;
-import com.example.conrep.database.site.ConstructionSite;
+import com.example.conrep.database.site.ConstructionSiteEntity;
+import com.example.conrep.database.task.TaskEntity;
 
 import java.util.Date;
 
-@Entity(primaryKeys = {"reportID"}, foreignKeys = {@ForeignKey(entity = Task.class,
+@Entity(primaryKeys = {"reportID"}, foreignKeys = {@ForeignKey(entity = TaskEntity.class,
         parentColumns = "taskID",
         childColumns = "taskReport",
-        onDelete = ForeignKey.SET_NULL), @ForeignKey(entity = ConstructionSite.class,
+        onDelete = ForeignKey.SET_NULL), @ForeignKey(entity = ConstructionSiteEntity.class,
         parentColumns = "siteID",
         childColumns = "siteReport",
         onDelete = ForeignKey.SET_NULL)})
 @TypeConverters(DateTypeConverter.class)
-public class Report {
+public class ReportEntity {
 
     private int reportID;
     private int hours;
