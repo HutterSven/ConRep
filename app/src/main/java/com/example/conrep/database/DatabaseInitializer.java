@@ -7,6 +7,8 @@ import com.example.conrep.database.report.ReportEntity;
 import com.example.conrep.database.site.ConstructionSiteEntity;
 import com.example.conrep.database.task.TaskEntity;
 
+import java.util.Date;
+
 public class DatabaseInitializer {
 
     public static final String TAG = "DatabaseInitializer";
@@ -17,51 +19,33 @@ public class DatabaseInitializer {
         task.execute();
     }
 
-    private static void addReport(final AppDatabase db, int id, int wid){
-
-        ReportEntity reportEntity = new ReportEntity();
-        db.reportDao().insertReport(reportEntity);
+    private static void addReport(final AppDatabase db, ReportEntity report){
+        db.reportDao().insertReport(report);
     }
 
-    private static void addConstructionSite(final AppDatabase db, final int id, final String constructionSitename, final String info){
-
-        ConstructionSiteEntity constructionSiteEntity = new ConstructionSiteEntity();
-        db.constructionSiteDao().insertConstruction(constructionSiteEntity);
+    private static void addConstructionSite(final AppDatabase db, ConstructionSiteEntity constructionSite){
+        db.constructionSiteDao().insertConstruction(constructionSite);
     }
 
-    private static void addTask(final AppDatabase db, int id, String name, String taskry){
-
-        TaskEntity taskEntity = new TaskEntity();
-        db.taskDao().insertTask(taskEntity);
+    private static void addTask(final AppDatabase db, TaskEntity task){
+        db.taskDao().insertTask(task);
     }
 
 
     private static void populateWithTestData(AppDatabase db){
         //resetten
-        db.reportDao().deleteAll();
-        /* Hier kommen die anfänglichen Favoriten rein falls es welche gibt.
-         */
-        //Testfavorite
-        addReport(db,
-                1,1 );
-
-        try{
-            Thread.sleep(1000);
-        } catch (InterruptedException e){
-            e.printStackTrace();
-        }
-
-        //resetten
         db.constructionSiteDao().deleteAll();
 
+        // TestSite
+        ConstructionSiteEntity constructionSite = new ConstructionSiteEntity();
+        constructionSite.setAddress("testStreet");
+        constructionSite.setCity("testCity");
+        constructionSite.setHours(2);
+        constructionSite.setOverseer("ABC");
+        constructionSite.setSiteID(1);
+        constructionSite.setSiteName("TestSite");
         addConstructionSite(db,
-                1, "test", "this is a test");
-        addConstructionSite(db,
-                2, "Varen","Die Weininsel im Wallis.");
-        addConstructionSite(db,
-                3, "Salgesch","Will wier ine räbe läbe.");
-        addConstructionSite(db,
-                4, "Siders","Wasser predigen, Wein trinken.");
+                constructionSite);
 
         try{
             Thread.sleep(1000);
@@ -71,11 +55,36 @@ public class DatabaseInitializer {
 
         //resetten
         db.taskDao().deleteAll();
-        /* Hier kommen die Weine rein, via addTask die am Anfang da sein sollen
-                */
-        //Testwein
+
+        //TestTask
+        TaskEntity task = new TaskEntity();
+        task.setTaskID(1);
+        task.setName("Build");
+        task.setDescription("Build house");
+        task.setDeadline(new Date("2021-12-31"));
+        task.setSiteTask(1);
         addTask(db,
-                1,"Geile Wein","Taskry Jean-pierre");
+                task);
+
+        try{
+            Thread.sleep(1000);
+        } catch (InterruptedException e){
+            e.printStackTrace();
+        }
+
+        //resetten
+        db.reportDao().deleteAll();
+
+        //TestReport
+        ReportEntity report = new ReportEntity();
+        report.setReportID(1);
+        report.setWorkerName("DEF");
+        report.setHours(2);
+        report.setDate(new Date("2021-03-28"));
+        report.setSiteReport(1);
+        report.setTaskReport(1);
+        addReport(db,
+                report);
 
         try{
             Thread.sleep(1000);

@@ -11,7 +11,7 @@ import androidx.lifecycle.ViewModelProvider;
 
 import com.example.conrep.database.repository.TaskRepository;
 import com.example.conrep.database.task.TaskEntity;
-import com.example.conrep.ui.BaseApp;
+import com.example.conrep.BaseApp;
 import com.example.conrep.ui.util.OnAsyncEventListener;
 
 public class TaskViewModel extends AndroidViewModel {

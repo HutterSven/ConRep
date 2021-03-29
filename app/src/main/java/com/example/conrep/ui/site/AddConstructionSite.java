@@ -18,7 +18,7 @@ public class AddConstructionSite extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_construction_site);
 
-        addSite = findViewById(R.id.button8);
+        addSite = findViewById(R.id.btnAddSite);
         addSite.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

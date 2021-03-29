@@ -14,7 +14,7 @@ public class ReportAndSiteEntity {
     @Embedded
     public ConstructionSiteEntity site;
 
-    @Relation(parentColumn = "reportID", entityColumn = "reportSite", entity = ReportEntity.class)
-    public LiveData<List<ReportEntity>> reports;
+    @Relation(parentColumn = "reportSite", entityColumn = "reportID", entity = ReportEntity.class)
+    public List<ReportEntity> reports;
 
 }

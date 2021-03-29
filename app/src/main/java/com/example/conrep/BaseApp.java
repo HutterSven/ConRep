@@ -1,4 +1,4 @@
-package com.example.conrep.ui;
+package com.example.conrep;
 
 import android.app.Application;
 

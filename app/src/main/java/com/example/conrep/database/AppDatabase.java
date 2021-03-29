@@ -84,12 +84,6 @@ import java.util.concurrent.Executors;
             });
         }
 
-    /*
-        Prüfung Datenbank
-        da oder
-        no nüt
-     */
-
         private void updateDatabaseCreated(final Context context) {
             if (context.getDatabasePath(DATABASE_NAME).exists()) {
                 Log.i(TAG, "Database initialized.");

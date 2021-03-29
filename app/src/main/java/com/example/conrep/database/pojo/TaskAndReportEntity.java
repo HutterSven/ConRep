@@ -14,7 +14,7 @@ public class TaskAndReportEntity {
     @Embedded
     public ReportEntity report;
 
-    @Relation(parentColumn = "TaskID", entityColumn = "taskSite", entity = TaskEntity.class)
-    public LiveData<List<TaskEntity>> tasks;
+    @Relation(parentColumn = "taskReport", entityColumn = "taskID", entity = TaskEntity.class)
+    public List<TaskEntity> tasks;
 
 }

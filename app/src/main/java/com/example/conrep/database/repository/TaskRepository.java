@@ -1,7 +1,6 @@
 package com.example.conrep.database.repository;
 
 import android.app.Application;
-import android.util.Pair;
 
 import androidx.lifecycle.LiveData;
 
@@ -9,7 +8,7 @@ import com.example.conrep.database.async.task.CreateTask;
 import com.example.conrep.database.async.task.DeleteTask;
 import com.example.conrep.database.async.task.UpdateTask;
 import com.example.conrep.database.task.TaskEntity;
-import com.example.conrep.ui.BaseApp;
+import com.example.conrep.BaseApp;
 import com.example.conrep.ui.util.OnAsyncEventListener;
 
 import java.util.List;

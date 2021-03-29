@@ -18,7 +18,7 @@
         app:layout_constraintTop_toTopOf="parent">
 
         <Button
-            android:id="@+id/button7"
+            android:id="@+id/btnMap"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginLeft="20dp"
@@ -30,7 +30,7 @@
             android:textSize="35sp" />
 
         <Button
-            android:id="@+id/button8"
+            android:id="@+id/btnAddSite"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginLeft="20dp"
@@ -43,7 +43,7 @@
             />
 
         <Button
-            android:id="@+id/button9"
+            android:id="@+id/btnViewReports"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginLeft="20dp"

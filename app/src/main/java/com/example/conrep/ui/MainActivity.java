@@ -6,68 +6,27 @@ import android.view.View;
 import android.view.Menu;
 import android.widget.Button;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import com.example.conrep.R;
 import com.example.conrep.ui.report.ReportList;
 import com.example.conrep.ui.site.AddConstructionSite;
 import com.example.conrep.ui.site.Map;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends BaseActivity {
 
-    private Button addSite, map, viewReports, settings, about;
+    private Button addSite, map, viewReports;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        addSite = findViewById(R.id.button8);
-        map = findViewById(R.id.button7);
-        viewReports = findViewById(R.id.button9);
-        addSite.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                openAddSite();
-            }
-        });
-
-
-//        settings = findViewById(R.id.settings);
-//        settings.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                openSettings();
-//            }
-//        });
-//
-//        about = findViewById(R.id.about);
-//        about.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                openAbout();
-//            }
-//        });
-
-        map.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                openMap();
-            }
-        });
-        viewReports.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                openViewReports();
-            }
-        });
+        addSite = findViewById(R.id.btnAddSite);
+        map = findViewById(R.id.btnMap);
+        viewReports = findViewById(R.id.btnViewReports);
+        addSite.setOnClickListener(v -> openAddSite());
+        map.setOnClickListener(v -> openMap());
+        viewReports.setOnClickListener(v -> openViewReports());
     }
-
-    public boolean onCreateOptionsMenu(Menu menu){
-        getMenuInflater().inflate(R.menu.main_activity_actions, menu);
-        return super.onCreateOptionsMenu(menu);
-    }
-
 
     private void openAddSite() {
         Intent intent = new Intent(this, AddConstructionSite.class);
@@ -84,16 +43,6 @@ public class MainActivity extends AppCompatActivity {
         startActivity(intent);
     }
 
-
-    private void openSettings() {
-        Intent intent = new Intent(this, Settings.class);
-        startActivity(intent);
-    }
-
-    private void openAbout() {
-        Intent intent = new Intent(this, About.class);
-        startActivity(intent);
-    }
 
 
 }

@@ -11,7 +11,7 @@ import androidx.lifecycle.ViewModelProvider;
 
 import com.example.conrep.database.report.ReportEntity;
 import com.example.conrep.database.repository.ReportRepository;
-import com.example.conrep.ui.BaseApp;
+import com.example.conrep.BaseApp;
 import com.example.conrep.ui.util.OnAsyncEventListener;
 
 public class ReportViewModel extends AndroidViewModel {

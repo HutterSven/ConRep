@@ -11,7 +11,7 @@ import androidx.lifecycle.ViewModelProvider;
 
 import com.example.conrep.database.repository.ConstructionSiteRepository;
 import com.example.conrep.database.site.ConstructionSiteEntity;
-import com.example.conrep.ui.BaseApp;
+import com.example.conrep.BaseApp;
 import com.example.conrep.ui.util.OnAsyncEventListener;
 
 public class ConstructionSiteViewModel extends AndroidViewModel {

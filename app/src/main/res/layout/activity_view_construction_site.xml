@@ -117,37 +117,6 @@
         android:orientation="horizontal">
 
         <TextView
-            android:id="@+id/textView11"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_marginLeft="20dp"
-            android:layout_marginRight="20dp"
-            android:layout_gravity="start"
-            android:layout_marginVertical="5dp"
-            android:layout_weight="1"
-            android:text="@string/type"
-            android:textSize="18sp" />
-
-        <TextView
-            android:id="@+id/textView20"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_gravity="end"
-            android:layout_marginVertical="5dp"
-            android:layout_marginLeft="20dp"
-            android:layout_marginRight="20dp"
-            android:layout_weight="1"
-            android:text=""
-            android:textSize="18sp" />
-    </LinearLayout>
-
-    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:tools="http://schemas.android.com/tools"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal">
-
-        <TextView
             android:id="@+id/textView12"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
@@ -161,36 +130,6 @@
 
         <TextView
             android:id="@+id/textView15"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_gravity="end"
-            android:layout_marginLeft="20dp"
-            android:layout_marginRight="20dp"
-            android:layout_weight="1"
-            android:text=""
-            android:textSize="18sp" />
-    </LinearLayout>
-
-    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:tools="http://schemas.android.com/tools"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal">
-
-        <TextView
-            android:id="@+id/textView13"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_marginLeft="20dp"
-            android:layout_marginRight="20dp"
-            android:layout_marginVertical="5dp"
-            android:layout_gravity="start"
-            android:layout_weight="1"
-            android:text="@string/status"
-            android:textSize="18sp" />
-
-        <TextView
-            android:id="@+id/textView14"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_gravity="end"
@@ -237,7 +176,7 @@
         android:orientation="horizontal">
 
         <Button
-            android:id="@+id/FileReport"
+            android:id="@+id/btnFileReport"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginLeft="20dp"
@@ -255,7 +194,7 @@
         android:orientation="horizontal">
 
         <Button
-            android:id="@+id/ViewTasks"
+            android:id="@+id/btnViewTasks"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginLeft="20dp"
@@ -266,7 +205,7 @@
             android:textSize="14sp" />
 
         <Button
-            android:id="@+id/AddTask"
+            android:id="@+id/btnAddTask"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginLeft="20dp"
@@ -283,7 +222,7 @@
         android:orientation="horizontal">
 
         <Button
-            android:id="@+id/EditSite"
+            android:id="@+id/btnEditSite"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginLeft="20dp"
@@ -295,7 +234,7 @@
 
 
         <Button
-            android:id="@+id/DeleteSite"
+            android:id="@+id/btnDeleteSite"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginLeft="20dp"

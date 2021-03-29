@@ -1,16 +1,14 @@
 package com.example.conrep.database.repository;
 
 import android.app.Application;
-import android.util.Pair;
 
 import androidx.lifecycle.LiveData;
-import androidx.room.Transaction;
 
 import com.example.conrep.database.async.report.CreateReport;
 import com.example.conrep.database.async.report.DeleteReport;
 import com.example.conrep.database.async.report.UpdateReport;
 import com.example.conrep.database.report.ReportEntity;
-import com.example.conrep.ui.BaseApp;
+import com.example.conrep.BaseApp;
 import com.example.conrep.ui.util.OnAsyncEventListener;
 
 import java.util.List;
