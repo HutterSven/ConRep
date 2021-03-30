@@ -14,6 +14,8 @@ public class CreateReport extends AsyncTask<ReportEntity, Void, Void> {
     private OnAsyncEventListener callback;
     private Exception exception;
 
+    public long reportID;
+
     public CreateReport(Application application, OnAsyncEventListener callback) {
         this.application = application;
         this.callback = callback;
@@ -23,7 +25,7 @@ public class CreateReport extends AsyncTask<ReportEntity, Void, Void> {
     protected Void doInBackground(ReportEntity... params) {
         try {
             for (ReportEntity report : params)
-                ((BaseApp) application).getDatabase().reportDao()
+                reportID = ((BaseApp) application).getDatabase().reportDao()
                         .insertReport(report);
         } catch (Exception e) {
             exception = e;

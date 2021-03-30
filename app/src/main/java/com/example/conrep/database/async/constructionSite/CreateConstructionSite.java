@@ -13,6 +13,7 @@ public class CreateConstructionSite extends AsyncTask<ConstructionSiteEntity, Vo
     private Application application;
     private OnAsyncEventListener callback;
     private Exception exception;
+    public int siteID;
 
     public CreateConstructionSite(Application application, OnAsyncEventListener callback) {
         this.application = application;
@@ -23,7 +24,7 @@ public class CreateConstructionSite extends AsyncTask<ConstructionSiteEntity, Vo
     protected Void doInBackground(ConstructionSiteEntity... params) {
         try {
             for (ConstructionSiteEntity site : params)
-                ((BaseApp) application).getDatabase().constructionSiteDao()
+                siteID = (int)((BaseApp) application).getDatabase().constructionSiteDao()
                         .insertConstruction(site);
         } catch (Exception e) {
             exception = e;

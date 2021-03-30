@@ -3,6 +3,7 @@ package com.example.conrep.ui.site;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
@@ -88,7 +89,7 @@ public class ViewConstructionSite extends BaseActivity {
 
     private void openFileReport() {
         Intent intent = new Intent(this, FileReport.class);
-        intent.putExtra("siteID", 1);
+        intent.putExtra("siteID", conSite.getSiteID());
         startActivity(intent);
     }
     private void openAddTask() {

@@ -31,7 +31,7 @@ public interface ReportDao {
     LiveData<List<ReportEntity>> getByDate(String date);
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    void insertReport(ReportEntity reportEntity);
+    long insertReport(ReportEntity reportEntity);
 
     @Update
     void updateReport(ReportEntity reportEntity);
