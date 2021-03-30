@@ -33,6 +33,7 @@ public class DatabaseInitializer {
 
 
     private static void populateWithTestData(AppDatabase db){
+
         //resetten
         db.constructionSiteDao().deleteAll();
 

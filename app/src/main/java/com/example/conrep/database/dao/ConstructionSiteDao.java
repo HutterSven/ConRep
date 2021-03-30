@@ -1,5 +1,7 @@
 package com.example.conrep.database.dao;
 
+import android.database.sqlite.SQLiteConstraintException;
+
 import androidx.lifecycle.LiveData;
 import androidx.room.Dao;
 import androidx.room.Delete;
@@ -23,7 +25,7 @@ public interface ConstructionSiteDao {
     LiveData<ConstructionSiteEntity> getById(int siteID);
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    void insertConstruction(ConstructionSiteEntity constructionSiteEntity);
+    long insertConstruction(ConstructionSiteEntity constructionSiteEntity) throws SQLiteConstraintException;
 
     @Update
     void updateConstruction(ConstructionSiteEntity constructionSiteEntity);

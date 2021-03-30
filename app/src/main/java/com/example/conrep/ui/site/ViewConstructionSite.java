@@ -42,21 +42,20 @@ public class ViewConstructionSite extends BaseActivity {
         viewModel.getConstructionSite().observe(this, constructionSiteEntity -> {
             if (constructionSiteEntity != null) {
                 conSite = constructionSiteEntity;
-
+                updateContent();
             }
         });
 
-        updateContent();
     }
 
     private void updateContent() {
         if (conSite != null) {
-            setTitle(conSite.getSiteName());
+            setTitle("ConRep - " + conSite.getSiteName());
             tvName.setText(conSite.getSiteName());
             tvAddress.setText(conSite.getAddress());
             tvCity.setText(conSite.getCity());
             tvOverseer.setText(conSite.getOverseer());
-            tvHours.setText(conSite.getHours());
+            tvHours.setText(conSite.getHours()+"");
             Log.i(TAG, "Activity populated.");
         }
     }
