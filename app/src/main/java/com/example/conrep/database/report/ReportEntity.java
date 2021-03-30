@@ -25,7 +25,7 @@ public class ReportEntity {
     private String workerName;
     private int taskReport;
     private int siteReport;
-    private Date date;
+    private String date;
 
     public int getReportID() {
         return reportID;
@@ -67,11 +67,11 @@ public class ReportEntity {
         this.siteReport = siteReport;
     }
 
-    public Date getDate() {
+    public String getDate() {
         return date;
     }
 
-    public void setDate(Date date) {
+    public void setDate(String date) {
         this.date = date;
     }
 }

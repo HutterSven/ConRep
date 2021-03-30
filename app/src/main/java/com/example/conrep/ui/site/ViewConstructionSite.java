@@ -10,9 +10,12 @@ import androidx.annotation.Nullable;
 import androidx.lifecycle.ViewModelProviders;
 
 import com.example.conrep.R;
+import com.example.conrep.database.async.constructionSite.DeleteConstructionSite;
 import com.example.conrep.database.site.ConstructionSiteEntity;
 import com.example.conrep.ui.BaseActivity;
 import com.example.conrep.ui.report.FileReport;
+import com.example.conrep.ui.task.AddTask;
+import com.example.conrep.ui.task.TaskList;
 import com.example.conrep.ui.viewmodel.constructionSite.ConstructionSiteViewModel;
 
 public class ViewConstructionSite extends BaseActivity {
@@ -45,7 +48,6 @@ public class ViewConstructionSite extends BaseActivity {
                 updateContent();
             }
         });
-
     }
 
     private void updateContent() {
@@ -55,7 +57,7 @@ public class ViewConstructionSite extends BaseActivity {
             tvAddress.setText(conSite.getAddress());
             tvCity.setText(conSite.getCity());
             tvOverseer.setText(conSite.getOverseer());
-            tvHours.setText(conSite.getHours()+"");
+            tvHours.setText(conSite.getHours()+" hours");
             Log.i(TAG, "Activity populated.");
         }
     }
@@ -86,22 +88,25 @@ public class ViewConstructionSite extends BaseActivity {
 
     private void openFileReport() {
         Intent intent = new Intent(this, FileReport.class);
+        intent.putExtra("siteID", 1);
         startActivity(intent);
     }
     private void openAddTask() {
-        Intent intent = new Intent(this, FileReport.class);
+        Intent intent = new Intent(this, AddTask.class);
+        intent.putExtra("siteID", conSite.getSiteID());
         startActivity(intent);
     }
     private void openDeleteSite() {
-        Intent intent = new Intent(this, FileReport.class);
-        startActivity(intent);
+        // todo add dialogue and toast for delete
     }
     private void openEditSite() {
-        Intent intent = new Intent(this, FileReport.class);
+        Intent intent = new Intent(this, EditConstructionSite.class);
+        intent.putExtra("siteID", conSite.getSiteID());
         startActivity(intent);
     }
     private void openViewTasks() {
-        Intent intent = new Intent(this, FileReport.class);
+        Intent intent = new Intent(this, TaskList.class);
+        intent.putExtra("siteID", conSite.getSiteID());
         startActivity(intent);
     }
 }

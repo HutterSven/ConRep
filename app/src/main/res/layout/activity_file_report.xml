@@ -5,10 +5,10 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".ui.reportEntity.FileReport">
+    tools:context=".ui.report.FileReport">
 
     <EditText
-        android:id="@+id/editTextTextPersonName"
+        android:id="@+id/etReportName"
         android:layout_width="match_parent"
         android:layout_height="50dp"
         android:layout_margin="10dp"
@@ -19,7 +19,7 @@
         android:inputType="textPersonName" />
 
     <EditText
-        android:id="@+id/editTextTextPersonName2"
+        android:id="@+id/etReportHours"
         android:layout_width="match_parent"
         android:layout_height="50dp"
         android:layout_margin="10dp"
@@ -42,7 +42,7 @@
     </ScrollView>
 
     <Button
-        android:id="@+id/button"
+        android:id="@+id/btnFileReport"
         android:layout_width="match_parent"
         android:layout_height="50dp"
         android:layout_margin="10dp"

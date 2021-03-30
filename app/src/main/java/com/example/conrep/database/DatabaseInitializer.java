@@ -7,6 +7,9 @@ import com.example.conrep.database.report.ReportEntity;
 import com.example.conrep.database.site.ConstructionSiteEntity;
 import com.example.conrep.database.task.TaskEntity;
 
+import java.sql.Timestamp;
+import java.text.DateFormat;
+import java.time.LocalDate;
 import java.util.Date;
 
 public class DatabaseInitializer {
@@ -33,18 +36,18 @@ public class DatabaseInitializer {
 
 
     private static void populateWithTestData(AppDatabase db){
-
+        Log.i(TAG, "populating.");
         //resetten
         db.constructionSiteDao().deleteAll();
 
         // TestSite
         ConstructionSiteEntity constructionSite = new ConstructionSiteEntity();
-        constructionSite.setAddress("testStreet");
-        constructionSite.setCity("testCity");
+        constructionSite.setAddress("testStreet2");
+        constructionSite.setCity("testCity2");
         constructionSite.setHours(2);
-        constructionSite.setOverseer("ABC");
+        constructionSite.setOverseer("ABC2");
         constructionSite.setSiteID(1);
-        constructionSite.setSiteName("TestSite");
+        constructionSite.setSiteName("TestSite2");
         addConstructionSite(db,
                 constructionSite);
 
@@ -62,7 +65,8 @@ public class DatabaseInitializer {
         task.setTaskID(1);
         task.setName("Build");
         task.setDescription("Build house");
-        task.setDeadline(new Date("2021-12-31"));
+        task.setDeadline("31.12.2021");
+        task.setStatus(true);
         task.setSiteTask(1);
         addTask(db,
                 task);
@@ -81,7 +85,7 @@ public class DatabaseInitializer {
         report.setReportID(1);
         report.setWorkerName("DEF");
         report.setHours(2);
-        report.setDate(new Date("2021-03-28"));
+        report.setDate("30.03.2021");
         report.setSiteReport(1);
         report.setTaskReport(1);
         addReport(db,
@@ -110,6 +114,7 @@ public class DatabaseInitializer {
         }
 
         public void execute() {
+            populateWithTestData(database);
         }
     }
 

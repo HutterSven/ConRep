@@ -37,11 +37,11 @@ public class TaskEntity {
         this.description = description;
     }
 
-    public Date getDeadline() {
+    public String getDeadline() {
         return deadline;
     }
 
-    public void setDeadline(Date deadline) {
+    public void setDeadline(String deadline) {
         this.deadline = deadline;
     }
 
@@ -64,7 +64,7 @@ public class TaskEntity {
     private int taskID;
     private String name;
     private String description;
-    private Date deadline;
+    private String deadline;
     private boolean status;
     private int siteTask;
 

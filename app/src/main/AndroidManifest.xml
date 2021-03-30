@@ -15,7 +15,13 @@
         <activity android:name=".ui.BaseActivity"></activity>
         <activity android:name=".ui.actionBar.About" />
         <activity android:name=".ui.site.EditConstructionSite" />
-        <activity android:name=".ui.site.AddConstructionSite" />
+        <activity android:name=".ui.site.AddConstructionSite" >
+            <intent-filter>
+            <action android:name="android.intent.action.MAIN" />
+
+            <category android:name="android.intent.category.LAUNCHER" />
+        </intent-filter>
+        </activity>
         <activity android:name=".ui.report.ReportList" />
         <!--
              The API key for Google Maps-based APIs is defined as a string resource.
@@ -35,16 +41,14 @@
         <activity android:name=".ui.report.EditReport" />
         <activity android:name=".ui.report.ViewReport" />
         <activity android:name=".ui.task.EditTask" />
-        <activity android:name=".ui.task.ViewTask" />
+        <activity android:name=".ui.task.ViewTask" >
+
+        </activity>
         <activity android:name=".ui.task.TaskList" />
         <activity android:name=".ui.task.AddTask" />
         <activity android:name=".ui.report.FileReport" />
         <activity android:name=".ui.site.ViewConstructionSite" >
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
 
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
         </activity>
         <activity android:name=".ui.MainActivity">
 

@@ -9,7 +9,7 @@
 
 
     <EditText
-        android:id="@+id/editTextTextPersonName7"
+        android:id="@+id/etSiteName"
         android:layout_width="match_parent"
         android:layout_height="50dp"
         android:layout_margin="10dp"
@@ -20,7 +20,7 @@
         android:inputType="textPersonName" />
 
     <EditText
-        android:id="@+id/editTextTextPersonName9"
+        android:id="@+id/etSiteCity"
         android:layout_width="match_parent"
         android:layout_height="50dp"
         android:layout_margin="10dp"
@@ -31,7 +31,7 @@
         android:inputType="textPersonName" />
 
     <EditText
-        android:id="@+id/editTextTextPersonName10"
+        android:id="@+id/etSiteAddress"
         android:layout_width="match_parent"
         android:layout_height="50dp"
         android:layout_margin="10dp"
@@ -42,7 +42,7 @@
         android:inputType="textPersonName" />
 
     <EditText
-        android:id="@+id/editTextTextPersonName11"
+        android:id="@+id/etSiteOverseer"
         android:layout_width="match_parent"
         android:layout_height="50dp"
         android:layout_margin="10dp"
@@ -70,7 +70,7 @@
 
 
     <Button
-        android:id="@+id/AddSite"
+        android:id="@+id/AddSiteSite"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_weight="1"
