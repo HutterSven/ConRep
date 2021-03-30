@@ -34,6 +34,7 @@ public class ViewConstructionSite extends BaseActivity {
 
         int siteID = getIntent().getIntExtra("siteID", 1);
 
+        initiateView();
 
         ConstructionSiteViewModel.Factory factory = new ConstructionSiteViewModel.Factory(
                 getApplication(), siteID);
@@ -44,8 +45,6 @@ public class ViewConstructionSite extends BaseActivity {
 
             }
         });
-
-        initiateView();
 
         updateContent();
     }
@@ -69,11 +68,6 @@ public class ViewConstructionSite extends BaseActivity {
         tvOverseer = findViewById(R.id.textView15);
         tvHours = findViewById(R.id.textView16);
 
-        tvName.setText(conSite.getSiteName());
-        tvAddress.setText(conSite.getAddress());
-        tvCity.setText(conSite.getCity());
-        tvOverseer.setText(conSite.getOverseer());
-        tvHours.setText(conSite.getHours());
 
         Button FileBtn = findViewById(R.id.btnFileReport);
         FileBtn.setOnClickListener(view -> openFileReport());
