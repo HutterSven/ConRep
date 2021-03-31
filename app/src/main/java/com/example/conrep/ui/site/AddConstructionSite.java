@@ -28,7 +28,6 @@ public class AddConstructionSite extends BaseActivity {
     private static final String TAG = "AddConstructionSite";
 
     private ConstructionSiteEntity conSite;
-    private ConstructionSiteViewModel viewModel;
 
     private EditText etSiteName;
     private EditText etSiteCity;

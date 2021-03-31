@@ -81,5 +81,9 @@ public class ReportViewModel extends AndroidViewModel {
         repository.update(report, callback, application);
     }
 
+    public void deleteReport(ReportEntity report, OnAsyncEventListener callback) {
+        repository.delete(report, callback, application);
+    }
+
 
 }

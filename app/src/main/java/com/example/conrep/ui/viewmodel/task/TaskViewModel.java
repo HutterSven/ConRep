@@ -81,5 +81,9 @@ public class TaskViewModel extends AndroidViewModel {
         repository.update(task, callback, application);
     }
 
+    public void deleteTask(TaskEntity task, OnAsyncEventListener callback) {
+        repository.delete(task, callback, application);
+    }
+
 
 }

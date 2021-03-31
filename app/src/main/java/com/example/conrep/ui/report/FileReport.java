@@ -74,9 +74,8 @@ public class FileReport extends BaseActivity {
         report = new ReportEntity();
         report.setWorkerName(etReportName.getText().toString());
         report.setHours(Integer.parseInt(etReportHours.getText().toString()));
-        DateTimeFormatter dtf = DateTimeFormatter.ofPattern("dd/MM/yyyy");
         LocalDateTime now = LocalDateTime.now();
-        report.setTaskReport(1);
+        report.setTaskReport(1); // todo set to chosen tasks
         report.setDate(now.toString());
         report.setSiteReport(siteID);
 

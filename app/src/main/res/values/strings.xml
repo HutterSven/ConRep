@@ -75,6 +75,11 @@
     </string>
     <string name="attachment_summary_off">Only download attachments when manually requested</string>
     <string name="error_empty_field">Cannot be Empty</string>
+    <string name="confirm_delete">Delete</string>
+    <string name="action_cancel">Cancel</string>
+    <string name="delete_report_final">Report deleted</string>
+    <string name="delete_site_final">Site deleted.</string>
+    <string name="delete_task_final">Task deleted.</string>
 
     <string-array name="languages_array">
         <item>English</item>

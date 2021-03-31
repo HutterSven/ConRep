@@ -1,18 +1,25 @@
 package com.example.conrep.ui.report;
 
 import androidx.annotation.Nullable;
+import androidx.appcompat.app.AlertDialog;
 import androidx.lifecycle.ViewModelProviders;
 
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.LayoutInflater;
+import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.conrep.R;
 import com.example.conrep.database.async.report.DeleteReport;
 import com.example.conrep.database.report.ReportEntity;
 import com.example.conrep.ui.BaseActivity;
+import com.example.conrep.ui.util.OnAsyncEventListener;
 import com.example.conrep.ui.viewmodel.report.ReportViewModel;
 
 public class ViewReport extends BaseActivity {
@@ -83,11 +90,47 @@ public class ViewReport extends BaseActivity {
         intent.putExtra("reportID", 1);
         startActivity(intent);
     }
+
     private void openDeleteReport() {
-        // todo add dialogue and toast for delete
+        generateDialog();
     }
+
     private void openBackToReportList() {
         Intent intent = new Intent(this, ReportList.class);
         startActivity(intent);
+    }
+
+    private void generateDialog() {
+        LayoutInflater inflater = LayoutInflater.from(this);
+        final View view = inflater.inflate(R.layout.activity_view_report, null);
+        final AlertDialog alertDialog = new AlertDialog.Builder(this).create();
+        alertDialog.setTitle("Delete Report");
+        alertDialog.setCancelable(false);
+
+        alertDialog.setButton(AlertDialog.BUTTON_POSITIVE, getString(R.string.confirm_delete), new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                Toast toast = Toast.makeText(ViewReport.this, getString(R.string.delete_report_final), Toast.LENGTH_LONG);
+
+                toast.show();
+
+                viewModel.deleteReport(report, new OnAsyncEventListener() {
+                    @Override
+                    public void onSuccess() {
+                        Log.d(TAG, "deleteReport: success");
+                    }
+
+                    @Override
+                    public void onFailure(Exception e) {
+                        Log.d(TAG, "deleteReport: failure", e);
+                    }
+                });
+            }
+        });
+
+        alertDialog.setButton(AlertDialog.BUTTON_NEGATIVE, getString(R.string.action_cancel),
+                (dialog, which) -> alertDialog.dismiss());
+        alertDialog.setView(view);
+        alertDialog.show();
     }
 }

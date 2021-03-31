@@ -1,17 +1,24 @@
 package com.example.conrep.ui.task;
 
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.LayoutInflater;
+import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.Nullable;
+import androidx.appcompat.app.AlertDialog;
 import androidx.lifecycle.ViewModelProviders;
 
 import com.example.conrep.R;
 import com.example.conrep.database.task.TaskEntity;
 import com.example.conrep.ui.BaseActivity;
+import com.example.conrep.ui.site.ViewConstructionSite;
+import com.example.conrep.ui.util.OnAsyncEventListener;
 import com.example.conrep.ui.viewmodel.task.TaskViewModel;
 
 public class ViewTask extends BaseActivity {
@@ -84,10 +91,45 @@ public class ViewTask extends BaseActivity {
         startActivity(intent);
     }
     private void openDeleteTask() {
-        // todo Add dialogue and toast for delete
+        generateDialog();
     }
     private void openBackToTaskList() {
         Intent intent = new Intent(this, TaskList.class);
         startActivity(intent);
+    }
+
+
+    private void generateDialog() {
+        LayoutInflater inflater = LayoutInflater.from(this);
+        final View view = inflater.inflate(R.layout.activity_view_task, null);
+        final AlertDialog alertDialog = new AlertDialog.Builder(this).create();
+        alertDialog.setTitle("Delete Task");
+        alertDialog.setCancelable(false);
+
+        alertDialog.setButton(AlertDialog.BUTTON_POSITIVE, getString(R.string.confirm_delete), new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                Toast toast = Toast.makeText(ViewTask.this, getString(R.string.delete_task_final), Toast.LENGTH_LONG);
+
+                toast.show();
+
+                viewModel.deleteTask(task, new OnAsyncEventListener() {
+                    @Override
+                    public void onSuccess() {
+                        Log.d(TAG, "deleteTask: success");
+                    }
+
+                    @Override
+                    public void onFailure(Exception e) {
+                        Log.d(TAG, "deleteTask: failure", e);
+                    }
+                });
+            }
+        });
+
+        alertDialog.setButton(AlertDialog.BUTTON_NEGATIVE, getString(R.string.action_cancel),
+                (dialog, which) -> alertDialog.dismiss());
+        alertDialog.setView(view);
+        alertDialog.show();
     }
 }

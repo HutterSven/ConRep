@@ -64,8 +64,6 @@ public class AddTask extends AppCompatActivity {
 
         cvTaskDeadLine.setOnDateChangeListener(new myCalendarListener());
 
-
-
         addTaskBtn.setOnClickListener(view -> addTask());
     }
 

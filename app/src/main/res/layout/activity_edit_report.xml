@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.reportEntity.EditReport">
+    tools:context=".ui.report.EditReport">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -12,8 +12,16 @@
         android:orientation="vertical"
         tools:context=".ui.reportEntity.FileReport">
 
+        <TextView
+            android:id="@+id/textView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="20dp"
+            android:text="@string/name" />
+
         <EditText
-            android:id="@+id/editTextTextPersonName"
+            android:id="@+id/etReportNameE"
             android:layout_width="match_parent"
             android:layout_height="50dp"
             android:layout_margin="10dp"
@@ -23,8 +31,16 @@
             android:hint="@string/name"
             android:inputType="textPersonName" />
 
+        <TextView
+            android:id="@+id/textView5"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="20dp"
+            android:text="@string/hours" />
+
         <EditText
-            android:id="@+id/editTextTextPersonName2"
+            android:id="@+id/etReportHoursE"
             android:layout_width="match_parent"
             android:layout_height="50dp"
             android:layout_margin="10dp"
@@ -34,8 +50,16 @@
             android:hint="@string/hours"
             android:inputType="textPersonName" />
 
+        <TextView
+            android:id="@+id/textView7"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="20dp"
+            android:text="@string/site" />
+
         <EditText
-            android:id="@+id/editTextTextPersonName6"
+            android:id="@+id/etReportSiteE"
             android:layout_width="match_parent"
             android:layout_height="50dp"
             android:layout_margin="10dp"
@@ -45,10 +69,19 @@
             android:hint="@string/site"
             android:inputType="textPersonName" />
 
+        <TextView
+            android:id="@+id/textView11"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="20dp"
+            android:text="@string/tasks" />
+
         <ScrollView
             android:layout_width="match_parent"
             android:layout_height="374dp"
             android:layout_marginLeft="20dp"
+            android:layout_marginTop="10dp"
             android:layout_marginRight="20dp">
 
             <LinearLayout
@@ -58,7 +91,7 @@
         </ScrollView>
 
         <Button
-            android:id="@+id/button"
+            android:id="@+id/btnSaveEditReport"
             android:layout_width="match_parent"
             android:layout_height="50dp"
             android:layout_margin="10dp"

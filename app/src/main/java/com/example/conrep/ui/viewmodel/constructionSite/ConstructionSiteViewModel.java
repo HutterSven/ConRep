@@ -81,5 +81,9 @@ public class ConstructionSiteViewModel extends AndroidViewModel {
         repository.update(constructionSite, callback, application);
     }
 
+    public void deleteConstructionSite(ConstructionSiteEntity constructionSite, OnAsyncEventListener callback) {
+        repository.delete(constructionSite, callback, application);
+    }
+
 
 }

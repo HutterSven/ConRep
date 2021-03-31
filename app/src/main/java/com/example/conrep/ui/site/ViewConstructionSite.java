@@ -1,13 +1,17 @@
 package com.example.conrep.ui.site;
 
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.Nullable;
+import androidx.appcompat.app.AlertDialog;
 import androidx.lifecycle.ViewModelProviders;
 
 import com.example.conrep.R;
@@ -15,8 +19,10 @@ import com.example.conrep.database.async.constructionSite.DeleteConstructionSite
 import com.example.conrep.database.site.ConstructionSiteEntity;
 import com.example.conrep.ui.BaseActivity;
 import com.example.conrep.ui.report.FileReport;
+import com.example.conrep.ui.report.ViewReport;
 import com.example.conrep.ui.task.AddTask;
 import com.example.conrep.ui.task.TaskList;
+import com.example.conrep.ui.util.OnAsyncEventListener;
 import com.example.conrep.ui.viewmodel.constructionSite.ConstructionSiteViewModel;
 
 public class ViewConstructionSite extends BaseActivity {
@@ -98,7 +104,7 @@ public class ViewConstructionSite extends BaseActivity {
         startActivity(intent);
     }
     private void openDeleteSite() {
-        // todo add dialogue and toast for delete
+        generateDialog();
     }
     private void openEditSite() {
         Intent intent = new Intent(this, EditConstructionSite.class);
@@ -109,5 +115,39 @@ public class ViewConstructionSite extends BaseActivity {
         Intent intent = new Intent(this, TaskList.class);
         intent.putExtra("siteID", conSite.getSiteID());
         startActivity(intent);
+    }
+
+    private void generateDialog() {
+        LayoutInflater inflater = LayoutInflater.from(this);
+        final View view = inflater.inflate(R.layout.activity_view_construction_site, null);
+        final AlertDialog alertDialog = new AlertDialog.Builder(this).create();
+        alertDialog.setTitle("Delete Site");
+        alertDialog.setCancelable(false);
+
+        alertDialog.setButton(AlertDialog.BUTTON_POSITIVE, getString(R.string.confirm_delete), new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                Toast toast = Toast.makeText(ViewConstructionSite.this, getString(R.string.delete_site_final), Toast.LENGTH_LONG);
+
+                toast.show();
+
+                viewModel.deleteConstructionSite(conSite, new OnAsyncEventListener() {
+                    @Override
+                    public void onSuccess() {
+                        Log.d(TAG, "deleteSite: success");
+                    }
+
+                    @Override
+                    public void onFailure(Exception e) {
+                        Log.d(TAG, "deleteSite: failure", e);
+                    }
+                });
+            }
+        });
+
+        alertDialog.setButton(AlertDialog.BUTTON_NEGATIVE, getString(R.string.action_cancel),
+                (dialog, which) -> alertDialog.dismiss());
+        alertDialog.setView(view);
+        alertDialog.show();
     }
 }
