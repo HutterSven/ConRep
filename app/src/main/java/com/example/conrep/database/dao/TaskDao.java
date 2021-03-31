@@ -23,7 +23,7 @@ public interface TaskDao {
     LiveData<TaskEntity> getById(int taskID);
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    void insertTask(TaskEntity taskEntity);
+    long insertTask(TaskEntity taskEntity);
 
     @Update
     void updateTask(TaskEntity taskEntity);

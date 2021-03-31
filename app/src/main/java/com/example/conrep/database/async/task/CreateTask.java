@@ -13,6 +13,7 @@ public class CreateTask extends AsyncTask<TaskEntity, Void, Void> {
     private Application application;
     private OnAsyncEventListener callback;
     private Exception exception;
+    public int taskID;
 
     public CreateTask(Application application, OnAsyncEventListener callback) {
         this.application = application;
@@ -23,7 +24,7 @@ public class CreateTask extends AsyncTask<TaskEntity, Void, Void> {
     protected Void doInBackground(TaskEntity... params) {
         try {
             for (TaskEntity task : params)
-                ((BaseApp) application).getDatabase().taskDao()
+                taskID = (int)((BaseApp) application).getDatabase().taskDao()
                         .insertTask(task);
         } catch (Exception e) {
             exception = e;

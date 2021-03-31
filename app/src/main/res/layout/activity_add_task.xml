@@ -5,10 +5,10 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".ui.taskEntity.AddTask">
+    tools:context=".ui.task.AddTask">
 
     <EditText
-        android:id="@+id/editTextTextPersonName"
+        android:id="@+id/etTaskName"
         android:layout_width="match_parent"
         android:layout_height="50dp"
         android:layout_margin="10dp"
@@ -19,7 +19,7 @@
         android:inputType="textPersonName" />
 
     <EditText
-        android:id="@+id/editTextTextPersonName2"
+        android:id="@+id/etTaskDescription"
         android:layout_width="match_parent"
         android:layout_height="50dp"
         android:layout_margin="10dp"
@@ -30,7 +30,7 @@
         android:inputType="textPersonName" />
 
     <TextView
-        android:id="@+id/textView"
+        android:id="@+id/tvDeadline"
         android:layout_width="match_parent"
         android:layout_height="50dp"
         android:layout_margin="10dp"
@@ -41,12 +41,12 @@
         android:text="@string/deadline" />
 
     <CalendarView
-        android:id="@+id/calendarView"
+        android:id="@+id/cvDeadline"
         android:layout_width="match_parent"
         android:layout_height="wrap_content" />
 
     <Button
-        android:id="@+id/button5"
+        android:id="@+id/btnSaveTask"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="10dp"
