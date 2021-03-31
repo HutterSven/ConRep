@@ -6,6 +6,8 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.EditText;
+import android.widget.ImageButton;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
@@ -27,15 +29,24 @@ import java.util.List;
 
 public class ReportList extends AppCompatActivity {
 
-    private static final String TAG = "MainActivity";
+    private static final String TAG = "ReportList";
+
+    private ImageButton btnSearchSite;
+    private EditText etSiteID;
 
     private List<ReportEntity> Reports;
     private RecyclerAdapter recyclerAdapter;
     private ReportListViewModel viewModel;
 
+    private int siteID;
+
+    private Bundle savedInstanceState;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        this.savedInstanceState = savedInstanceState;
 
         setContentView(R.layout.activity_report_list);
         Toolbar toolbar = findViewById(R.id.toolbar);
@@ -51,6 +62,10 @@ public class ReportList extends AppCompatActivity {
         DividerItemDecoration dividerItemDecoration = new DividerItemDecoration(recyclerView.getContext(),
                 LinearLayoutManager.VERTICAL);
         recyclerView.addItemDecoration(dividerItemDecoration);
+
+        btnSearchSite = findViewById(R.id.btnSearchReportSite);
+        etSiteID = findViewById(R.id.etSearchReportBySite);
+
 
         Reports = new ArrayList<>();
         recyclerAdapter = new RecyclerAdapter(new RecyclerViewItemClickListener() {
@@ -75,11 +90,47 @@ public class ReportList extends AppCompatActivity {
         viewModel.getReports().observe(this, ReportEntities -> {
             if (ReportEntities != null) {
                 Reports = ReportEntities;
+                System.out.println(Reports.get(0).getWorkerName());
                 recyclerAdapter.setData(Reports);
             }
         });
 
+
+        btnSearchSite.setOnClickListener(new searchSite(this));
+
+
         recyclerView.setAdapter(recyclerAdapter);
+    }
+
+    public class searchSite implements View.OnClickListener {
+
+        ReportList reportList;
+
+        public searchSite(ReportList reportList) {
+            this.reportList = reportList;
+        }
+
+        @Override
+        public void onClick(View v) {
+            Reports = viewModel.getReportsByName(etSiteID.getText().toString()).getValue();
+            recyclerAdapter.setData(Reports);
+            recyclerAdapter.notifyDataSetChanged();
+            reportList.initiateView();
+        }
+    }
+
+    public void initiateView() {
+
+        ReportListViewModel.Factory factory = new ReportListViewModel.Factory(getApplication(), 0);
+        viewModel = ViewModelProviders.of(this, factory).get(ReportListViewModel.class);
+        viewModel.getReportsByName(etSiteID.getText().toString()).observe(this, ReportEntities -> {
+            if (ReportEntities != null) {
+                Reports = ReportEntities;
+                System.out.println(Reports.get(0).getWorkerName());
+                recyclerAdapter.setData(Reports);
+            }
+        });
+
     }
 
     @Override

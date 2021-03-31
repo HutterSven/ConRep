@@ -41,6 +41,21 @@ public class ReportRepository {
         return ((BaseApp) application).getDatabase().reportDao().getAll();
     }
 
+    public LiveData<List<ReportEntity>> getReportsBySite(Application application, int siteId) {
+
+        for (ReportEntity report: ((BaseApp) application).getDatabase().reportDao().getBySite(siteId).getValue()) {
+            System.out.println(report.getSiteReport());
+        }
+        return ((BaseApp) application).getDatabase().reportDao().getBySite(siteId);
+    }
+
+    public LiveData<List<ReportEntity>> getReportsByName(Application application, String name) {
+
+        for (ReportEntity report: ((BaseApp) application).getDatabase().reportDao().getByName(name).getValue()) {
+            System.out.println(report.getSiteReport());
+        }
+        return ((BaseApp) application).getDatabase().reportDao().getByName(name);
+    }
 
     public void insert(final ReportEntity report, OnAsyncEventListener callback,
                        Application application) {

@@ -23,15 +23,17 @@ public class ReportListViewModel extends AndroidViewModel {
     private Application application;
 
     private ReportRepository repository;
+    LiveData<List<ReportEntity>> reports;
+
 
     // MediatorLiveData can observe other LiveData objects and react on their emissions.
     private final MediatorLiveData<List<ReportEntity>> observableReports;
     private final MediatorLiveData<List<ConstructionSiteEntity>> observableConstructionSites;
 
     public ReportListViewModel(@NonNull Application application,
-                                final int ownerId,
-                                ReportRepository reportRepository,
-                                ConstructionSiteRepository siteRepository) {
+                               final int ownerId,
+                               ReportRepository reportRepository,
+                               ConstructionSiteRepository siteRepository) {
         super(application);
 
         this.application = application;
@@ -44,8 +46,7 @@ public class ReportListViewModel extends AndroidViewModel {
         observableConstructionSites.setValue(null);
         observableReports.setValue(null);
 
-        LiveData<List<ReportEntity>> reports =
-                reportRepository.getReports(application);
+        reports = reportRepository.getReports(application);
 
         // observe the changes of the entities from the database and forward them
         observableReports.addSource(reports, observableReports::setValue);
@@ -83,6 +84,16 @@ public class ReportListViewModel extends AndroidViewModel {
      * Expose the LiveData ClientAccounts query so the UI can observe it.
      */
     public LiveData<List<ReportEntity>> getReports() {
+        return observableReports;
+    }
+
+    public LiveData<List<ReportEntity>> getReportsBySite(int siteID) {
+        reports = repository.getReportsBySite(getApplication(), siteID);
+        return observableReports;
+    }
+
+    public LiveData<List<ReportEntity>> getReportsByName(String name) {
+        reports = repository.getReportsByName(getApplication(), name);
         return observableReports;
     }
 

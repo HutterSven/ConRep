@@ -16,12 +16,12 @@
         <activity android:name=".ui.actionBar.About" />
         <activity android:name=".ui.site.EditConstructionSite" />
         <activity android:name=".ui.site.AddConstructionSite">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
         </activity>
         <activity android:name=".ui.report.ReportList">
-        <intent-filter>
-            <action android:name="android.intent.action.MAIN" />
-            <category android:name="android.intent.category.LAUNCHER" />
-        </intent-filter>
         </activity>
         <!--
              The API key for Google Maps-based APIs is defined as a string resource.
@@ -44,7 +44,9 @@
         <activity android:name=".ui.task.ViewTask" />
         <activity android:name=".ui.task.TaskList" />
         <activity android:name=".ui.task.AddTask" />
-        <activity android:name=".ui.report.FileReport" />
+        <activity android:name=".ui.report.FileReport">
+
+        </activity>
         <activity android:name=".ui.site.ViewConstructionSite" />
         <activity android:name=".ui.MainActivity"/>
     </application>

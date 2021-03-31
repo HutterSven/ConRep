@@ -52,7 +52,7 @@ public class RecyclerAdapter<T> extends RecyclerView.Adapter<RecyclerAdapter.Vie
     @Override
     public void onBindViewHolder(RecyclerAdapter.ViewHolder holder, int position) {
         ReportEntity item = mData.get(position);
-        holder.mTextView.setText(((ReportEntity) item).getReportID() + " " + ((ReportEntity) item).getSiteReport() + " " + ((ReportEntity) item).getWorkerName());
+        holder.mTextView.setText(((ReportEntity) item).getReportID() + "\t" + ((ReportEntity) item).getSiteReport() + "\t" + ((ReportEntity) item).getWorkerName());
 
     }
 
@@ -97,6 +97,7 @@ public class RecyclerAdapter<T> extends RecyclerView.Adapter<RecyclerAdapter.Vie
                                 && newReport.getSiteReport() == oldReport.getSiteReport();
 
                 }
+
             });
             mData = data;
             result.dispatchUpdatesTo(this);
