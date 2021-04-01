@@ -24,7 +24,7 @@ public interface ReportDao {
     @Query("SELECT * FROM ReportEntity WHERE siteReport = :siteID")
     LiveData<List<ReportEntity>> getBySite(int siteID);
 
-    @Query("SELECT * FROM ReportEntity WHERE workerName = :name")
+    @Query("SELECT * FROM ReportEntity WHERE workerName LIKE '%'||:name||'%'")
     LiveData<List<ReportEntity>> getByName(String name);
 
     @Query("SELECT * FROM ReportEntity WHERE date = :date")

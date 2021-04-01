@@ -9,6 +9,8 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageButton;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.lifecycle.ViewModelProviders;
@@ -25,7 +27,10 @@ import com.example.conrep.ui.viewmodel.report.ReportListViewModel;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Iterator;
 import java.util.List;
+import java.util.ListIterator;
 
 public class ReportList extends AppCompatActivity {
 
@@ -112,10 +117,26 @@ public class ReportList extends AppCompatActivity {
 
         @Override
         public void onClick(View v) {
-            Reports = viewModel.getReportsByName(etSiteID.getText().toString()).getValue();
-            recyclerAdapter.setData(Reports);
+
+            ReportEntity report;
+
+            List<ReportEntity> reportsTemp = new ArrayList<ReportEntity>();
+
+            if (etSiteID.getText().toString().isEmpty()) {
+                recyclerAdapter.setData(Reports);
+                recyclerAdapter.notifyDataSetChanged();
+                return;
+            }
+
+            for (int i = 0; i < Reports.size(); i++) {
+                report = Reports.get(i);
+                if (report.getWorkerName().toLowerCase().contains(etSiteID.getText().toString().toLowerCase())) {
+                    reportsTemp.add(report);
+                }
+            }
+
+            recyclerAdapter.setData(reportsTemp);
             recyclerAdapter.notifyDataSetChanged();
-            reportList.initiateView();
         }
     }
 
