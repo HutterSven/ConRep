@@ -96,9 +96,6 @@ public class EditTask extends BaseActivity {
         task.setTaskID(task.getTaskID());
         task.setSiteTask(task.getSiteTask());
 
-
-        // todo call update function for task //partially done
-
         viewModel.updateTask(task, new OnAsyncEventListener() {
             @Override
             public void onSuccess() {

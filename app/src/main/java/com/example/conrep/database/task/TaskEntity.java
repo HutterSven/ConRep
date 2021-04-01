@@ -10,7 +10,7 @@ import java.util.Date;
 @Entity(primaryKeys = {"taskID"}, foreignKeys = {@ForeignKey(entity = ConstructionSiteEntity.class,
         parentColumns = "siteID",
         childColumns = "siteTask",
-        onDelete = ForeignKey.SET_NULL)
+        onDelete = ForeignKey.CASCADE)
 })
 public class TaskEntity {
     public int getTaskID() {

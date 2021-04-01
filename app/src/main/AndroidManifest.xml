@@ -12,17 +12,19 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.ConRep">
+        <activity android:name=".ui.site.ConstructionSiteList"></activity>
+        <activity android:name=".ui.site.DeleteConstructionSite" />
         <activity android:name=".ui.BaseActivity" />
         <activity android:name=".ui.actionBar.About" />
         <activity android:name=".ui.site.EditConstructionSite" />
         <activity android:name=".ui.site.AddConstructionSite">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".ui.report.ReportList">
-        </activity>
+        <activity android:name=".ui.report.ReportList" />
         <!--
              The API key for Google Maps-based APIs is defined as a string resource.
              (See the file "res/values/google_maps_api.xml").
@@ -44,11 +46,9 @@
         <activity android:name=".ui.task.ViewTask" />
         <activity android:name=".ui.task.TaskList" />
         <activity android:name=".ui.task.AddTask" />
-        <activity android:name=".ui.report.FileReport">
-
-        </activity>
+        <activity android:name=".ui.report.FileReport" />
         <activity android:name=".ui.site.ViewConstructionSite" />
-        <activity android:name=".ui.MainActivity"/>
+        <activity android:name=".ui.MainActivity" />
     </application>
 
 </manifest>

@@ -33,13 +33,6 @@
                     android:hint="@string/construction_site"
                     android:inputType="textPersonName" />
 
-                <ImageButton
-                    android:id="@+id/btnSearchReportSite"
-                    android:layout_width="45dp"
-                    android:layout_height="match_parent"
-                    android:layout_weight="1"
-                    android:background="@color/darkblue"
-                    app:srcCompat="@android:drawable/ic_dialog_map" />
             </LinearLayout>
 
             <EditText
@@ -50,28 +43,15 @@
                 android:hint="@string/name"
                 android:inputType="textPersonName" />
 
-            <LinearLayout
+            <Button
+                android:id="@+id/btnSearchReportSite"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:orientation="horizontal">
+                android:layout_height="wrap_content"
+                android:layout_margin="5dp"
+                android:layout_weight="1"
+                android:background="@color/darkblue"
+                android:text="@string/search" />
 
-                <EditText
-                    android:id="@+id/editTextTextPersonName3"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="9"
-                    android:ems="10"
-                    android:hint="@string/date"
-                    android:inputType="textPersonName" />
-
-                <ImageButton
-                    android:id="@+id/imageButton"
-                    android:layout_width="49dp"
-                    android:layout_height="match_parent"
-                    android:layout_weight="1"
-                    android:background="@color/darkblue"
-                    app:srcCompat="@android:drawable/ic_menu_my_calendar" />
-            </LinearLayout>
         </LinearLayout>
     </ScrollView>
 

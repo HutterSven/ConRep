@@ -90,8 +90,6 @@ public class EditReport extends BaseActivity {
         report.setSiteReport(report.getSiteReport());
 
 
-        // todo call update function for construction site //partially done
-
         viewModel.updateReport(report, new OnAsyncEventListener() {
             @Override
             public void onSuccess() {

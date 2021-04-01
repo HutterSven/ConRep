@@ -1,27 +1,19 @@
 package com.example.conrep.ui.report;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
-import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 
 import com.example.conrep.R;
-import com.example.conrep.database.async.constructionSite.CreateConstructionSite;
 import com.example.conrep.database.async.report.CreateReport;
 import com.example.conrep.database.report.ReportEntity;
-import com.example.conrep.database.site.ConstructionSiteEntity;
 import com.example.conrep.ui.BaseActivity;
-import com.example.conrep.ui.site.ViewConstructionSite;
 import com.example.conrep.ui.util.OnAsyncEventListener;
-import com.example.conrep.ui.viewmodel.constructionSite.ConstructionSiteViewModel;
 import com.example.conrep.ui.viewmodel.report.ReportViewModel;
 
 import java.time.LocalDateTime;
-import java.time.format.DateTimeFormatter;
 
 public class FileReport extends BaseActivity {
 
@@ -41,8 +33,6 @@ public class FileReport extends BaseActivity {
         getLayoutInflater().inflate(R.layout.activity_file_report, frameLayout);
 
         siteID = getIntent().getIntExtra("siteID", 1);
-
-
 
         initiateView();
 
@@ -80,7 +70,7 @@ public class FileReport extends BaseActivity {
         report.setSiteReport(siteID);
 
 
-        // todo call insert function for construction site //partially done
+        // todo call insert function for construction site //probably incorrect, if possible replace with viewModel createReport call
 
 
         CreateReport cr = new CreateReport(getApplication(), new OnAsyncEventListener()

@@ -91,12 +91,9 @@ public class EditConstructionSite extends BaseActivity {
         conSite.setSiteName(etSiteName.getText().toString());
         conSite.setCity(etSiteCity.getText().toString());
         conSite.setAddress(etSiteAddress.getText().toString());
-        conSite.setOverseer(etSiteAddress.getText().toString());
+        conSite.setOverseer(etSiteOverseer.getText().toString());
         conSite.setHours(conSite.getHours());
         conSite.setSiteID(conSite.getSiteID());
-
-
-        // todo call update function for construction site //partially done
 
         viewModel.updateConstructionSite(conSite, new OnAsyncEventListener() {
             @Override

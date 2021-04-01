@@ -80,6 +80,7 @@
     <string name="delete_report_final">Report deleted</string>
     <string name="delete_site_final">Site deleted.</string>
     <string name="delete_task_final">Task deleted.</string>
+    <string name="delete_site_error">Site could not be deleted</string>
 
     <string-array name="languages_array">
         <item>English</item>

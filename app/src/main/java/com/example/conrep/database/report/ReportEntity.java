@@ -16,7 +16,7 @@ import java.util.Date;
         onDelete = ForeignKey.SET_NULL), @ForeignKey(entity = ConstructionSiteEntity.class,
         parentColumns = "siteID",
         childColumns = "siteReport",
-        onDelete = ForeignKey.SET_NULL)})
+        onDelete = ForeignKey.CASCADE)})
 @TypeConverters(DateTypeConverter.class)
 public class ReportEntity {
 

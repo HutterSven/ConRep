@@ -15,11 +15,9 @@ import androidx.appcompat.app.AlertDialog;
 import androidx.lifecycle.ViewModelProviders;
 
 import com.example.conrep.R;
-import com.example.conrep.database.async.constructionSite.DeleteConstructionSite;
 import com.example.conrep.database.site.ConstructionSiteEntity;
 import com.example.conrep.ui.BaseActivity;
 import com.example.conrep.ui.report.FileReport;
-import com.example.conrep.ui.report.ViewReport;
 import com.example.conrep.ui.task.AddTask;
 import com.example.conrep.ui.task.TaskList;
 import com.example.conrep.ui.util.OnAsyncEventListener;
@@ -117,28 +115,48 @@ public class ViewConstructionSite extends BaseActivity {
         startActivity(intent);
     }
 
+    private void openConstructionSiteList() {
+        Intent intent = new Intent(this, ConstructionSiteList.class);
+        startActivity(intent);
+    }
+
     private void generateDialog() {
         LayoutInflater inflater = LayoutInflater.from(this);
-        final View view = inflater.inflate(R.layout.activity_view_construction_site, null);
+        final View view = inflater.inflate(R.layout.activity_delete_construction_site, null);
         final AlertDialog alertDialog = new AlertDialog.Builder(this).create();
         alertDialog.setTitle("Delete Site");
         alertDialog.setCancelable(false);
 
+        TextView tvDeleteNameSite = view.findViewById(R.id.tvDeleteNameSite);
+        tvDeleteNameSite.setText(conSite.getSiteName());
+        TextView tvDeleteAddressSite = view.findViewById(R.id.tvDeleteAddressSite);
+        tvDeleteAddressSite.setText(conSite.getSiteName());
+        TextView tvDeleteCitySite = view.findViewById(R.id.tvDeleteCitySite);
+        tvDeleteCitySite.setText(conSite.getSiteName());
+        TextView tvDeleteOverseerSite = view.findViewById(R.id.tvDeleteOverseerSite);
+        tvDeleteOverseerSite.setText(conSite.getSiteName());
+        TextView tvDeleteHoursSite = view.findViewById(R.id.tvDeleteHoursSite);
+        tvDeleteHoursSite.setText(conSite.getSiteName());
+
         alertDialog.setButton(AlertDialog.BUTTON_POSITIVE, getString(R.string.confirm_delete), new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
-                Toast toast = Toast.makeText(ViewConstructionSite.this, getString(R.string.delete_site_final), Toast.LENGTH_LONG);
-
-                toast.show();
 
                 viewModel.deleteConstructionSite(conSite, new OnAsyncEventListener() {
                     @Override
                     public void onSuccess() {
+                        Toast toast = Toast.makeText(ViewConstructionSite.this, getString(R.string.delete_site_final), Toast.LENGTH_LONG);
+                        toast.show();
+
                         Log.d(TAG, "deleteSite: success");
+                        openConstructionSiteList();
                     }
 
                     @Override
                     public void onFailure(Exception e) {
+                        Toast toast = Toast.makeText(ViewConstructionSite.this, getString(R.string.delete_site_error), Toast.LENGTH_LONG);
+                        toast.show();
+
                         Log.d(TAG, "deleteSite: failure", e);
                     }
                 });
