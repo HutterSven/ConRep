@@ -41,6 +41,20 @@ public class ConstructionSiteViewModel extends AndroidViewModel {
         observableConstructionSite.addSource(constructionSite, observableConstructionSite::setValue);
     }
 
+    public ConstructionSiteViewModel(Application application, ConstructionSiteRepository constructionSiteRepository) {
+        super(application);
+
+        this.application = application;
+
+        repository = constructionSiteRepository;
+
+        observableConstructionSite = new MediatorLiveData<>();
+        // set by default null, until we get data from the database.
+        observableConstructionSite.setValue(null);
+
+        LiveData<ConstructionSiteEntity> constructionSite;
+    }
+
     /**
      * A creator is used to inject the constructionSite id into the ViewModel
      */
@@ -69,12 +83,12 @@ public class ConstructionSiteViewModel extends AndroidViewModel {
     /**
      * Expose the LiveData ConstructionSiteEntity query so the UI can observe it.
      */
-    public LiveData<ConstructionSiteEntity> getConstructionSite() {
-        return observableConstructionSite;
+    public LiveData<ConstructionSiteEntity> getConstructionSite(int siteID) {
+        return repository.getConstructionSite(siteID, getApplication());
     }
 
-    public void createConstructionSite(ConstructionSiteEntity constructionSite, OnAsyncEventListener callback) {
-        repository.insert(constructionSite, callback, application);
+    public int createConstructionSite(ConstructionSiteEntity constructionSite, OnAsyncEventListener callback) {
+        return repository.insert(constructionSite, callback, application);
     }
 
     public void updateConstructionSite(ConstructionSiteEntity constructionSite, OnAsyncEventListener callback) {

@@ -2,12 +2,14 @@ package com.example.conrep.database.site;
 
 import androidx.room.Entity;
 import androidx.room.ForeignKey;
+import androidx.room.PrimaryKey;
 
 import com.example.conrep.database.task.TaskEntity;
 
-@Entity(primaryKeys = {"siteID"})
+@Entity
 public class ConstructionSiteEntity {
 
+    @PrimaryKey(autoGenerate = true)
     private int siteID;
     private String siteName;
     private String city;

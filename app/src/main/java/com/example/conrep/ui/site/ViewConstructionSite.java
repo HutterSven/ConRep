@@ -47,7 +47,7 @@ public class ViewConstructionSite extends BaseActivity {
         ConstructionSiteViewModel.Factory factory = new ConstructionSiteViewModel.Factory(
                 getApplication(), siteID);
         viewModel = ViewModelProviders.of(this, factory).get(ConstructionSiteViewModel.class);
-        viewModel.getConstructionSite().observe(this, constructionSiteEntity -> {
+        viewModel.getConstructionSite(siteID).observe(this, constructionSiteEntity -> {
             if (constructionSiteEntity != null) {
                 conSite = constructionSiteEntity;
                 updateContent();

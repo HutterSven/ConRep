@@ -41,9 +41,11 @@ public class ConstructionSiteRepository {
         return ((BaseApp) application).getDatabase().constructionSiteDao().getAll();
     }
 
-    public void insert(final ConstructionSiteEntity constructionSite, OnAsyncEventListener callback,
+    public int insert(final ConstructionSiteEntity constructionSite, OnAsyncEventListener callback,
                        Application application) {
-        new CreateConstructionSite(application, callback).execute( constructionSite);
+        CreateConstructionSite ccs = new CreateConstructionSite(application, callback);
+        return ccs.insertSite(constructionSite);
+
     }
 
     public void update(final ConstructionSiteEntity constructionSite, OnAsyncEventListener callback,

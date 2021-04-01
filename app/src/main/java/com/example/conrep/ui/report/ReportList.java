@@ -6,6 +6,7 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
 
@@ -36,8 +37,9 @@ public class ReportList extends AppCompatActivity {
 
     private static final String TAG = "ReportList";
 
-    private ImageButton btnSearchSite;
+    private Button btnSearchSite;
     private EditText etSiteID;
+    private EditText etWorkerName;
 
     private List<ReportEntity> Reports;
     private RecyclerAdapter recyclerAdapter;
@@ -70,7 +72,7 @@ public class ReportList extends AppCompatActivity {
 
         btnSearchSite = findViewById(R.id.btnSearchReportSite);
         etSiteID = findViewById(R.id.etSearchReportBySite);
-
+        etWorkerName = findViewById(R.id.etWorkerName);
 
         Reports = new ArrayList<>();
         recyclerAdapter = new RecyclerAdapter(new RecyclerViewItemClickListener() {
@@ -122,7 +124,7 @@ public class ReportList extends AppCompatActivity {
 
             List<ReportEntity> reportsTemp = new ArrayList<ReportEntity>();
 
-            if (etSiteID.getText().toString().isEmpty()) {
+            if (etSiteID.getText().toString().isEmpty() && etSiteID.getText().toString().isEmpty()) {
                 recyclerAdapter.setData(Reports);
                 recyclerAdapter.notifyDataSetChanged();
                 return;
@@ -130,7 +132,8 @@ public class ReportList extends AppCompatActivity {
 
             for (int i = 0; i < Reports.size(); i++) {
                 report = Reports.get(i);
-                if (report.getWorkerName().toLowerCase().contains(etSiteID.getText().toString().toLowerCase())) {
+                if (report.getWorkerName().toLowerCase().contains(etWorkerName.getText().toString().toLowerCase()) &&
+                        (Integer.parseInt(etSiteID.getText().toString()) == report.getSiteReport() || etSiteID.getText().toString().isEmpty())) {
                     reportsTemp.add(report);
                 }
             }
@@ -138,20 +141,6 @@ public class ReportList extends AppCompatActivity {
             recyclerAdapter.setData(reportsTemp);
             recyclerAdapter.notifyDataSetChanged();
         }
-    }
-
-    public void initiateView() {
-
-        ReportListViewModel.Factory factory = new ReportListViewModel.Factory(getApplication(), 0);
-        viewModel = ViewModelProviders.of(this, factory).get(ReportListViewModel.class);
-        viewModel.getReportsByName(etSiteID.getText().toString()).observe(this, ReportEntities -> {
-            if (ReportEntities != null) {
-                Reports = ReportEntities;
-                System.out.println(Reports.get(0).getWorkerName());
-                recyclerAdapter.setData(Reports);
-            }
-        });
-
     }
 
     @Override

@@ -2,6 +2,7 @@ package com.example.conrep.database.report;
 
 import androidx.room.Entity;
 import androidx.room.ForeignKey;
+import androidx.room.PrimaryKey;
 import androidx.room.TypeConverters;
 
 import com.example.conrep.database.DateTypeConverter;
@@ -10,7 +11,7 @@ import com.example.conrep.database.task.TaskEntity;
 
 import java.util.Date;
 
-@Entity(primaryKeys = {"reportID"}, foreignKeys = {@ForeignKey(entity = TaskEntity.class,
+@Entity(foreignKeys = {@ForeignKey(entity = TaskEntity.class,
         parentColumns = "taskID",
         childColumns = "taskReport",
         onDelete = ForeignKey.SET_NULL), @ForeignKey(entity = ConstructionSiteEntity.class,
@@ -20,6 +21,7 @@ import java.util.Date;
 @TypeConverters(DateTypeConverter.class)
 public class ReportEntity {
 
+    @PrimaryKey(autoGenerate = true)
     private int reportID;
     private int hours;
     private String workerName;
