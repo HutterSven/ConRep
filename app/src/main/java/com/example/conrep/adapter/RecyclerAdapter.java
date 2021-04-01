@@ -89,13 +89,15 @@ public class RecyclerAdapter<T> extends RecyclerView.Adapter<RecyclerAdapter.Vie
                 @Override
                 public boolean areContentsTheSame(int oldItemPosition, int newItemPosition) {
 
+                    if (newItemPosition < mData.size() && newItemPosition < data.size()) {
                         ReportEntity newReport = (ReportEntity) data.get(newItemPosition);
                         ReportEntity oldReport = (ReportEntity) mData.get(newItemPosition);
                         return newReport.getReportID() == (oldReport.getReportID())
                                 && Objects.equals(newReport.getWorkerName(), oldReport.getWorkerName())
                                 && Objects.equals(newReport.getReportID(), oldReport.getReportID())
                                 && newReport.getSiteReport() == oldReport.getSiteReport();
-
+                    }
+                    return false;
                 }
 
             });
