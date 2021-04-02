@@ -14,19 +14,23 @@
         android:theme="@style/Theme.ConRep">
         <activity android:name=".ui.task.DeleteTask"></activity>
         <activity android:name=".ui.report.DeleteReport"></activity>
-        <activity android:name=".ui.site.ConstructionSiteList" />
-        <activity android:name=".ui.site.DeleteConstructionSite" />
-        <activity android:name=".ui.BaseActivity" />
-        <activity android:name=".ui.actionBar.About" />
-        <activity android:name=".ui.site.EditConstructionSite" />
-        <activity android:name=".ui.site.AddConstructionSite">
+        <activity android:name=".ui.site.ConstructionSiteList" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".ui.report.ReportList" />
+        <activity android:name=".ui.site.DeleteConstructionSite" />
+        <activity android:name=".ui.BaseActivity" />
+        <activity android:name=".ui.actionBar.About" />
+        <activity android:name=".ui.site.EditConstructionSite" />
+        <activity android:name=".ui.site.AddConstructionSite">
+
+        </activity>
+        <activity android:name=".ui.report.ReportList" >
+
+        </activity>
         <!--
              The API key for Google Maps-based APIs is defined as a string resource.
              (See the file "res/values/google_maps_api.xml").

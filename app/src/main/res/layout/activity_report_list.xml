@@ -19,26 +19,22 @@
             android:layout_margin="10dp"
             android:orientation="vertical">
 
-            <LinearLayout
+            <EditText
+                android:id="@+id/etSearchReportBySite"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:orientation="horizontal">
-
-                <EditText
-                    android:id="@+id/etSearchReportBySite"
-                    android:layout_width="327dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="9"
-                    android:ems="10"
-                    android:hint="@string/construction_site"
-                    android:inputType="textPersonName" />
-
-            </LinearLayout>
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:ems="10"
+                android:hint="@string/construction_site"
+                android:inputType="textPersonName" />
 
             <EditText
                 android:id="@+id/etWorkerName"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
                 android:ems="10"
                 android:hint="@string/name"
                 android:inputType="textPersonName" />
@@ -48,9 +44,9 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="5dp"
-                android:layout_weight="1"
                 android:background="@color/darkblue"
-                android:text="@string/search" />
+                android:text="@string/search"
+                android:textColor="@color/white" />
 
         </LinearLayout>
     </ScrollView>
@@ -62,7 +58,7 @@
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/reportRecyclerView"
             android:layout_width="match_parent"
-            android:layout_height="300dp"
+            android:layout_height="wrap_content"
             android:layout_marginLeft="16dp"
             android:layout_marginRight="16dp"
             android:scrollbars="vertical"

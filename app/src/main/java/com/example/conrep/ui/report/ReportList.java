@@ -19,17 +19,18 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.conrep.R;
 import com.example.conrep.adapter.ReportRecyclerAdapter;
 import com.example.conrep.database.report.ReportEntity;
+import com.example.conrep.ui.BaseActivity;
 import com.example.conrep.ui.util.RecyclerViewItemClickListener;
 import com.example.conrep.ui.viewmodel.report.ReportListViewModel;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class ReportList extends AppCompatActivity {
+public class ReportList extends BaseActivity {
 
     private static final String TAG = "ReportList";
 
-    private Button btnSearchSite;
+    private Button btnSearchReport;
     private EditText etSiteID;
     private EditText etWorkerName;
 
@@ -46,8 +47,7 @@ public class ReportList extends AppCompatActivity {
         super.onCreate(savedInstanceState);
 
         this.savedInstanceState = savedInstanceState;
-
-        setContentView(R.layout.activity_report_list);
+        getLayoutInflater().inflate(R.layout.activity_report_list, frameLayout);
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
@@ -62,7 +62,7 @@ public class ReportList extends AppCompatActivity {
                 LinearLayoutManager.VERTICAL);
         recyclerView.addItemDecoration(dividerItemDecoration);
 
-        btnSearchSite = findViewById(R.id.btnSearchReportSite);
+        btnSearchReport = findViewById(R.id.btnSearchReportSite);
         etSiteID = findViewById(R.id.etSearchReportBySite);
         etWorkerName = findViewById(R.id.etWorkerName);
 
@@ -95,7 +95,7 @@ public class ReportList extends AppCompatActivity {
         });
 
 
-        btnSearchSite.setOnClickListener(new searchSite(this));
+        btnSearchReport.setOnClickListener(new searchSite(this));
 
 
         recyclerView.setAdapter(reportRecyclerAdapter);
