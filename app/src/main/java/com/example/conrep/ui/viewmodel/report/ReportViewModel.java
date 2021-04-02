@@ -12,6 +12,7 @@ import androidx.lifecycle.ViewModelProvider;
 import com.example.conrep.database.report.ReportEntity;
 import com.example.conrep.database.repository.ReportRepository;
 import com.example.conrep.BaseApp;
+import com.example.conrep.database.site.ConstructionSiteEntity;
 import com.example.conrep.ui.util.OnAsyncEventListener;
 
 public class ReportViewModel extends AndroidViewModel {
@@ -69,8 +70,8 @@ public class ReportViewModel extends AndroidViewModel {
     /**
      * Expose the LiveData ReportEntity query so the UI can observe it.
      */
-    public LiveData<ReportEntity> getReport() {
-        return observableReport;
+    public LiveData<ReportEntity> getReport(int reportID) {
+        return repository.getReport(reportID, application);
     }
 
     public void createReport(ReportEntity report, OnAsyncEventListener callback) {

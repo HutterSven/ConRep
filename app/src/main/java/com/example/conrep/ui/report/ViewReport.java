@@ -19,6 +19,8 @@ import com.example.conrep.R;
 import com.example.conrep.database.async.report.DeleteReport;
 import com.example.conrep.database.report.ReportEntity;
 import com.example.conrep.ui.BaseActivity;
+import com.example.conrep.ui.site.ConstructionSiteList;
+import com.example.conrep.ui.site.ViewConstructionSite;
 import com.example.conrep.ui.util.OnAsyncEventListener;
 import com.example.conrep.ui.viewmodel.report.ReportViewModel;
 
@@ -47,7 +49,7 @@ public class ViewReport extends BaseActivity {
         ReportViewModel.Factory factory = new ReportViewModel.Factory(
                 getApplication(), reportID);
         viewModel = ViewModelProviders.of(this, factory).get(ReportViewModel.class);
-        viewModel.getReport().observe(this, reportEntity -> {
+        viewModel.getReport(reportID).observe(this, reportEntity -> {
             if (reportEntity != null) {
                 report = reportEntity;
                 updateContent();
@@ -68,11 +70,11 @@ public class ViewReport extends BaseActivity {
     }
 
     private void initiateView() {
-        tvName = findViewById(R.id.textView23);
-        tvHours = findViewById(R.id.textView25);
-        tvDate = findViewById(R.id.textView27);
-        tvSite = findViewById(R.id.textView29);
-        tvTasks = findViewById(R.id.textView31);
+        tvName = findViewById(R.id.tvReportName);
+        tvHours = findViewById(R.id.tvReportHours);
+        tvDate = findViewById(R.id.tvReportDate);
+        tvSite = findViewById(R.id.tvReportSite);
+        tvTasks = findViewById(R.id.tvReportTasks);
 
 
         Button EditBtn = findViewById(R.id.btnEditReport);
@@ -87,7 +89,7 @@ public class ViewReport extends BaseActivity {
 
     private void openEditReport() {
         Intent intent = new Intent(this, EditReport.class);
-        intent.putExtra("reportID", 1);
+        intent.putExtra("reportID", report.getReportID()); // todo does not work
         startActivity(intent);
     }
 
@@ -102,26 +104,41 @@ public class ViewReport extends BaseActivity {
 
     private void generateDialog() {
         LayoutInflater inflater = LayoutInflater.from(this);
-        final View view = inflater.inflate(R.layout.activity_view_report, null);
+        final View view = inflater.inflate(R.layout.activity_delete_report, null);
         final AlertDialog alertDialog = new AlertDialog.Builder(this).create();
         alertDialog.setTitle("Delete Report");
         alertDialog.setCancelable(false);
 
+        TextView tvDeleteNameSite = view.findViewById(R.id.tvDeleteNameReport);
+        tvDeleteNameSite.setText(report.getWorkerName());
+        TextView tvDeleteAddressSite = view.findViewById(R.id.tvDeleteHoursReport);
+        tvDeleteAddressSite.setText(String.valueOf(report.getHours()));
+        TextView tvDeleteCitySite = view.findViewById(R.id.tvDeleteDateReport);
+        tvDeleteCitySite.setText(report.getDate());
+        TextView tvDeleteOverseerSite = view.findViewById(R.id.tvDeleteSiteReport);
+        tvDeleteOverseerSite.setText(String.valueOf(report.getSiteReport()));
+        TextView tvDeleteHoursSite = view.findViewById(R.id.tvDeleteTasksReport);
+        tvDeleteHoursSite.setText(String.valueOf(report.getTaskReport()));
+
         alertDialog.setButton(AlertDialog.BUTTON_POSITIVE, getString(R.string.confirm_delete), new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
-                Toast toast = Toast.makeText(ViewReport.this, getString(R.string.delete_report_final), Toast.LENGTH_LONG);
-
-                toast.show();
 
                 viewModel.deleteReport(report, new OnAsyncEventListener() {
                     @Override
                     public void onSuccess() {
+                        Toast toast = Toast.makeText(ViewReport.this, getString(R.string.delete_report_final), Toast.LENGTH_LONG);
+                        toast.show();
+
                         Log.d(TAG, "deleteReport: success");
+                        openBackToReportList();
                     }
 
                     @Override
                     public void onFailure(Exception e) {
+                        Toast toast = Toast.makeText(ViewReport.this, getString(R.string.delete_report_error), Toast.LENGTH_LONG);
+                        toast.show();
+
                         Log.d(TAG, "deleteReport: failure", e);
                     }
                 });

@@ -41,9 +41,9 @@ public class EditReport extends BaseActivity {
         ReportViewModel.Factory factory = new ReportViewModel.Factory(
                 getApplication(), reportID);
         viewModel = ViewModelProviders.of(this, factory).get(ReportViewModel.class);
-        viewModel.getReport().observe(this, reportEntity -> {
+        viewModel.getReport(reportID).observe(this, reportEntity -> {
             if (reportEntity != null) {
-                report = reportEntity;
+                report = reportEntity; // todo is somehow 0
             }
         });
 

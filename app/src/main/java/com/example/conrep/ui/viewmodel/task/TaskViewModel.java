@@ -69,8 +69,8 @@ public class TaskViewModel extends AndroidViewModel {
     /**
      * Expose the LiveData TaskEntity query so the UI can observe it.
      */
-    public LiveData<TaskEntity> getTask() {
-        return observableTask;
+    public LiveData<TaskEntity> getTask(int taskID) {
+        return repository.getTask(taskID, application);
     }
 
     public void createTask(TaskEntity task, OnAsyncEventListener callback) {

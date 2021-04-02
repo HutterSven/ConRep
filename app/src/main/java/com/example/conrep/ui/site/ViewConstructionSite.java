@@ -130,13 +130,13 @@ public class ViewConstructionSite extends BaseActivity {
         TextView tvDeleteNameSite = view.findViewById(R.id.tvDeleteNameSite);
         tvDeleteNameSite.setText(conSite.getSiteName());
         TextView tvDeleteAddressSite = view.findViewById(R.id.tvDeleteAddressSite);
-        tvDeleteAddressSite.setText(conSite.getSiteName());
+        tvDeleteAddressSite.setText(conSite.getAddress());
         TextView tvDeleteCitySite = view.findViewById(R.id.tvDeleteCitySite);
-        tvDeleteCitySite.setText(conSite.getSiteName());
+        tvDeleteCitySite.setText(conSite.getCity());
         TextView tvDeleteOverseerSite = view.findViewById(R.id.tvDeleteOverseerSite);
-        tvDeleteOverseerSite.setText(conSite.getSiteName());
+        tvDeleteOverseerSite.setText(conSite.getOverseer());
         TextView tvDeleteHoursSite = view.findViewById(R.id.tvDeleteHoursSite);
-        tvDeleteHoursSite.setText(conSite.getSiteName());
+        tvDeleteHoursSite.setText(conSite.getHours());
 
         alertDialog.setButton(AlertDialog.BUTTON_POSITIVE, getString(R.string.confirm_delete), new DialogInterface.OnClickListener() {
             @Override

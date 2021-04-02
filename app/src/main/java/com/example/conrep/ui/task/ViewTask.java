@@ -17,6 +17,7 @@ import androidx.lifecycle.ViewModelProviders;
 import com.example.conrep.R;
 import com.example.conrep.database.task.TaskEntity;
 import com.example.conrep.ui.BaseActivity;
+import com.example.conrep.ui.site.ConstructionSiteList;
 import com.example.conrep.ui.site.ViewConstructionSite;
 import com.example.conrep.ui.util.OnAsyncEventListener;
 import com.example.conrep.ui.viewmodel.task.TaskViewModel;
@@ -45,7 +46,7 @@ public class ViewTask extends BaseActivity {
         TaskViewModel.Factory factory = new TaskViewModel.Factory(
                 getApplication(), taskID);
         viewModel = ViewModelProviders.of(this, factory).get(TaskViewModel.class);
-        viewModel.getTask().observe(this, taskEntity -> {
+        viewModel.getTask(taskID).observe(this, taskEntity -> {
             if (taskEntity != null) {
                 task = taskEntity;
                 updateContent();
@@ -93,34 +94,53 @@ public class ViewTask extends BaseActivity {
     private void openDeleteTask() {
         generateDialog();
     }
+
     private void openBackToTaskList() {
         Intent intent = new Intent(this, TaskList.class);
         startActivity(intent);
     }
 
-
     private void generateDialog() {
         LayoutInflater inflater = LayoutInflater.from(this);
-        final View view = inflater.inflate(R.layout.activity_view_task, null);
+        final View view = inflater.inflate(R.layout.activity_delete_construction_site, null);
         final AlertDialog alertDialog = new AlertDialog.Builder(this).create();
-        alertDialog.setTitle("Delete Task");
+        alertDialog.setTitle("Delete Site");
         alertDialog.setCancelable(false);
+
+        TextView tvDeleteNameTask = view.findViewById(R.id.tvDeleteNameTask);
+        tvDeleteNameTask.setText(task.getName());
+        TextView tvDeleteDescriptionTask = view.findViewById(R.id.tvDeleteDescriptionTask);
+        tvDeleteDescriptionTask.setText(task.getDescription());
+        TextView tvDeleteStatusTask = view.findViewById(R.id.tvDeleteStatusTask);
+        if (task.isStatus()){
+            tvDeleteStatusTask.setText("open");
+        }else{
+            tvDeleteStatusTask.setText("closed");
+        }
+        TextView tvDeleteDeadlineTask = view.findViewById(R.id.tvDeleteDeadlineTask);
+        tvDeleteDeadlineTask.setText(task.getDeadline());
+        TextView tvDeleteSiteTask = view.findViewById(R.id.tvDeleteSiteTask);
+        tvDeleteSiteTask.setText(String.valueOf(task.getSiteTask()));
 
         alertDialog.setButton(AlertDialog.BUTTON_POSITIVE, getString(R.string.confirm_delete), new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
-                Toast toast = Toast.makeText(ViewTask.this, getString(R.string.delete_task_final), Toast.LENGTH_LONG);
-
-                toast.show();
 
                 viewModel.deleteTask(task, new OnAsyncEventListener() {
                     @Override
                     public void onSuccess() {
+                        Toast toast = Toast.makeText(ViewTask.this, getString(R.string.delete_task_final), Toast.LENGTH_LONG);
+                        toast.show();
+
                         Log.d(TAG, "deleteTask: success");
+                        openBackToTaskList();
                     }
 
                     @Override
                     public void onFailure(Exception e) {
+                        Toast toast = Toast.makeText(ViewTask.this, getString(R.string.delete_task_error), Toast.LENGTH_LONG);
+                        toast.show();
+
                         Log.d(TAG, "deleteTask: failure", e);
                     }
                 });

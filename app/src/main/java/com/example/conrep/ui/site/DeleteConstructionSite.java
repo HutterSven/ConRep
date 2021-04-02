@@ -1,12 +1,10 @@
 package com.example.conrep.ui.site;
 
 import androidx.annotation.Nullable;
-import androidx.appcompat.app.AppCompatActivity;
 import androidx.lifecycle.ViewModelProviders;
 
 import android.os.Bundle;
 import android.util.Log;
-import android.widget.Button;
 import android.widget.TextView;
 
 import com.example.conrep.R;
@@ -57,10 +55,10 @@ public class DeleteConstructionSite extends BaseActivity {
     }
 
     private void initiateView() {
-        tvName = findViewById(R.id.textView17);
-        tvAddress = findViewById(R.id.textView18);
-        tvCity = findViewById(R.id.textView19);
-        tvOverseer = findViewById(R.id.textView15);
-        tvHours = findViewById(R.id.textView16);
+        tvName = findViewById(R.id.tvDeleteNameSite);
+        tvAddress = findViewById(R.id.tvDeleteAddressSite);
+        tvCity = findViewById(R.id.tvDeleteCitySite);
+        tvOverseer = findViewById(R.id.tvDeleteOverseerSite);
+        tvHours = findViewById(R.id.tvDeleteHoursSite);
     }
 }

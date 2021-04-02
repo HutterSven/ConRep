@@ -37,7 +37,7 @@
                     android:textSize="18sp" />
 
                 <TextView
-                    android:id="@+id/textView23"
+                    android:id="@+id/tvReportName"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_gravity="right"
@@ -66,7 +66,7 @@
                     android:textSize="18sp" />
 
                 <TextView
-                    android:id="@+id/textView25"
+                    android:id="@+id/tvReportHours"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_gravity="right"
@@ -95,7 +95,7 @@
                     android:textSize="18sp" />
 
                 <TextView
-                    android:id="@+id/textView27"
+                    android:id="@+id/tvReportDate"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_gravity="right"
@@ -124,7 +124,7 @@
                     android:textSize="18sp" />
 
                 <TextView
-                    android:id="@+id/textView29"
+                    android:id="@+id/tvReportSite"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_gravity="right"
@@ -154,7 +154,7 @@
                     android:textSize="18sp" />
 
                 <TextView
-                    android:id="@+id/textView31"
+                    android:id="@+id/tvReportTasks"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_gravity="right"
