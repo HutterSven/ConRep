@@ -52,8 +52,12 @@ public class TaskRecyclerAdapter<T> extends RecyclerView.Adapter<TaskRecyclerAda
     @Override
     public void onBindViewHolder(TaskRecyclerAdapter.ViewHolder holder, int position) {
         TaskEntity item = mData.get(position);
-        holder.mTextView.setText(((TaskEntity) item).getTaskID() + "\t" + ((TaskEntity) item).getSiteTask() + "\t" + ((TaskEntity) item).getName());
-
+        String open;
+        if (item.isStatus()) {
+            open = "closed";
+        }
+        else open = "open";
+        holder.mTextView.setText(((TaskEntity) item).getTaskID() + "        " + ((TaskEntity) item).getSiteTask() + "        " + ((TaskEntity) item).getName()+ "        " + open);
     }
 
     @Override
