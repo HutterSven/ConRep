@@ -24,6 +24,12 @@ public interface ConstructionSiteDao {
     @Query("SELECT * FROM ConstructionSiteEntity WHERE siteID = :siteID")
     LiveData<ConstructionSiteEntity> getById(int siteID);
 
+    @Query("SELECT * FROM ConstructionSiteEntity WHERE siteName = :name")
+    ConstructionSiteEntity getByIdNonLive(String name);
+
+    @Query("SELECT * FROM ConstructionSiteEntity WHERE siteName = :name")
+    LiveData<ConstructionSiteEntity> getByName(String name);
+
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     long insertConstruction(ConstructionSiteEntity constructionSiteEntity) throws SQLiteConstraintException;
 
@@ -35,4 +41,6 @@ public interface ConstructionSiteDao {
 
     @Query("DELETE FROM ConstructionSiteEntity")
     void deleteAll();
+
+
 }

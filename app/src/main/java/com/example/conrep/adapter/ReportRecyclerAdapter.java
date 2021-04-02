@@ -14,7 +14,7 @@ import com.example.conrep.ui.util.RecyclerViewItemClickListener;
 import java.util.List;
 import java.util.Objects;
 
-public class RecyclerAdapter<T> extends RecyclerView.Adapter<RecyclerAdapter.ViewHolder> {
+public class ReportRecyclerAdapter<T> extends RecyclerView.Adapter<ReportRecyclerAdapter.ViewHolder> {
 
     private List<ReportEntity> mData;
     private RecyclerViewItemClickListener mListener;
@@ -31,12 +31,12 @@ public class RecyclerAdapter<T> extends RecyclerView.Adapter<RecyclerAdapter.Vie
         }
     }
 
-    public RecyclerAdapter(RecyclerViewItemClickListener listener) {
+    public ReportRecyclerAdapter(RecyclerViewItemClickListener listener) {
         mListener = listener;
     }
 
     @Override
-    public RecyclerAdapter.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+    public ReportRecyclerAdapter.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         // create a new view
         TextView v = (TextView) LayoutInflater.from(parent.getContext())
                 .inflate(R.layout.recycler_view, parent, false);
@@ -50,7 +50,7 @@ public class RecyclerAdapter<T> extends RecyclerView.Adapter<RecyclerAdapter.Vie
     }
 
     @Override
-    public void onBindViewHolder(RecyclerAdapter.ViewHolder holder, int position) {
+    public void onBindViewHolder(ReportRecyclerAdapter.ViewHolder holder, int position) {
         ReportEntity item = mData.get(position);
         holder.mTextView.setText(((ReportEntity) item).getReportID() + "\t" + ((ReportEntity) item).getSiteReport() + "\t" + ((ReportEntity) item).getWorkerName());
 

@@ -33,15 +33,6 @@ public class CreateConstructionSite extends AsyncTask<ConstructionSiteEntity, Vo
         return null;
     }
 
-    public int insertSite(ConstructionSiteEntity site) {
-        try {
-            return (int)((BaseApp) application).getDatabase().constructionSiteDao().insertConstruction(site);
-        } catch (Exception e) {
-            exception = e;
-        }
-        return 0;
-    }
-
     @Override
     protected void onPostExecute(Void aVoid) {
         if (callback != null) {

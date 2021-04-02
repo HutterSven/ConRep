@@ -8,10 +8,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.ImageButton;
 
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.lifecycle.ViewModelProviders;
@@ -19,19 +16,14 @@ import androidx.recyclerview.widget.DividerItemDecoration;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.conrep.BaseApp;
 import com.example.conrep.R;
-import com.example.conrep.adapter.RecyclerAdapter;
+import com.example.conrep.adapter.ReportRecyclerAdapter;
 import com.example.conrep.database.report.ReportEntity;
 import com.example.conrep.ui.util.RecyclerViewItemClickListener;
 import com.example.conrep.ui.viewmodel.report.ReportListViewModel;
-import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import java.util.ArrayList;
-import java.util.Collection;
-import java.util.Iterator;
 import java.util.List;
-import java.util.ListIterator;
 
 public class ReportList extends AppCompatActivity {
 
@@ -42,7 +34,7 @@ public class ReportList extends AppCompatActivity {
     private EditText etWorkerName;
 
     private List<ReportEntity> Reports;
-    private RecyclerAdapter recyclerAdapter;
+    private ReportRecyclerAdapter reportRecyclerAdapter;
     private ReportListViewModel viewModel;
 
     private int siteID;
@@ -75,7 +67,7 @@ public class ReportList extends AppCompatActivity {
         etWorkerName = findViewById(R.id.etWorkerName);
 
         Reports = new ArrayList<>();
-        recyclerAdapter = new RecyclerAdapter(new RecyclerViewItemClickListener() {
+        reportRecyclerAdapter = new ReportRecyclerAdapter(new RecyclerViewItemClickListener() {
             @Override
             public void onItemClick(View v, int position) {
                 Log.d(TAG, "clicked position:" + position);
@@ -98,7 +90,7 @@ public class ReportList extends AppCompatActivity {
             if (ReportEntities != null) {
                 Reports = ReportEntities;
                 System.out.println(Reports.get(0).getWorkerName());
-                recyclerAdapter.setData(Reports);
+                reportRecyclerAdapter.setData(Reports);
             }
         });
 
@@ -106,7 +98,7 @@ public class ReportList extends AppCompatActivity {
         btnSearchSite.setOnClickListener(new searchSite(this));
 
 
-        recyclerView.setAdapter(recyclerAdapter);
+        recyclerView.setAdapter(reportRecyclerAdapter);
     }
 
     public class searchSite implements View.OnClickListener {
@@ -125,8 +117,8 @@ public class ReportList extends AppCompatActivity {
             List<ReportEntity> reportsTemp = new ArrayList<ReportEntity>();
 
             if (etSiteID.getText().toString().isEmpty() && etSiteID.getText().toString().isEmpty()) {
-                recyclerAdapter.setData(Reports);
-                recyclerAdapter.notifyDataSetChanged();
+                reportRecyclerAdapter.setData(Reports);
+                reportRecyclerAdapter.notifyDataSetChanged();
                 return;
             }
 
@@ -138,8 +130,8 @@ public class ReportList extends AppCompatActivity {
                 }
             }
 
-            recyclerAdapter.setData(reportsTemp);
-            recyclerAdapter.notifyDataSetChanged();
+            reportRecyclerAdapter.setData(reportsTemp);
+            reportRecyclerAdapter.notifyDataSetChanged();
         }
     }
 

@@ -14,11 +14,13 @@ import com.example.conrep.database.site.ConstructionSiteEntity;
 import com.example.conrep.BaseApp;
 import com.example.conrep.ui.util.OnAsyncEventListener;
 
+import java.util.List;
+
 public class ConstructionSiteViewModel extends AndroidViewModel {
 
     private Application application;
 
-    private ConstructionSiteRepository repository;
+    public ConstructionSiteRepository repository;
 
     // MediatorLiveData can observe other LiveData objects and react on their emissions.
     private final MediatorLiveData<ConstructionSiteEntity> observableConstructionSite;
@@ -63,6 +65,7 @@ public class ConstructionSiteViewModel extends AndroidViewModel {
         @NonNull
         private final Application application;
 
+        private String constructionSiteName;
         private final int constructionSiteId;
 
         private final ConstructionSiteRepository repository;
@@ -72,6 +75,15 @@ public class ConstructionSiteViewModel extends AndroidViewModel {
             this.constructionSiteId = constructionSiteId;
             repository = ((BaseApp) application).getConstructionSiteRepository();
         }
+
+        public Factory(@NonNull Application application, String name) {
+            this.application = application;
+            this.constructionSiteName = name;
+            repository = ((BaseApp) application).getConstructionSiteRepository();
+            constructionSiteId = repository.getConstructionSiteNameNonLive(name, application).getSiteID();
+        }
+
+
 
         @Override
         public <T extends ViewModel> T create(Class<T> modelClass) {
@@ -83,12 +95,24 @@ public class ConstructionSiteViewModel extends AndroidViewModel {
     /**
      * Expose the LiveData ConstructionSiteEntity query so the UI can observe it.
      */
-    public LiveData<ConstructionSiteEntity> getConstructionSite(int siteID) {
-        return repository.getConstructionSite(siteID, getApplication());
+    public LiveData<ConstructionSiteEntity> getConstructionSite(String name) {
+        return repository.getConstructionSiteByName(name, getApplication());
     }
 
-    public int createConstructionSite(ConstructionSiteEntity constructionSite, OnAsyncEventListener callback) {
-        return repository.insert(constructionSite, callback, application);
+    public LiveData<ConstructionSiteEntity> getConstructionSite(int id) {
+        return repository.getConstructionSite(id, getApplication());
+    }
+
+    public LiveData<List<ConstructionSiteEntity>> getConstructionSites() {
+        return repository.getConstructionSites(getApplication());
+    }
+
+    public int getID() {
+        return repository.ccs.siteID;
+    }
+
+    public void createConstructionSite(ConstructionSiteEntity constructionSite, OnAsyncEventListener callback) {
+        repository.insert(constructionSite, callback, application);
     }
 
     public void updateConstructionSite(ConstructionSiteEntity constructionSite, OnAsyncEventListener callback) {

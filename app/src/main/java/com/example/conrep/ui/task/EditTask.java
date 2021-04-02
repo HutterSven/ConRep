@@ -38,7 +38,7 @@ public class EditTask extends BaseActivity {
         TaskViewModel.Factory factory = new TaskViewModel.Factory(
                 getApplication(), taskID);
         viewModel = ViewModelProviders.of(this, factory).get(TaskViewModel.class);
-        viewModel.getTask().observe(this, taskEntity -> {
+        viewModel.getTask(taskID).observe(this, taskEntity -> {
             if (taskEntity != null) {
                 task = taskEntity;
                 updateContent();

@@ -17,8 +17,9 @@ import java.util.List;
 public class ConstructionSiteRepository {
 
     private static ConstructionSiteRepository instance;
+    public CreateConstructionSite ccs;
 
-    private ConstructionSiteRepository() {
+    public ConstructionSiteRepository() {
 
     }
 
@@ -37,24 +38,32 @@ public class ConstructionSiteRepository {
         return ((BaseApp) application).getDatabase().constructionSiteDao().getById(constructionSiteId);
     }
 
-    public LiveData<List<ConstructionSiteEntity>> getConstructionSites(Application application) {
+    public ConstructionSiteEntity getConstructionSiteNameNonLive(final String name, Application application) {
+        return ((BaseApp) application).getDatabase().constructionSiteDao().getByIdNonLive(name);
+    }
+
+
+    public static LiveData<List<ConstructionSiteEntity>> getConstructionSites(Application application) {
         return ((BaseApp) application).getDatabase().constructionSiteDao().getAll();
     }
 
-    public int insert(final ConstructionSiteEntity constructionSite, OnAsyncEventListener callback,
+    public void insert(final ConstructionSiteEntity constructionSite, OnAsyncEventListener callback,
                        Application application) {
-        CreateConstructionSite ccs = new CreateConstructionSite(application, callback);
-        return ccs.insertSite(constructionSite);
-
+        ccs = new CreateConstructionSite(application, callback);
+        ccs.execute(constructionSite);
     }
 
     public void update(final ConstructionSiteEntity constructionSite, OnAsyncEventListener callback,
                        Application application) {
-        new UpdateConstructionSite(application, callback).execute( constructionSite);
+        new UpdateConstructionSite(application, callback).execute(constructionSite);
     }
 
     public void delete(final ConstructionSiteEntity constructionSite, OnAsyncEventListener callback,
                        Application application) {
-        new DeleteConstructionSite(application, callback).execute( constructionSite);
+        new DeleteConstructionSite(application, callback).execute(constructionSite);
+    }
+
+    public LiveData<ConstructionSiteEntity> getConstructionSiteByName(String name, Application application) {
+        return ((BaseApp) application).getDatabase().constructionSiteDao().getByName(name);
     }
 }
