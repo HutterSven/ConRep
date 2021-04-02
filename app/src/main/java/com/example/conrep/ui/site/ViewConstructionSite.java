@@ -53,7 +53,6 @@ public class ViewConstructionSite extends BaseActivity {
 
         int siteID = getIntent().getIntExtra("siteID", 1);
 
-        siteID = 2;
 
         initiateView();
 

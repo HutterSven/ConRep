@@ -26,12 +26,14 @@ public class EditConstructionSite extends BaseActivity {
     private EditText etSiteAddress;
     private EditText etSiteOverseer;
 
+    int siteID;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         getLayoutInflater().inflate(R.layout.activity_edit_construction_site, frameLayout);
 
-        int siteID = getIntent().getIntExtra("siteID", 1);
+        siteID = getIntent().getIntExtra("siteID", 1);
 
         initiateView();
 
@@ -93,7 +95,7 @@ public class EditConstructionSite extends BaseActivity {
         conSite.setAddress(etSiteAddress.getText().toString());
         conSite.setOverseer(etSiteOverseer.getText().toString());
         conSite.setHours(conSite.getHours());
-        conSite.setSiteID(conSite.getSiteID());
+        conSite.setSiteID(siteID);
 
         viewModel.updateConstructionSite(conSite, new OnAsyncEventListener() {
             @Override

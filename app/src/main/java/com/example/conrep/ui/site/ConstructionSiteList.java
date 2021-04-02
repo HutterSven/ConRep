@@ -30,9 +30,8 @@ public class ConstructionSiteList extends BaseActivity {
     private static final String TAG = "SiteList";
 
     private Button btnSearchSite;
-    private EditText etSiteID;
-    private EditText etName;
-    private EditText etAddress;
+    private EditText etSiteName;
+    private EditText etSiteAddress;
 
     private List<ConstructionSiteEntity> ConstructionSites;
     private ConstructionSiteRecyclerAdapter constructionSiteRecyclerAdapter;
@@ -63,8 +62,8 @@ public class ConstructionSiteList extends BaseActivity {
         recyclerView.addItemDecoration(dividerItemDecoration);
 
         btnSearchSite = findViewById(R.id.btnSearchSite);
-        etName = findViewById(R.id.etSearchSiteName);
-        etAddress = findViewById(R.id.etSearchSiteName);
+        etSiteName = findViewById(R.id.etSearchSiteName);
+        etSiteAddress = findViewById(R.id.etSearchSiteAddress);
 
         ConstructionSites = new ArrayList<>();
         constructionSiteRecyclerAdapter = new ConstructionSiteRecyclerAdapter(new RecyclerViewItemClickListener() {
@@ -114,9 +113,9 @@ public class ConstructionSiteList extends BaseActivity {
 
             ConstructionSiteEntity conSite;
 
-            List<ConstructionSiteEntity> constructionSitesTemp = new ArrayList<ConstructionSiteEntity>();
+            List<ConstructionSiteEntity> constructionSitesTemp = new ArrayList<>();
 
-            if (etSiteID.getText().toString().isEmpty() && etSiteID.getText().toString().isEmpty()) {
+            if (etSiteName.getText().toString().isEmpty() && etSiteAddress.getText().toString().isEmpty()) {
                 constructionSiteRecyclerAdapter.setData(ConstructionSites);
                 constructionSiteRecyclerAdapter.notifyDataSetChanged();
                 return;
@@ -124,8 +123,8 @@ public class ConstructionSiteList extends BaseActivity {
 
             for (int i = 0; i < ConstructionSites.size(); i++) {
                 conSite = ConstructionSites.get(i);
-                if (conSite.getSiteName().toLowerCase().contains(etName.getText().toString().toLowerCase()) &&
-                        (Integer.parseInt(etSiteID.getText().toString()) == conSite.getSiteID() || etSiteID.getText().toString().isEmpty())) {
+                if ((conSite.getSiteName().toLowerCase().contains(etSiteName.getText().toString().toLowerCase()) || etSiteName.getText().toString().isEmpty()) &&
+                        (etSiteAddress.getText().toString().toLowerCase().contains(conSite.getAddress().toLowerCase()) || etSiteAddress.getText().toString().isEmpty())) {
                     constructionSitesTemp.add(conSite);
                 }
             }
