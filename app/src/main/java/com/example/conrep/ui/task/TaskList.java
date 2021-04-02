@@ -80,7 +80,6 @@ public class TaskList extends BaseActivity {
         viewModel.getTasksBySite(siteID).observe(this, TaskEntities -> {
             if (TaskEntities != null) {
                 Tasks = TaskEntities;
-                System.out.println(Tasks.get(0).getName());
                 taskRecyclerAdapter.setData(Tasks);
             }
         });

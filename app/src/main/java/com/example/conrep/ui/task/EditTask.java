@@ -25,13 +25,14 @@ public class EditTask extends BaseActivity {
     private EditText etTaskName;
     private EditText etTaskDesc;
     private EditText etTaskStat;
+    private int taskID;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         getLayoutInflater().inflate(R.layout.activity_edit_task, frameLayout);
 
-        int taskID = getIntent().getIntExtra("taskID", 1);
+        taskID = getIntent().getIntExtra("taskID", 1);
 
         initiateView();
 
@@ -63,12 +64,12 @@ public class EditTask extends BaseActivity {
         etTaskDesc = findViewById(R.id.etTaskDescE);
         etTaskStat = findViewById(R.id.etTaskStatE);
 
-        Button fileReportBtn = findViewById(R.id.btnSaveEditSite);
+        Button fileReportBtn = findViewById(R.id.SaveEditTask);
 
-        fileReportBtn.setOnClickListener(view -> addReport());
+        fileReportBtn.setOnClickListener(view -> editTask());
     }
 
-    private void addReport() {
+    private void editTask() {
         boolean testBool = false;
         if(etTaskName.getText().toString() == null){
             etTaskName.setError(getString(R.string.error_empty_field));
@@ -93,8 +94,8 @@ public class EditTask extends BaseActivity {
         }else{
             task.setStatus(false);
         }
-        task.setTaskID(task.getTaskID());
         task.setSiteTask(task.getSiteTask());
+        task.setTaskID(task.getTaskID());
 
         viewModel.updateTask(task, new OnAsyncEventListener() {
             @Override
@@ -108,7 +109,7 @@ public class EditTask extends BaseActivity {
         });
 
         Intent intent = new Intent(this, ViewTask.class);
-        intent.putExtra("taskID", task.getTaskID());
+        intent.putExtra("taskID", taskID);
         startActivity(intent);
     }
 

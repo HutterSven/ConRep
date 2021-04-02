@@ -32,6 +32,7 @@ public class ViewTask extends BaseActivity {
     private TextView tvDescription;
     private TextView tvStatus;
     private TextView tvDeadline;
+    private int taskID;
 
 
     @Override
@@ -39,7 +40,7 @@ public class ViewTask extends BaseActivity {
         super.onCreate(savedInstanceState);
         getLayoutInflater().inflate(R.layout.activity_view_task, frameLayout);
 
-        int taskID = getIntent().getIntExtra("taskID", 1);
+        taskID = getIntent().getIntExtra("taskID", 1);
 
         initiateView();
 
@@ -88,7 +89,7 @@ public class ViewTask extends BaseActivity {
 
     private void openEditTask() {
         Intent intent = new Intent(this, EditTask.class);
-        intent.putExtra("taskID", 1);
+        intent.putExtra("taskID", taskID);
         startActivity(intent);
     }
     private void openDeleteTask() {
