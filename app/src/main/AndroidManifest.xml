@@ -18,6 +18,7 @@
         <activity android:name=".ui.site.DeleteConstructionSite" />
         <activity android:name=".ui.BaseActivity" />
         <activity android:name=".ui.actionBar.About" />
+        <activity android:name=".ui.actionBar.Settings" />
         <activity android:name=".ui.site.EditConstructionSite" />
         <activity android:name=".ui.site.AddConstructionSite">
         <intent-filter>

@@ -83,6 +83,12 @@
     <string name="delete_site_error">Site could not be deleted</string>
     <string name="delete_report_error">Report could not be deleted</string>
     <string name="delete_task_error">Task could not be deleted</string>
+    <string name="language">Language</string>
+    <string name="conrep">ConRep</string>
+    <string name="back_to_home">Back to Home</string>
+    <string name="about_text">An App which can be used to file reports on construction Sites. \n\nThis App was made by two Students of Business Information technology in the 4th Semester.</string>
+    <string name="pref_header_about">About</string>
+    <string name="pref_header_lang">Languages</string>
 
     <string-array name="languages_array">
         <item>English</item>
