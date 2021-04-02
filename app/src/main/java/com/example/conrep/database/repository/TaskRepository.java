@@ -39,6 +39,11 @@ public class TaskRepository {
         return ((BaseApp) application).getDatabase().taskDao().getAll();
     }
 
+    public LiveData<List<TaskEntity>> getTasksBySite(Application application, int siteID) {
+        return ((BaseApp) application).getDatabase().taskDao().getBySite(siteID);
+    }
+
+
     public void insert(final TaskEntity task, OnAsyncEventListener callback,
                        Application application) {
         new CreateTask(application, callback).execute(task);
@@ -53,6 +58,4 @@ public class TaskRepository {
                        Application application) {
         new DeleteTask(application, callback).execute(task);
     }
-
-
 }

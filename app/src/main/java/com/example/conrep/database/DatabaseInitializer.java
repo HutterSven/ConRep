@@ -57,6 +57,7 @@ public class DatabaseInitializer {
             e.printStackTrace();
         }
 
+
         //resetten
         db.taskDao().deleteAll();
 

@@ -11,12 +11,12 @@ import com.example.conrep.database.task.TaskEntity;
 
 import java.util.Date;
 
-@Entity(foreignKeys = {@ForeignKey(entity = TaskEntity.class,
-        parentColumns = "taskID",
-        childColumns = "taskReport",
-        onDelete = ForeignKey.SET_NULL), @ForeignKey(entity = ConstructionSiteEntity.class,
+@Entity(foreignKeys = {@ForeignKey(entity = ConstructionSiteEntity.class,
         parentColumns = "siteID",
         childColumns = "siteReport",
+        onDelete = ForeignKey.CASCADE), @ForeignKey(entity = TaskEntity.class,
+        parentColumns = "taskID",
+        childColumns = "taskReport",
         onDelete = ForeignKey.CASCADE)})
 @TypeConverters(DateTypeConverter.class)
 public class ReportEntity {

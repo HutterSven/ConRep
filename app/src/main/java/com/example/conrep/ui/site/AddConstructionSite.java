@@ -113,7 +113,7 @@ public class AddConstructionSite extends BaseActivity {
 
 
 
-        Intent intent = new Intent(this, ViewConstructionSite.class);
+        Intent intent = new Intent(this, ConstructionSiteList.class);
         intent.putExtra("siteID", viewModel.getID());
         intent.putExtra("siteName", conSite.getSiteName());
         startActivity(intent);

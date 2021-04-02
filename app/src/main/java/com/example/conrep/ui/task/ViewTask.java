@@ -97,6 +97,7 @@ public class ViewTask extends BaseActivity {
 
     private void openBackToTaskList() {
         Intent intent = new Intent(this, TaskList.class);
+        intent.putExtra("siteID", task.getSiteTask());
         startActivity(intent);
     }
 

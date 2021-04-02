@@ -22,6 +22,9 @@ public interface TaskDao {
     @Query("SELECT * FROM TaskEntity WHERE taskID = :taskID")
     LiveData<TaskEntity> getById(int taskID);
 
+    @Query("SELECT * FROM TaskEntity WHERE siteTask = :siteID")
+    LiveData<List<TaskEntity>> getBySite(int siteID);
+
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     long insertTask(TaskEntity taskEntity);
 
