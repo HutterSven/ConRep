@@ -88,7 +88,6 @@ public class ConstructionSiteList extends BaseActivity {
         viewModel.getSites().observe(this, ConstructionSiteEntities -> {
             if (ConstructionSiteEntities != null) {
                 ConstructionSites = ConstructionSiteEntities;
-                System.out.println(ConstructionSites.get(0).getSiteName());
                 constructionSiteRecyclerAdapter.setData(ConstructionSites);
             }
         });
