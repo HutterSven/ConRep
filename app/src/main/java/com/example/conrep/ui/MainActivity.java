@@ -9,6 +9,7 @@ import android.widget.Button;
 import com.example.conrep.R;
 import com.example.conrep.ui.report.ReportList;
 import com.example.conrep.ui.site.AddConstructionSite;
+import com.example.conrep.ui.site.ConstructionSiteList;
 import com.example.conrep.ui.site.Map;
 
 public class MainActivity extends BaseActivity {
@@ -22,10 +23,10 @@ public class MainActivity extends BaseActivity {
 
         addSite = findViewById(R.id.btnAddSite);
         map = findViewById(R.id.btnMap);
-        viewReports = findViewById(R.id.btnViewReports);
+        viewReports = findViewById(R.id.btnSiteList);
         addSite.setOnClickListener(v -> openAddSite());
         map.setOnClickListener(v -> openMap());
-        viewReports.setOnClickListener(v -> openViewReports());
+        viewReports.setOnClickListener(v -> openSiteList());
     }
 
     private void openAddSite() {
@@ -38,8 +39,8 @@ public class MainActivity extends BaseActivity {
         startActivity(intent);
     }
 
-    private void openViewReports() {
-        Intent intent = new Intent(this, ReportList.class);
+    private void openSiteList() {
+        Intent intent = new Intent(this, ConstructionSiteList.class);
         startActivity(intent);
     }
 

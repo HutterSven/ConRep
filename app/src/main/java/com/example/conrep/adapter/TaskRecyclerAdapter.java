@@ -53,7 +53,7 @@ public class TaskRecyclerAdapter<T> extends RecyclerView.Adapter<TaskRecyclerAda
     public void onBindViewHolder(TaskRecyclerAdapter.ViewHolder holder, int position) {
         TaskEntity item = mData.get(position);
         String open;
-        if (item.isStatus()) {
+        if (!item.isStatus()) {
             open = "closed";
         }
         else open = "open";

@@ -18,7 +18,7 @@
         app:layout_constraintTop_toTopOf="parent">
 
         <Button
-            android:id="@+id/btnMap"
+            android:id="@+id/btnSiteList"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginLeft="20dp"
@@ -26,7 +26,7 @@
             android:layout_marginRight="20dp"
             android:layout_weight="1"
             android:backgroundTint="@color/blue"
-            android:text="@string/map"
+            android:text="@string/Construction_site_list"
             android:textSize="35sp" />
 
         <Button
@@ -43,7 +43,7 @@
             />
 
         <Button
-            android:id="@+id/btnViewReports"
+            android:id="@+id/btnMap"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginLeft="20dp"
@@ -52,7 +52,7 @@
             android:layout_marginBottom="10dp"
             android:layout_weight="1"
             android:backgroundTint="@color/blue"
-            android:text="@string/view_reports"
+            android:text="@string/map"
             android:textSize="35sp" />
     </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

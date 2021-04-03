@@ -42,5 +42,6 @@ public interface ConstructionSiteDao {
     @Query("DELETE FROM ConstructionSiteEntity")
     void deleteAll();
 
-
+    @Query("UPDATE constructionsiteentity SET hours = hours+:hours WHERE siteID = :siteID")
+    void updateHours(int siteID, int hours);
 }

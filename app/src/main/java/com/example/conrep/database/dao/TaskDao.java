@@ -37,5 +37,6 @@ public interface TaskDao {
     @Query("DELETE FROM TaskEntity")
     void deleteAll();
 
-
+    @Query("UPDATE TaskEntity SET STATUS = :status WHERE taskID = :taskID")
+    void ChangeStatus(int taskID, boolean status);
 }
