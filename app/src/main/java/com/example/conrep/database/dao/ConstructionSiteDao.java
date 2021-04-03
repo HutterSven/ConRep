@@ -21,6 +21,9 @@ public interface ConstructionSiteDao {
     @Query("SELECT * FROM ConstructionSiteEntity")
     LiveData<List<ConstructionSiteEntity>> getAll();
 
+    @Query("SELECT * FROM ConstructionSiteEntity")
+    List<ConstructionSiteEntity> getAllNonLive();
+
     @Query("SELECT * FROM ConstructionSiteEntity WHERE siteID = :siteID")
     LiveData<ConstructionSiteEntity> getById(int siteID);
 

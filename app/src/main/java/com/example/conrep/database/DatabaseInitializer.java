@@ -42,8 +42,8 @@ public class DatabaseInitializer {
 
         // TestSite
         ConstructionSiteEntity constructionSite = new ConstructionSiteEntity();
-        constructionSite.setAddress("testStreet2");
-        constructionSite.setCity("testCity2");
+        constructionSite.setAddress("Terbinerstrasse 51");
+        constructionSite.setCity("Visp");
         constructionSite.setHours(2);
         constructionSite.setOverseer("ABC2");
         constructionSite.setSiteID(1);

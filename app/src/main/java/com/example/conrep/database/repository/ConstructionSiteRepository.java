@@ -12,6 +12,7 @@ import com.example.conrep.database.site.ConstructionSiteEntity;
 import com.example.conrep.BaseApp;
 import com.example.conrep.ui.util.OnAsyncEventListener;
 
+import java.util.ArrayList;
 import java.util.List;
 
 
@@ -46,6 +47,10 @@ public class ConstructionSiteRepository {
 
     public static LiveData<List<ConstructionSiteEntity>> getConstructionSites(Application application) {
         return ((BaseApp) application).getDatabase().constructionSiteDao().getAll();
+    }
+
+    public List<ConstructionSiteEntity> getConstructionSitesNonLive(Application application) {
+        return ((BaseApp) application).getDatabase().constructionSiteDao().getAllNonLive();
     }
 
     public void insert(final ConstructionSiteEntity constructionSite, OnAsyncEventListener callback,
