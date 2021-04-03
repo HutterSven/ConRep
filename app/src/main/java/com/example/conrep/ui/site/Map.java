@@ -46,11 +46,10 @@ public class Map extends BaseActivity implements OnMapReadyCallback {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_map);
         // Obtain the SupportMapFragment and get notified when the map is ready to be used.
 
         this.savedInstanceState = savedInstanceState;
-        getLayoutInflater().inflate(R.layout.activity_construction_site_list, frameLayout);
+        getLayoutInflater().inflate(R.layout.activity_map, frameLayout);
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 

@@ -132,7 +132,7 @@ public class ConstructionSiteList extends BaseActivity {
             for (int i = 0; i < ConstructionSites.size(); i++) {
                 conSite = ConstructionSites.get(i);
                 if ((conSite.getSiteName().toLowerCase().contains(etSiteName.getText().toString().toLowerCase()) || etSiteName.getText().toString().isEmpty()) &&
-                        (etSiteAddress.getText().toString().toLowerCase().contains(conSite.getAddress().toLowerCase()) || etSiteAddress.getText().toString().isEmpty())) {
+                        (conSite.getAddress().toLowerCase().contains(etSiteAddress.getText().toString().toLowerCase()) || etSiteAddress.getText().toString().isEmpty())) {
                     constructionSitesTemp.add(conSite);
                 }
             }
@@ -140,23 +140,5 @@ public class ConstructionSiteList extends BaseActivity {
             constructionSiteRecyclerAdapter.setData(constructionSitesTemp);
             constructionSiteRecyclerAdapter.notifyDataSetChanged();
         }
-    }
-
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
-        return true;
-    }
-
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
-        int id = item.getItemId();
-
-        //noinspection SimplifiableIfStatement
-
-        return super.onOptionsItemSelected(item);
     }
 }

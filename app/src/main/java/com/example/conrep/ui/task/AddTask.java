@@ -16,6 +16,7 @@ import com.example.conrep.database.async.task.CreateTask;
 import com.example.conrep.database.report.ReportEntity;
 import com.example.conrep.database.repository.TaskRepository;
 import com.example.conrep.database.task.TaskEntity;
+import com.example.conrep.ui.BaseActivity;
 import com.example.conrep.ui.report.ReportList;
 import com.example.conrep.ui.report.ViewReport;
 import com.example.conrep.ui.site.ViewConstructionSite;
@@ -28,7 +29,7 @@ import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.Date;
 
-public class AddTask extends AppCompatActivity {
+public class AddTask extends BaseActivity  {
 
     private int siteID;
     private String dateDeadLine;
@@ -47,7 +48,7 @@ public class AddTask extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_add_task);
+        getLayoutInflater().inflate(R.layout.activity_add_task, frameLayout);
 
         siteID = getIntent().getIntExtra("siteID", 1);
 
