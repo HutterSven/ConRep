@@ -47,6 +47,7 @@
         <activity android:name=".ui.task.TaskList">
         </activity>
         <activity android:name=".ui.task.AddTask" />
+        <activity android:name=".ui.report.ReportListSite" />
         <activity android:name=".ui.report.FileReport" >
         </activity>
         <activity android:name=".ui.site.ViewConstructionSite" />

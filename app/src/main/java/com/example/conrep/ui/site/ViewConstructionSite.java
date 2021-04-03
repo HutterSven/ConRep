@@ -22,6 +22,7 @@ import com.example.conrep.database.site.ConstructionSiteEntity;
 import com.example.conrep.ui.BaseActivity;
 import com.example.conrep.ui.report.FileReport;
 import com.example.conrep.ui.report.ReportList;
+import com.example.conrep.ui.report.ReportListSite;
 import com.example.conrep.ui.report.ViewReport;
 import com.example.conrep.ui.task.AddTask;
 import com.example.conrep.ui.task.TaskList;
@@ -90,6 +91,9 @@ public class ViewConstructionSite extends BaseActivity {
         Button FileBtn = findViewById(R.id.btnFileReport);
         FileBtn.setOnClickListener(view -> openFileReport());
 
+        Button ReportListBtn = findViewById(R.id.btnReportListSite);
+        ReportListBtn.setOnClickListener(view -> openReportList());
+
         Button AddTaskBtn = findViewById(R.id.btnAddTask);
         AddTaskBtn.setOnClickListener(view -> openAddTask());
 
@@ -101,6 +105,12 @@ public class ViewConstructionSite extends BaseActivity {
 
         Button ViewTaskBtn = findViewById(R.id.btnViewTasks);
         ViewTaskBtn.setOnClickListener(view -> openViewTasks());
+    }
+
+    private void openReportList() {
+        Intent intent = new Intent(this, ReportListSite.class);
+        intent.putExtra("siteID", conSite.getSiteID());
+        startActivity(intent);
     }
 
     private void openFileReport() {

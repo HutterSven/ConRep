@@ -4,6 +4,7 @@ import android.app.Application;
 
 import androidx.lifecycle.LiveData;
 
+import com.example.conrep.database.async.task.ChangeStatus;
 import com.example.conrep.database.async.task.CreateTask;
 import com.example.conrep.database.async.task.DeleteTask;
 import com.example.conrep.database.async.task.UpdateTask;
@@ -16,9 +17,6 @@ import java.util.List;
 public class TaskRepository {
     private static TaskRepository instance;
 
-    private TaskRepository() {
-
-    }
 
     public static TaskRepository getInstance() {
         if (instance == null) {
@@ -57,5 +55,9 @@ public class TaskRepository {
     public void delete(final TaskEntity task, OnAsyncEventListener callback,
                        Application application) {
         new DeleteTask(application, callback).execute(task);
+    }
+
+    public void changeStatus(TaskEntity task, OnAsyncEventListener callback, Application application) {
+        new ChangeStatus(application, callback).execute(task);
     }
 }

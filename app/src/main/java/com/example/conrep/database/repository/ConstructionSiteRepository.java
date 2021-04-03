@@ -7,6 +7,7 @@ import androidx.lifecycle.LiveData;
 import com.example.conrep.database.async.constructionSite.CreateConstructionSite;
 import com.example.conrep.database.async.constructionSite.DeleteConstructionSite;
 import com.example.conrep.database.async.constructionSite.UpdateConstructionSite;
+import com.example.conrep.database.async.constructionSite.UpdateHours;
 import com.example.conrep.database.site.ConstructionSiteEntity;
 import com.example.conrep.BaseApp;
 import com.example.conrep.ui.util.OnAsyncEventListener;
@@ -65,5 +66,9 @@ public class ConstructionSiteRepository {
 
     public LiveData<ConstructionSiteEntity> getConstructionSiteByName(String name, Application application) {
         return ((BaseApp) application).getDatabase().constructionSiteDao().getByName(name);
+    }
+
+    public void addHours(ConstructionSiteEntity site, OnAsyncEventListener callback, Application application) {
+        new UpdateHours(application, callback).execute(site);
     }
 }

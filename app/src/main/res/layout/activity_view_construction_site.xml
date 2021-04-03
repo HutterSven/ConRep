@@ -175,6 +175,8 @@
         android:layout_height="wrap_content"
         android:orientation="horizontal">
 
+
+
         <Button
             android:id="@+id/btnFileReport"
             android:layout_width="0dp"
@@ -184,6 +186,17 @@
             android:layout_weight="1"
             android:backgroundTint="@color/blue"
             android:text="@string/file_report"
+            android:textSize="14sp" />
+
+        <Button
+            android:id="@+id/btnReportListSite"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            android:layout_weight="1"
+            android:backgroundTint="@color/blue"
+            android:text="@string/reportlist"
             android:textSize="14sp" />
 
     </LinearLayout>

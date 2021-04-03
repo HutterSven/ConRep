@@ -102,16 +102,14 @@ public class AddConstructionSite extends BaseActivity {
         viewModel.createConstructionSite(conSite, new OnAsyncEventListener() {
             @Override
             public void onSuccess() {
-
+                System.out.println("Site created");
             }
 
             @Override
             public void onFailure(Exception e) {
-
+                System.out.println("Site not created");
             }
         });
-
-
 
         Intent intent = new Intent(this, ConstructionSiteList.class);
         intent.putExtra("siteID", viewModel.getID());

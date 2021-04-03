@@ -22,12 +22,15 @@ import com.example.conrep.ui.BaseActivity;
 import com.example.conrep.ui.util.RecyclerViewItemClickListener;
 import com.example.conrep.ui.viewmodel.constructionSite.ConstructionSiteListViewModel;
 
+import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.List;
 
 public class ConstructionSiteList extends BaseActivity {
 
     private static final String TAG = "SiteList";
+
+    private List<ConstructionSiteEntity> constructionSitesTemp;
 
     private Button btnSearchSite;
     private EditText etSiteName;
@@ -66,14 +69,21 @@ public class ConstructionSiteList extends BaseActivity {
         etSiteAddress = findViewById(R.id.etSearchSiteAddress);
 
         ConstructionSites = new ArrayList<>();
+        constructionSitesTemp = new ArrayList<>();
+
+        for (ConstructionSiteEntity siteTemp: ConstructionSites) {
+            constructionSitesTemp.add(siteTemp);
+        }
+
         constructionSiteRecyclerAdapter = new ConstructionSiteRecyclerAdapter(new RecyclerViewItemClickListener() {
             @Override
             public void onItemClick(View v, int position) {
                 Log.d(TAG, "clicked position:" + position);
-                Log.d(TAG, "clicked on: " + ConstructionSites.get(position).getSiteID());
+                if (constructionSitesTemp.size() > 0) Log.d(TAG, "clicked on: " + constructionSitesTemp.get(position).getSiteID());
 
                 Intent intent = new Intent(ConstructionSiteList.this, ViewConstructionSite.class);
-                intent.putExtra("siteID", ConstructionSites.get(position).getSiteID());
+                if (constructionSitesTemp.size() > 0) intent.putExtra("siteID", constructionSitesTemp.get(position).getSiteID());
+                else intent.putExtra("siteID", ConstructionSites.get(position).getSiteID());
                 startActivity(intent);
             }
 
@@ -92,6 +102,9 @@ public class ConstructionSiteList extends BaseActivity {
             }
         });
 
+        for (ConstructionSiteEntity siteTemp: ConstructionSites) {
+            constructionSitesTemp.add(siteTemp);
+        }
 
         btnSearchSite.setOnClickListener(new ConstructionSiteList.searchSite(this));
 
@@ -112,7 +125,7 @@ public class ConstructionSiteList extends BaseActivity {
 
             ConstructionSiteEntity conSite;
 
-            List<ConstructionSiteEntity> constructionSitesTemp = new ArrayList<>();
+            constructionSitesTemp = new ArrayList<ConstructionSiteEntity>();
 
             if (etSiteName.getText().toString().isEmpty() && etSiteAddress.getText().toString().isEmpty()) {
                 constructionSiteRecyclerAdapter.setData(ConstructionSites);

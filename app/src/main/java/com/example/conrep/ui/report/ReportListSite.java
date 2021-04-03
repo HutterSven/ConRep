@@ -9,7 +9,6 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 
-import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.lifecycle.ViewModelProviders;
 import androidx.recyclerview.widget.DividerItemDecoration;
@@ -27,12 +26,11 @@ import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.List;
 
-public class ReportList extends BaseActivity {
+public class ReportListSite extends BaseActivity {
 
     private static final String TAG = "ReportList";
 
     private Button btnSearchReport;
-    private EditText etSiteID;
     private EditText etWorkerName;
 
     private List<ReportEntity> Reports;
@@ -41,20 +39,22 @@ public class ReportList extends BaseActivity {
 
     private int siteID;
 
-    private Bundle savedInstanceState;
+    List<ReportEntity> reportsTemp;
 
-    private List<ReportEntity> reportsTemp;
+    private Bundle savedInstanceState;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
         this.savedInstanceState = savedInstanceState;
-        getLayoutInflater().inflate(R.layout.activity_report_list, frameLayout);
+        getLayoutInflater().inflate(R.layout.activity_report_list_site, frameLayout);
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
         setTitle("Report List");
+
+        siteID = getIntent().getIntExtra("siteID", 1);
 
         RecyclerView recyclerView = findViewById(R.id.reportRecyclerView);
 
@@ -65,22 +65,19 @@ public class ReportList extends BaseActivity {
                 LinearLayoutManager.VERTICAL);
         recyclerView.addItemDecoration(dividerItemDecoration);
 
-        btnSearchReport = findViewById(R.id.btnSearchReportSite);
-        etSiteID = findViewById(R.id.etSearchReportBySite);
-        etWorkerName = findViewById(R.id.etWorkerName);
+        btnSearchReport = findViewById(R.id.btnSearchReportSite2);
+        etWorkerName = findViewById(R.id.etWorkerName2);
 
         Reports = new ArrayList<>();
         reportsTemp = new ArrayList<>();
-
         reportRecyclerAdapter = new ReportRecyclerAdapter(new RecyclerViewItemClickListener() {
             @Override
             public void onItemClick(View v, int position) {
                 Log.d(TAG, "clicked position:" + position);
-                if (reportsTemp.size() > 0) Log.d(TAG, "clicked on: " + reportsTemp.get(position).toString());
+                Log.d(TAG, "clicked on: " + reportsTemp.get(position).toString());
 
-                Intent intent = new Intent(ReportList.this, ViewReport.class);
-                if (reportsTemp.size() > 0) intent.putExtra("reportID", reportsTemp.get(position).getReportID());
-                else  intent.putExtra("reportID", Reports.get(position).getReportID());
+                Intent intent = new Intent(ReportListSite.this, ViewReport.class);
+                intent.putExtra("reportID", reportsTemp.get(position).getReportID());
                 startActivity(intent);
             }
 
@@ -95,14 +92,12 @@ public class ReportList extends BaseActivity {
         viewModel.getReports().observe(this, ReportEntities -> {
             if (ReportEntities != null) {
                 Reports = ReportEntities;
-                System.out.println(Reports.get(0).getWorkerName());
-                reportRecyclerAdapter.setData(Reports);
-            }
+                    for (ReportEntity reportTemp : Reports) {
+                        if (reportTemp.getSiteReport() == siteID) reportsTemp.add(reportTemp);
+                    }
+                    if (reportsTemp != null) reportRecyclerAdapter.setData(reportsTemp);
+                }
         });
-
-        for (ReportEntity reportTemp : Reports) {
-            reportsTemp.add(reportTemp);
-        }
 
 
         btnSearchReport.setOnClickListener(new searchSite(this));
@@ -113,9 +108,10 @@ public class ReportList extends BaseActivity {
 
     public class searchSite implements View.OnClickListener {
 
-        ReportList reportList;
+        ReportListSite reportList;
 
-        public searchSite(ReportList reportList) {
+
+        public searchSite(ReportListSite reportList) {
             this.reportList = reportList;
         }
 
@@ -126,22 +122,21 @@ public class ReportList extends BaseActivity {
 
             reportsTemp = new ArrayList<ReportEntity>();
 
-            if (etSiteID.getText().toString().isEmpty() && etSiteID.getText().toString().isEmpty()) {
-                reportRecyclerAdapter.setData(Reports);
-                reportRecyclerAdapter.notifyDataSetChanged();
-                return;
-            }
-
-            for (int i = 0; i < Reports.size(); i++) {
-                report = Reports.get(i);
-                if (report.getWorkerName().toLowerCase().contains(etWorkerName.getText().toString().toLowerCase()) &&
-                        (Integer.parseInt(etSiteID.getText().toString()) == report.getSiteReport() || etSiteID.getText().toString().isEmpty())) {
-                    reportsTemp.add(report);
+            if (Reports != null) {
+                for (int i = 0; i < Reports.size(); i++) {
+                    report = Reports.get(i);
+                    if ((report.getWorkerName().toLowerCase().contains(etWorkerName.getText().toString().toLowerCase()) || etWorkerName.getText().toString().isEmpty()) &&
+                            siteID == report.getSiteReport()) {
+                        reportsTemp.add(report);
+                    }
                 }
-            }
 
-            reportRecyclerAdapter.setData(reportsTemp);
-            reportRecyclerAdapter.notifyDataSetChanged();
+                if (reportsTemp != null) {
+                    reportRecyclerAdapter.setData(reportsTemp);
+                    reportRecyclerAdapter.notifyDataSetChanged();
+                }
+
+            }
         }
     }
 
