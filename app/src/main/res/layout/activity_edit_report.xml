@@ -7,9 +7,11 @@
     tools:context=".ui.report.EditReport">
 
     <LinearLayout
+        android:id="@+id/linearLayout2"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical"
+        app:layout_constraintHorizontal_weight="1"
         tools:context=".ui.reportEntity.FileReport">
 
         <TextView
@@ -79,7 +81,7 @@
 
         <ScrollView
             android:layout_width="match_parent"
-            android:layout_height="374dp"
+            android:layout_height="match_parent"
             android:layout_marginLeft="20dp"
             android:layout_marginTop="10dp"
             android:layout_marginRight="20dp">
@@ -90,11 +92,14 @@
                 android:orientation="vertical" />
         </ScrollView>
 
-        <Button
-            android:id="@+id/btnSaveEditReport"
-            android:layout_width="match_parent"
-            android:layout_height="50dp"
-            android:layout_margin="10dp"
-            android:text="@string/edit_report" />
     </LinearLayout>
+
+    <Button
+        android:id="@+id/btnSaveEditReport"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/edit_report"
+        app:layout_constraintBottom_toBottomOf="@+id/linearLayout2"
+        tools:layout_editor_absoluteX="10dp" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

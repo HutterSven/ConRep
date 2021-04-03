@@ -21,10 +21,7 @@
         <activity android:name=".ui.actionBar.Settings" />
         <activity android:name=".ui.site.EditConstructionSite" />
         <activity android:name=".ui.site.AddConstructionSite">
-        <intent-filter>
-            <action android:name="android.intent.action.MAIN" />
-            <category android:name="android.intent.category.LAUNCHER" />
-        </intent-filter>
+
         </activity>
         <activity android:name=".ui.report.ReportList"/>
         <!--
@@ -43,7 +40,12 @@
             android:name=".ui.site.Map"
             android:label="@string/title_activity_map" />
         <activity android:name=".ui.report.EditReport" />
-        <activity android:name=".ui.report.ViewReport"/>
+        <activity android:name=".ui.report.ViewReport">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
         <activity android:name=".ui.task.EditTask" />
         <activity android:name=".ui.task.ViewTask" />
         <activity android:name=".ui.task.TaskList">

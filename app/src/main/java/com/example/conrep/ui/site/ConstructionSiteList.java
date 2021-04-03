@@ -70,7 +70,7 @@ public class ConstructionSiteList extends BaseActivity {
             @Override
             public void onItemClick(View v, int position) {
                 Log.d(TAG, "clicked position:" + position);
-                Log.d(TAG, "clicked on: " + ConstructionSites.get(position).toString());
+                Log.d(TAG, "clicked on: " + ConstructionSites.get(position).getSiteID());
 
                 Intent intent = new Intent(ConstructionSiteList.this, ViewConstructionSite.class);
                 intent.putExtra("siteID", ConstructionSites.get(position).getSiteID());

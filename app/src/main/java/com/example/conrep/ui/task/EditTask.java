@@ -1,6 +1,5 @@
 package com.example.conrep.ui.task;
 
-import androidx.appcompat.app.AppCompatActivity;
 import androidx.lifecycle.ViewModelProviders;
 
 import android.content.Intent;

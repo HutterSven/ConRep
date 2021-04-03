@@ -43,7 +43,8 @@ public class EditReport extends BaseActivity {
         viewModel = ViewModelProviders.of(this, factory).get(ReportViewModel.class);
         viewModel.getReport(reportID).observe(this, reportEntity -> {
             if (reportEntity != null) {
-                report = reportEntity; // todo is somehow 0
+                report = reportEntity;
+                updateContent();
             }
         });
 
@@ -55,14 +56,17 @@ public class EditReport extends BaseActivity {
         etReportHours = findViewById(R.id.etReportHoursE);
         etReportSite = findViewById(R.id.etReportSiteE);
 
-        etReportName.setText(report.getWorkerName());
-        etReportHours.setText(report.getHours());
-        etReportSite.setText(report.getSiteReport());
-
         Button fileReportBtn = findViewById(R.id.btnSaveEditReport);
 
         fileReportBtn.setOnClickListener(view -> addReport());
     }
+
+    private void updateContent() {
+        etReportName.setText(report.getWorkerName());
+        etReportHours.setText(String.valueOf(report.getHours()));
+        etReportSite.setText(String.valueOf(report.getSiteReport()));
+    }
+
 
     private void addReport() {
         boolean testBool = false;
@@ -81,13 +85,14 @@ public class EditReport extends BaseActivity {
         if(testBool){
             return;
         }
-        report = new ReportEntity();
         report.setWorkerName(etReportName.getText().toString());
         report.setHours(Integer.parseInt(etReportHours.getText().toString()));
         LocalDateTime now = LocalDateTime.now();
         report.setTaskReport(report.getTaskReport()); // todo set to chosen tasks
         report.setDate(now.toString());
         report.setSiteReport(report.getSiteReport());
+        report.setReportID(report.getReportID());
+
 
 
         viewModel.updateReport(report, new OnAsyncEventListener() {
