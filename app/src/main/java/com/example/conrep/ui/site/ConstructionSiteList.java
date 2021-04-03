@@ -71,10 +71,6 @@ public class ConstructionSiteList extends BaseActivity {
         ConstructionSites = new ArrayList<>();
         constructionSitesTemp = new ArrayList<>();
 
-        for (ConstructionSiteEntity siteTemp: ConstructionSites) {
-            constructionSitesTemp.add(siteTemp);
-        }
-
         constructionSiteRecyclerAdapter = new ConstructionSiteRecyclerAdapter(new RecyclerViewItemClickListener() {
             @Override
             public void onItemClick(View v, int position) {

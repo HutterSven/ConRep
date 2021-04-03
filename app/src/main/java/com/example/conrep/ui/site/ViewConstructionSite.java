@@ -105,6 +105,15 @@ public class ViewConstructionSite extends BaseActivity {
 
         Button ViewTaskBtn = findViewById(R.id.btnViewTasks);
         ViewTaskBtn.setOnClickListener(view -> openViewTasks());
+
+        Button ShowMapBtn = findViewById(R.id.btnShowOnMap);
+        ShowMapBtn.setOnClickListener(view -> openMap());
+    }
+
+    private void openMap() {
+        Intent intent = new Intent(this, Map.class);
+        intent.putExtra("site", conSite);
+        startActivity(intent);
     }
 
     private void openReportList() {
@@ -162,7 +171,8 @@ public class ViewConstructionSite extends BaseActivity {
         TextView tvDeleteOverseerSite = view.findViewById(R.id.tvDeleteOverseerSite);
         tvDeleteOverseerSite.setText(conSite.getOverseer());
         TextView tvDeleteHoursSite = view.findViewById(R.id.tvDeleteHoursSite);
-        tvDeleteHoursSite.setText(conSite.getHours());
+        if (conSite.getHours() > 0) tvDeleteHoursSite.setText(Integer.toString(conSite.getHours()));
+        else tvDeleteHoursSite.setText(0);
 
         alertDialog.setButton(AlertDialog.BUTTON_POSITIVE, getString(R.string.confirm_delete), new DialogInterface.OnClickListener() {
             @Override

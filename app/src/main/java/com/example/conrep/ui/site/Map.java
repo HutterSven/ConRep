@@ -1,17 +1,26 @@
 package com.example.conrep.ui.site;
 
 import android.content.Context;
+import android.content.Intent;
 import android.location.Address;
 import android.location.Geocoder;
 import android.os.Bundle;
+import android.util.Log;
+import android.view.View;
 
 import androidx.appcompat.widget.Toolbar;
 import androidx.lifecycle.ViewModelProviders;
+import androidx.recyclerview.widget.DividerItemDecoration;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.conrep.BaseApp;
 import com.example.conrep.R;
+import com.example.conrep.adapter.ConstructionSiteRecyclerAdapter;
 import com.example.conrep.database.repository.ConstructionSiteRepository;
 import com.example.conrep.database.site.ConstructionSiteEntity;
 import com.example.conrep.ui.BaseActivity;
+import com.example.conrep.ui.util.RecyclerViewItemClickListener;
 import com.example.conrep.ui.viewmodel.constructionSite.ConstructionSiteListViewModel;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
@@ -25,12 +34,14 @@ import java.util.List;
 
 public class Map extends BaseActivity implements OnMapReadyCallback {
 
+    private static final String TAG = "MAP";
+
     private GoogleMap mMap;
-    private List<ConstructionSiteEntity> sites;
+    private ConstructionSiteEntity site;
     private Bundle savedInstanceState;
 
-    ConstructionSiteRepository repo;
     ConstructionSiteListViewModel viewModel;
+    private ConstructionSiteRecyclerAdapter constructionSiteRecyclerAdapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -43,16 +54,9 @@ public class Map extends BaseActivity implements OnMapReadyCallback {
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        ConstructionSiteListViewModel.Factory factory = new ConstructionSiteListViewModel.Factory(getApplication(), 0);
-        viewModel = ViewModelProviders.of(this, factory).get(ConstructionSiteListViewModel.class);
-        viewModel.getSites().observe(this, ConstructionSiteEntities -> {
-            if (ConstructionSiteEntities != null) {
-                sites = ConstructionSiteEntities;
-            }
-        });
+        site = (ConstructionSiteEntity) getIntent().getSerializableExtra("site");
 
-        System.out.println(sites.get(0).getAddress());
-
+        System.out.println(site.getAddress());
 
         SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager().findFragmentById(R.id.map);
         mapFragment.getMapAsync(this);
@@ -73,14 +77,13 @@ public class Map extends BaseActivity implements OnMapReadyCallback {
 
         ArrayList<LatLng> address = new ArrayList<LatLng>();
 
-        for (ConstructionSiteEntity site : sites) {
-            address.add(getLocationFromAddress(this, site.getAddress() + " " + site.getCity()));
-            mMap.addMarker(new MarkerOptions().position(address.get(address.size() - 1)).title(site.getSiteName()));
-            System.out.println(site.getAddress() + site.getCity());
-        }
 
-        if (address.size() > 0)
-            mMap.moveCamera(CameraUpdateFactory.newLatLng(address.get(address.size() - 1)));
+        address.add(getLocationFromAddress(this, site.getAddress() + " " + site.getCity()));
+        mMap.addMarker(new MarkerOptions().position(address.get(address.size() - 1)).title(site.getSiteName()));
+        System.out.println(site.getAddress() + site.getCity());
+
+        mMap.moveCamera(CameraUpdateFactory.newLatLng(address.get(address.size() - 1)));
+        mMap.setMinZoomPreference(15);
     }
 
     public LatLng getLocationFromAddress(Context context, String strAddress) {

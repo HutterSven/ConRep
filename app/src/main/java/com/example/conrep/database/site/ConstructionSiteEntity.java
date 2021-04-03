@@ -6,8 +6,10 @@ import androidx.room.PrimaryKey;
 
 import com.example.conrep.database.task.TaskEntity;
 
+import java.io.Serializable;
+
 @Entity
-public class ConstructionSiteEntity {
+public class ConstructionSiteEntity implements Serializable {
 
     @PrimaryKey(autoGenerate = true)
     private int siteID;

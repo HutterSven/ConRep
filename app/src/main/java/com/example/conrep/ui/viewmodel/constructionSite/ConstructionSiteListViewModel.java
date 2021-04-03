@@ -81,6 +81,9 @@ public class ConstructionSiteListViewModel extends AndroidViewModel {
         return observableSites;
     }
 
+    public synchronized List<ConstructionSiteEntity> getSitesNonLive() {
+        return repository.getConstructionSitesNonLive(application);
+    }
 
     /**
      * CHANGE!!!!!!!
