@@ -172,7 +172,7 @@ public class ViewConstructionSite extends BaseActivity {
         tvDeleteOverseerSite.setText(conSite.getOverseer());
         TextView tvDeleteHoursSite = view.findViewById(R.id.tvDeleteHoursSite);
         if (conSite.getHours() > 0) tvDeleteHoursSite.setText(Integer.toString(conSite.getHours()));
-        else tvDeleteHoursSite.setText(0);
+        else tvDeleteHoursSite.setText(Integer.toString(0));
 
         alertDialog.setButton(AlertDialog.BUTTON_POSITIVE, getString(R.string.confirm_delete), new DialogInterface.OnClickListener() {
             @Override
