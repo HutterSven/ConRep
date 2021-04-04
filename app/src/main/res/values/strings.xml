@@ -32,7 +32,7 @@
     <string name="status_title">Status</string>
     <string name="overseer_title">Overseer</string>
     <string name="image_title">Image</string>
-    <string name="Construction_site_list">All Construction-Sites</string>
+    <string name="Construction_site_list">Construction Sites</string>
 
 
     <!--
@@ -40,7 +40,7 @@
     values-round/strings.xml for round devices.
     -->
     <string name="hello_world">Hello Square World!</string>
-    <string name="title_activity_edit_construction_site">EditConstructionSite</string>
+    <string name="title_activity_edit_construction_site">Edit Construction Site</string>
     <string name="name">Name</string>
     <string name="city">City</string>
     <string name="address">Address</string>

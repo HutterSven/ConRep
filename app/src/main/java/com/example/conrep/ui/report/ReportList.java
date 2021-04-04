@@ -95,13 +95,16 @@ public class ReportList extends BaseActivity {
         viewModel.getReports().observe(this, ReportEntities -> {
             if (ReportEntities != null) {
                 Reports = ReportEntities;
-                System.out.println(Reports.get(0).getWorkerName());
                 reportRecyclerAdapter.setData(Reports);
             }
         });
 
-        for (ReportEntity reportTemp : Reports) {
-            reportsTemp.add(reportTemp);
+        if (Reports != null) {
+            if (Reports.size() > 0) {
+                for (ReportEntity reportTemp : Reports) {
+                    reportsTemp.add(reportTemp);
+                }
+            }
         }
 
 
@@ -126,11 +129,17 @@ public class ReportList extends BaseActivity {
 
             reportsTemp = new ArrayList<ReportEntity>();
 
-            if (etSiteID.getText().toString().isEmpty() && etSiteID.getText().toString().isEmpty()) {
-                reportRecyclerAdapter.setData(Reports);
-                reportRecyclerAdapter.notifyDataSetChanged();
-                return;
-            }
+            if (Reports != null) {
+                if (Reports.size() > 0) {
+                    if (etSiteID.getText().toString().isEmpty() && etSiteID.getText().toString().isEmpty()) {
+                        reportRecyclerAdapter.setData(Reports);
+                        reportRecyclerAdapter.notifyDataSetChanged();
+                        return;
+                    }
+                }
+
+
+
 
             for (int i = 0; i < Reports.size(); i++) {
                 report = Reports.get(i);
@@ -139,9 +148,13 @@ public class ReportList extends BaseActivity {
                     reportsTemp.add(report);
                 }
             }
+            }
 
-            reportRecyclerAdapter.setData(reportsTemp);
-            reportRecyclerAdapter.notifyDataSetChanged();
+            if (reportsTemp.size() > 0) {
+                reportRecyclerAdapter.setData(reportsTemp);
+                reportRecyclerAdapter.notifyDataSetChanged();
+            }
+
         }
     }
 

@@ -34,6 +34,12 @@ public class ViewTask extends BaseActivity {
     private TextView tvDeadline;
     private int taskID;
 
+    private TextView tvDeleteNameTask;
+    private TextView tvDeleteDescriptionTask;
+    private TextView tvDeleteStatusTask;
+    private TextView tvDeleteDeadlineTask;
+    private TextView tvDeleteSiteTask;
+
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -102,11 +108,17 @@ public class ViewTask extends BaseActivity {
         startActivity(intent);
     }
 
+    private void openBackToViewSite() {
+        Intent intent = new Intent(this, ViewConstructionSite.class);
+        intent.putExtra("siteID", task.getSiteTask());
+        startActivity(intent);
+    }
+
     private void generateDialog() {
         LayoutInflater inflater = LayoutInflater.from(this);
-        final View view = inflater.inflate(R.layout.activity_delete_construction_site, null);
+        final View view = inflater.inflate(R.layout.activity_delete_task, null);
         final AlertDialog alertDialog = new AlertDialog.Builder(this).create();
-        alertDialog.setTitle("Delete Site");
+        alertDialog.setTitle("Delete Task");
         alertDialog.setCancelable(false);
 
         TextView tvDeleteNameTask = view.findViewById(R.id.tvDeleteNameTask);
@@ -135,7 +147,7 @@ public class ViewTask extends BaseActivity {
                         toast.show();
 
                         Log.d(TAG, "deleteTask: success");
-                        openBackToTaskList();
+                        openBackToViewSite();
                     }
 
                     @Override

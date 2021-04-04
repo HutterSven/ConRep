@@ -102,6 +102,12 @@ public class ViewReport extends BaseActivity {
         startActivity(intent);
     }
 
+    private void openViewSite() {
+        Intent intent = new Intent(this, ViewConstructionSite.class);
+        intent.putExtra("siteID", report.getSiteReport());
+        startActivity(intent);
+    }
+
     private void generateDialog() {
         LayoutInflater inflater = LayoutInflater.from(this);
         final View view = inflater.inflate(R.layout.activity_delete_report, null);
@@ -131,7 +137,7 @@ public class ViewReport extends BaseActivity {
                         toast.show();
 
                         Log.d(TAG, "deleteReport: success");
-                        openBackToReportList();
+                        openViewSite();
                     }
 
                     @Override
