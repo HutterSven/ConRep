@@ -85,7 +85,6 @@ public class EditTask extends BaseActivity {
         if(testBool){
             return;
         }
-        task = new TaskEntity();
         task.setName(etTaskName.getText().toString());
         task.setDescription(etTaskDesc.getText().toString());
         if (etTaskStat.getText().equals("open")){
@@ -93,8 +92,6 @@ public class EditTask extends BaseActivity {
         }else{
             task.setStatus(false);
         }
-        task.setSiteTask(task.getSiteTask());
-        task.setTaskID(task.getTaskID());
 
         viewModel.updateTask(task, new OnAsyncEventListener() {
             @Override
@@ -108,7 +105,7 @@ public class EditTask extends BaseActivity {
         });
 
         Intent intent = new Intent(this, ViewTask.class);
-        intent.putExtra("taskID", taskID);
+        intent.putExtra("taskID", task.getTaskID());
         startActivity(intent);
     }
 
