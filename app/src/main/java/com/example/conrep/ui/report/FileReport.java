@@ -50,7 +50,8 @@ public class FileReport extends BaseActivity {
     private EditText etReportName;
     private EditText etReportHours;
 
-    View vTemp;
+    private View vTemp;
+    private int positionOld;
 
     private List<TaskEntity> Tasks;
     private TaskRecyclerAdapter taskRecyclerAdapter;
@@ -74,6 +75,7 @@ public class FileReport extends BaseActivity {
         etReportName = findViewById(R.id.etReportName);
         etReportHours = findViewById(R.id.etReportHours);
         report = new ReportEntity();
+        positionOld = 0;
 
         Button fileReportBtn = findViewById(R.id.btnSaveReport);
 
@@ -88,13 +90,14 @@ public class FileReport extends BaseActivity {
                 LinearLayoutManager.VERTICAL);
         recyclerView.addItemDecoration(dividerItemDecoration);
 
+
         Tasks = new ArrayList<>();
         taskRecyclerAdapter = new TaskRecyclerAdapter(new RecyclerViewItemClickListener() {
             @Override
             public void onItemClick(View v, int position) {
-                if (vTemp != null) vTemp.setBackgroundColor(Color.parseColor("#0184C8"));
-                vTemp = v;
-                v.setBackgroundColor(Color.GRAY);
+                recyclerView.getChildAt(positionOld).setBackgroundColor(Color.parseColor("#0184C8"));
+                positionOld = position;
+                recyclerView.getChildAt(position).setBackgroundColor(Color.GRAY);
                 Log.d(TAG, "clicked position:" + position);
                 Log.d(TAG, "clicked on: " + Tasks.get(position).toString());
                 report.setTaskReport(Tasks.get(position).getTaskID());

@@ -30,4 +30,5 @@ public class BaseApp extends Application {
     public TaskRepository getTaskRepository() {
         return TaskRepository.getInstance();
     }
+
 }

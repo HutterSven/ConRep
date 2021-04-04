@@ -40,8 +40,6 @@ public class Map extends BaseActivity implements OnMapReadyCallback {
     private ConstructionSiteEntity site;
     private Bundle savedInstanceState;
 
-    ConstructionSiteListViewModel viewModel;
-    private ConstructionSiteRecyclerAdapter constructionSiteRecyclerAdapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

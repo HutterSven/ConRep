@@ -28,9 +28,7 @@ public class ConstructionSiteListViewModel extends AndroidViewModel {
     private final MediatorLiveData<List<ConstructionSiteEntity>> observableSites;
     private final MediatorLiveData<List<ConstructionSiteEntity>> observableConstructionSites;
 
-    public ConstructionSiteListViewModel(@NonNull Application application,
-                                         final int ownerId,
-                                         ConstructionSiteRepository siteRepository) {
+    public ConstructionSiteListViewModel(@NonNull Application application, ConstructionSiteRepository siteRepository) {
         super(application);
 
         this.application = application;
@@ -70,7 +68,7 @@ public class ConstructionSiteListViewModel extends AndroidViewModel {
         @Override
         public <T extends ViewModel> T create(Class<T> modelClass) {
             //noinspection unchecked
-            return (T) new ConstructionSiteListViewModel(application, siteId, siteRepository);
+            return (T) new ConstructionSiteListViewModel(application, siteRepository);
         }
     }
 

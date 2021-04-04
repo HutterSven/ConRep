@@ -29,9 +29,7 @@ public class TaskListViewModel extends AndroidViewModel {
     // MediatorLiveData can observe other LiveData objects and react on their emissions.
     private final MediatorLiveData<List<TaskEntity>> observableTasks;
 
-    public TaskListViewModel(@NonNull Application application,
-                             final int ownerId,
-                             TaskRepository taskRepository) {
+    public TaskListViewModel(@NonNull Application application, TaskRepository taskRepository) {
         super(application);
 
         this.application = application;
@@ -71,7 +69,7 @@ public class TaskListViewModel extends AndroidViewModel {
         @Override
         public <T extends ViewModel> T create(Class<T> modelClass) {
             //noinspection unchecked
-            return (T) new TaskListViewModel(application, siteId, taskRepository);
+            return (T) new TaskListViewModel(application, taskRepository);
         }
     }
 

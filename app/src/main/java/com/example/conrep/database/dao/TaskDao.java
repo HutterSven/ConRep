@@ -8,7 +8,6 @@ import androidx.room.OnConflictStrategy;
 import androidx.room.Query;
 import androidx.room.Update;
 
-import com.example.conrep.database.pojo.TaskAndReportEntity;
 import com.example.conrep.database.task.TaskEntity;
 
 import java.util.List;

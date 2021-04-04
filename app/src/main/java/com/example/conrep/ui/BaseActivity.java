@@ -33,6 +33,7 @@ public class BaseActivity extends AppCompatActivity{
         setContentView(R.layout.activity_base);
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         frameLayout = findViewById(R.id.flContent);
     }
@@ -70,4 +71,5 @@ public class BaseActivity extends AppCompatActivity{
 
         return super.onOptionsItemSelected(item);
     }
+
 }

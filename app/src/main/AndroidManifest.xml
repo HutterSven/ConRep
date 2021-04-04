@@ -14,16 +14,14 @@
         android:theme="@style/Theme.ConRep">
         <activity android:name=".ui.task.DeleteTask"/>
         <activity android:name=".ui.report.DeleteReport"/>
-        <activity android:name=".ui.site.ConstructionSiteList"/>
+        <activity android:name=".ui.site.ConstructionSiteList" android:parentActivityName=".ui.MainActivity"/>
         <activity android:name=".ui.site.DeleteConstructionSite" />
-        <activity android:name=".ui.BaseActivity" />
-        <activity android:name=".ui.actionBar.About" />
-        <activity android:name=".ui.actionBar.Settings" />
-        <activity android:name=".ui.site.EditConstructionSite" />
-        <activity android:name=".ui.site.AddConstructionSite">
-
-        </activity>
-        <activity android:name=".ui.report.ReportList"/>
+        <activity android:name=".ui.BaseActivity" android:parentActivityName=".ui.MainActivity"/>
+        <activity android:name=".ui.actionBar.About" android:parentActivityName=".ui.MainActivity"/>
+        <activity android:name=".ui.actionBar.Settings" android:parentActivityName=".ui.MainActivity"/>
+        <activity android:name=".ui.site.EditConstructionSite"  android:parentActivityName=".ui.site.ViewConstructionSite"/>
+        <activity android:name=".ui.site.AddConstructionSite" android:parentActivityName=".ui.MainActivity"/>
+        <activity android:name=".ui.report.ReportList" android:parentActivityName=".ui.MainActivity"/>
         <!--
              The API key for Google Maps-based APIs is defined as a string resource.
              (See the file "res/values/google_maps_api.xml").
@@ -38,19 +36,16 @@
 
         <activity
             android:name=".ui.site.Map"
-            android:label="@string/title_activity_map" />
-        <activity android:name=".ui.report.EditReport" />
-        <activity android:name=".ui.report.ViewReport">
-        </activity>
-        <activity android:name=".ui.task.EditTask" />
-        <activity android:name=".ui.task.ViewTask" />
-        <activity android:name=".ui.task.TaskList">
-        </activity>
-        <activity android:name=".ui.task.AddTask" />
-        <activity android:name=".ui.report.ReportListSite" />
-        <activity android:name=".ui.report.FileReport" >
-        </activity>
-        <activity android:name=".ui.site.ViewConstructionSite" />
+            android:label="@string/title_activity_map" android:parentActivityName=".ui.site.ViewConstructionSite"/>
+        <activity android:name=".ui.report.EditReport" android:parentActivityName=".ui.report.ViewReport"/>
+        <activity android:name=".ui.report.ViewReport" android:parentActivityName=".ui.report.ReportListSite"/>
+        <activity android:name=".ui.task.EditTask" android:parentActivityName=".ui.task.ViewTask"/>
+        <activity android:name=".ui.task.ViewTask" android:parentActivityName=".ui.task.TaskList"/>
+        <activity android:name=".ui.task.TaskList" android:parentActivityName=".ui.site.ViewConstructionSite"/>
+        <activity android:name=".ui.task.AddTask" android:parentActivityName=".ui.site.ViewConstructionSite"/>
+        <activity android:name=".ui.report.ReportListSite" android:parentActivityName=".ui.site.ViewConstructionSite"/>
+        <activity android:name=".ui.report.FileReport" android:parentActivityName=".ui.site.ViewConstructionSite"/>
+        <activity android:name=".ui.site.ViewConstructionSite" android:parentActivityName=".ui.site.ConstructionSiteList"/>
         <activity android:name=".ui.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

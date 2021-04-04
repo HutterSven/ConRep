@@ -34,11 +34,6 @@ public class ViewTask extends BaseActivity {
     private TextView tvDeadline;
     private int taskID;
 
-    private TextView tvDeleteNameTask;
-    private TextView tvDeleteDescriptionTask;
-    private TextView tvDeleteStatusTask;
-    private TextView tvDeleteDeadlineTask;
-    private TextView tvDeleteSiteTask;
 
 
     @Override

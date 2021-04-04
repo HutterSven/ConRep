@@ -81,11 +81,11 @@ public class ViewConstructionSite extends BaseActivity {
     }
 
     private void initiateView() {
-        tvName = findViewById(R.id.textView17);
-        tvAddress = findViewById(R.id.textView18);
-        tvCity = findViewById(R.id.textView19);
-        tvOverseer = findViewById(R.id.textView15);
-        tvHours = findViewById(R.id.textView16);
+        tvName = findViewById(R.id.tvSiteNameVD);
+        tvAddress = findViewById(R.id.tvAddressVD);
+        tvCity = findViewById(R.id.tvCityVD);
+        tvOverseer = findViewById(R.id.tvOverSeerVD);
+        tvHours = findViewById(R.id.tvHoursVD);
 
 
         Button FileBtn = findViewById(R.id.btnFileReport);
