@@ -1,6 +1,7 @@
 package com.example.conrep.ui.report;
 
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -49,6 +50,8 @@ public class FileReport extends BaseActivity {
     private EditText etReportName;
     private EditText etReportHours;
 
+    View vTemp;
+
     private List<TaskEntity> Tasks;
     private TaskRecyclerAdapter taskRecyclerAdapter;
     private TaskListViewModel viewModelTask;
@@ -89,6 +92,9 @@ public class FileReport extends BaseActivity {
         taskRecyclerAdapter = new TaskRecyclerAdapter(new RecyclerViewItemClickListener() {
             @Override
             public void onItemClick(View v, int position) {
+                if (vTemp != null) vTemp.setBackgroundColor(Color.parseColor("#0184C8"));
+                vTemp = v;
+                v.setBackgroundColor(Color.GRAY);
                 Log.d(TAG, "clicked position:" + position);
                 Log.d(TAG, "clicked on: " + Tasks.get(position).toString());
                 report.setTaskReport(Tasks.get(position).getTaskID());
