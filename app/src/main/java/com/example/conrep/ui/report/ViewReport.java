@@ -89,7 +89,7 @@ public class ViewReport extends BaseActivity {
 
     private void openEditReport() {
         Intent intent = new Intent(this, EditReport.class);
-        intent.putExtra("reportID", report.getReportID()); // todo does not work
+        intent.putExtra("reportID", report.getReportID());
         startActivity(intent);
     }
 

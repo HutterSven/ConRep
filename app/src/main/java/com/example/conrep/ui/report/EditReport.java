@@ -89,7 +89,7 @@ public class EditReport extends BaseActivity {
         report.setWorkerName(etReportName.getText().toString());
         report.setHours(Integer.parseInt(etReportHours.getText().toString()));
         LocalDateTime now = LocalDateTime.now();
-        report.setTaskReport(report.getTaskReport()); // todo set to chosen tasks
+        report.setTaskReport(report.getTaskReport());
         report.setDate(now.toString());
         report.setSiteReport(report.getSiteReport());
         report.setReportID(report.getReportID());

@@ -97,8 +97,6 @@ public class AddConstructionSite extends BaseActivity {
         conSite.setOverseer(etSiteOverseer.getText().toString());
         conSite.setHours(0);
 
-        // todo call insert function for construction site/partially done
-
         viewModel.createConstructionSite(conSite, new OnAsyncEventListener() {
             @Override
             public void onSuccess() {
