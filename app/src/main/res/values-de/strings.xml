@@ -32,7 +32,7 @@
     <string name="status_title">Status</string>
     <string name="overseer_title">Aufseher</string>
     <string name="image_title">Bild</string>
-    <string name="Construction_site_list">Baustelle</string>
+    <string name="Construction_site_list">Baustellen</string>
 
 
     <!--
@@ -99,6 +99,7 @@
     <string name="pref_language">pref_language</string>
     <string name="key_darkmode">key_darkmode</string>
     <string name="back_to_main_menu">Zurück zum Hauptmenu</string>
+    <string name="General">Generell</string>
 
     <string-array name="languages_array">
         <item>English</item>
