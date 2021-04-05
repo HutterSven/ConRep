@@ -14,16 +14,20 @@ import android.content.res.Resources;
 import android.os.Bundle;
 import android.util.DisplayMetrics;
 import android.view.View;
+import android.widget.Button;
 import android.widget.CompoundButton;
 import android.widget.Switch;
 import android.widget.Toast;
 
 import com.example.conrep.R;
 import com.example.conrep.ui.BaseActivity;
+import com.example.conrep.ui.MainActivity;
 
 import java.util.Locale;
 
 public class SettingsActivity extends BaseActivity {
+
+    Button btnBackToMainMenu;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,5 +35,14 @@ public class SettingsActivity extends BaseActivity {
         getLayoutInflater().inflate(R.layout.activity_settings, frameLayout);
 
         getSupportFragmentManager().beginTransaction().replace(R.id.idFrameLayout, new SettingsFragment()).commit();
+
+        btnBackToMainMenu = findViewById(R.id.btnBackToMainMenu);
+        btnBackToMainMenu.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                 Intent i = new Intent(SettingsActivity.this, MainActivity.class);
+                 startActivity(i);
+            }
+        });
     }
 }

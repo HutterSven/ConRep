@@ -22,9 +22,6 @@ import com.example.conrep.ui.actionBar.SettingsActivity;
 import java.util.Locale;
 
 public class BaseActivity extends AppCompatActivity{
-    public static final String PREFS_NAME = "SharedPrefs";
-    public static final String PREFS_USER = "LoggedIn";
-    private static final String KEY_PREF_LANGUAGE = String.valueOf(R.string.pref_language);
     /**
      *  Frame layout: Which is going to be used as parent layout for child activity layout.
      *  This layout is protected so that child activity can access this
@@ -35,8 +32,6 @@ public class BaseActivity extends AppCompatActivity{
      * Static variable for selected item position. Which can be used in child activity to know which item is selected from the list.
      */
     protected static int position;
-
-    public String languagePref_ID;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

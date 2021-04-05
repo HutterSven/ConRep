@@ -97,6 +97,7 @@
     <string name="key_language">key_language</string>
     <string name="pref_language">pref_language</string>
     <string name="key_darkmode">key_darkmode</string>
+    <string name="back_to_main_menu">Back to Main Menu</string>
 
     <string-array name="languages_array">
         <item>English</item>
