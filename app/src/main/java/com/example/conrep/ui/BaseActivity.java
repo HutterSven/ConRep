@@ -1,21 +1,30 @@
 package com.example.conrep.ui;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.app.AppCompatDelegate;
 import androidx.appcompat.widget.Toolbar;
+import androidx.preference.PreferenceManager;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
+import android.content.res.Configuration;
+import android.content.res.Resources;
 import android.os.Bundle;
+import android.util.DisplayMetrics;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.FrameLayout;
 
 import com.example.conrep.R;
 import com.example.conrep.ui.actionBar.About;
-import com.example.conrep.ui.actionBar.Settings;
+import com.example.conrep.ui.actionBar.SettingsActivity;
+
+import java.util.Locale;
 
 public class BaseActivity extends AppCompatActivity{
     public static final String PREFS_NAME = "SharedPrefs";
     public static final String PREFS_USER = "LoggedIn";
+    private static final String KEY_PREF_LANGUAGE = String.valueOf(R.string.key_language);
     /**
      *  Frame layout: Which is going to be used as parent layout for child activity layout.
      *  This layout is protected so that child activity can access this
@@ -27,9 +36,30 @@ public class BaseActivity extends AppCompatActivity{
      */
     protected static int position;
 
+    public String languagePref_ID;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        PreferenceManager.setDefaultValues(this, R.xml.prefrences, false);
+        SharedPreferences sharedPref = PreferenceManager.getDefaultSharedPreferences(this);
+        languagePref_ID = sharedPref.getString(KEY_PREF_LANGUAGE, "1");
+        switch (languagePref_ID) {
+            case "1":
+                Locale localeEN = new Locale("EN");
+                setLocaleOnCreate(localeEN);
+                break;
+            case "2":
+                Locale localeDE = new Locale("DE");
+                setLocaleOnCreate(localeDE);
+                break;
+        }
+        if (sharedPref.getBoolean("darkMode", false)) {
+            AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES);
+        }
+        else {
+            AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
+        }
         setContentView(R.layout.activity_base);
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
@@ -62,14 +92,24 @@ public class BaseActivity extends AppCompatActivity{
         // automatically handle clicks on the Home/Up button, so long
         // as you specify a parent activity in AndroidManifest.xml.
         if (item.getItemId() == R.id.settings) {
-            Intent intent = new Intent(this, Settings.class);
+            Intent intent = new Intent(this, SettingsActivity.class);
             startActivity(intent);
-        }else if (item.getItemId() == R.id.about) {
+        }else
+            if (item.getItemId() == R.id.about) {
             Intent intent = new Intent(this, About.class);
             startActivity(intent);
         }
 
         return super.onOptionsItemSelected(item);
+    }
+
+    public void setLocaleOnCreate(Locale locale) {
+        Locale.setDefault(locale);
+        Resources res = getResources();
+        DisplayMetrics dm = res.getDisplayMetrics();
+        Configuration conf = res.getConfiguration();
+        conf.locale = locale;
+        res.updateConfiguration(conf, dm);
     }
 
 }
