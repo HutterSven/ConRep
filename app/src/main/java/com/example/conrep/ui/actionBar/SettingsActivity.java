@@ -25,21 +25,11 @@ import java.util.Locale;
 
 public class SettingsActivity extends BaseActivity {
 
-    private static final String KEY_PREF_LANGUAGE = "pref_language";
-    public String languagePref_ID;
-    private SharedPreferences prefs;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         getLayoutInflater().inflate(R.layout.activity_settings, frameLayout);
 
-        SettingsFragment settings = new SettingsFragment();
-
-        prefs = PreferenceManager.getDefaultSharedPreferences(this);
-        settings.setPrefs(prefs);
-
-        getSupportFragmentManager().beginTransaction().replace(R.id.idFrameLayout, settings).commit();
+        getSupportFragmentManager().beginTransaction().replace(R.id.idFrameLayout, new SettingsFragment()).commit();
     }
-
 }
