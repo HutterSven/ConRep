@@ -10,7 +10,7 @@ import android.util.DisplayMetrics;
 import androidx.preference.ListPreference;
 import androidx.preference.Preference;
 import androidx.preference.PreferenceFragmentCompat;
-import androidx.preference.SwitchPreference;
+import androidx.preference.PreferenceManager;
 import androidx.preference.SwitchPreferenceCompat;
 
 import com.example.conrep.R;
@@ -23,21 +23,29 @@ public class SettingsFragment extends PreferenceFragmentCompat{
     private String setLang;
     private SharedPreferences prefs;
 
+    public SettingsFragment(){}
+
     @Override
     public void onCreatePreferences(Bundle savedInstanceState, String rootKey) {
         setPreferencesFromResource(R.xml.preferences, rootKey);
 
+        prefs = PreferenceManager.getDefaultSharedPreferences(getContext());
+
         SwitchPreferenceCompat sDarkMode = findPreference("key_darkmode");
-        setDarkModeActivated(prefs.getBoolean("key_darkmode", false));
+        darkModeActivated = prefs.getBoolean("key_darkmode", false);
+        setDarkModeActivated(darkModeActivated);
         sDarkMode.setChecked(darkModeActivated);
         sDarkMode.setOnPreferenceClickListener(new Preference.OnPreferenceClickListener() {
             @Override
             public boolean onPreferenceClick(Preference preference) {
                 boolean switched = ((SwitchPreferenceCompat) preference)
                         .isChecked();
-                boolean update = !switched;
-                setDarkMode(switched);
-
+                try {
+                    setDarkMode(switched);
+                } catch (Throwable throwable) {
+                    throwable.printStackTrace();
+                }
+                sDarkMode.setChecked(switched);
                 return true;
             }
         });
@@ -71,10 +79,6 @@ public class SettingsFragment extends PreferenceFragmentCompat{
         this.setLang = setLang;
     }
 
-    public void setPrefs(SharedPreferences prefs) {
-        this.prefs = prefs;
-    }
-
     public void setLocale(String lang) {
         Locale myLocale = new Locale(lang);
         Resources res = getResources();
@@ -83,14 +87,14 @@ public class SettingsFragment extends PreferenceFragmentCompat{
         conf.locale = myLocale;
         res.updateConfiguration(conf, dm);
         prefs.edit().putString("pref_language", lang);
-        Intent refresh = new Intent(getActivity(), getActivity().getClass());
+        Intent refresh = new Intent(getActivity(), SettingsActivity.class);
         getActivity().finish();
         startActivity(refresh);
     }
 
-    public void setDarkMode(boolean mode){
+    public void setDarkMode(boolean mode) throws Throwable {
         prefs.edit().putBoolean("key_darkmode", mode);
-        Intent refresh = new Intent(getActivity(), getActivity().getClass());
+        Intent refresh = new Intent(getActivity(), SettingsActivity.class);
         getActivity().finish();
         startActivity(refresh);
     }

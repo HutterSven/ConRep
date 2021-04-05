@@ -10,7 +10,6 @@
         android:id="@+id/linearLayout"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        android:background="#C9C9C9"
         android:orientation="vertical"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -23,8 +22,8 @@
             android:layout_height="40dp"
             android:layout_marginLeft="20dp"
             android:layout_marginTop="30dp"
-            android:layout_marginBottom="30dp"
             android:layout_marginRight="20dp"
+            android:layout_marginBottom="30dp"
             android:layout_weight="1"
             android:backgroundTint="@color/blue"
             android:text="@string/Construction_site_list"
@@ -36,13 +35,12 @@
             android:layout_height="wrap_content"
             android:layout_marginLeft="20dp"
             android:layout_marginTop="30dp"
-            android:layout_marginBottom="30dp"
             android:layout_marginRight="20dp"
+            android:layout_marginBottom="30dp"
             android:layout_weight="1"
             android:backgroundTint="@color/blue"
             android:text="@string/add_construction_site"
-            android:textSize="25sp"
-            />
+            android:textSize="25sp" />
 
         <Button
             android:id="@+id/btnReportList"
@@ -50,12 +48,11 @@
             android:layout_height="wrap_content"
             android:layout_marginLeft="20dp"
             android:layout_marginTop="30dp"
-            android:layout_marginBottom="30dp"
             android:layout_marginRight="20dp"
+            android:layout_marginBottom="30dp"
             android:layout_weight="1"
             android:backgroundTint="@color/blue"
             android:text="@string/reportlist"
-            android:textSize="25sp"
-            />
+            android:textSize="25sp" />
     </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -43,7 +43,7 @@ public class BaseActivity extends AppCompatActivity{
         super.onCreate(savedInstanceState);
         PreferenceManager.setDefaultValues(this, R.xml.preferences, false);
         SharedPreferences sharedPref = PreferenceManager.getDefaultSharedPreferences(this);
-        switch (KEY_PREF_LANGUAGE) {
+        switch (sharedPref.getString("pref_language", "EN")) {
             case "EN":
                 Locale localeEN = new Locale("EN");
                 setLocaleOnCreate(localeEN);
