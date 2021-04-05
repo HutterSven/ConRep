@@ -6,17 +6,8 @@
     <PreferenceCategory android:title="General">
 
         <!--in below line we are creating a list preference
-            and we are adding default selected value in list for 3 rd index-->
-        <!--dialog title is to set title for our dialog box
-            entries is used to add list of data which we
-            are adding from our strings file
-            entry values is to add values to our entries.
-            key is use to add key to our list preferences
-            summary is use to add description to our option
-            title is use to add title to our list preferences.-->
-        <!--this list preference is for remind me option-->
+            and we are adding default selected value in list for EN-->
         <ListPreference
-            android:id="@+id/lLang"
             android:defaultValue="EN"
             android:dialogTitle="@string/languages"
             android:entries="@array/languages_array"
@@ -29,10 +20,9 @@
             key is use to set key
             title is use to add title to our switch-->
         <!--this switch preference option is to remind for a bed time-->
-        <SwitchPreference
-            android:id="@+id/sDarkMode"
+        <SwitchPreferenceCompat
             android:defaultValue="false"
-            android:key="@string/darkmode"
+            android:key="@string/key_darkmode"
             android:title="@string/darkmode" />
 
     </PreferenceCategory>

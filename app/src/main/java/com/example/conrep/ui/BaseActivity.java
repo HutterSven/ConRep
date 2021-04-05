@@ -24,7 +24,7 @@ import java.util.Locale;
 public class BaseActivity extends AppCompatActivity{
     public static final String PREFS_NAME = "SharedPrefs";
     public static final String PREFS_USER = "LoggedIn";
-    private static final String KEY_PREF_LANGUAGE = String.valueOf(R.string.key_language);
+    private static final String KEY_PREF_LANGUAGE = String.valueOf(R.string.pref_language);
     /**
      *  Frame layout: Which is going to be used as parent layout for child activity layout.
      *  This layout is protected so that child activity can access this
@@ -41,20 +41,19 @@ public class BaseActivity extends AppCompatActivity{
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        PreferenceManager.setDefaultValues(this, R.xml.prefrences, false);
+        PreferenceManager.setDefaultValues(this, R.xml.preferences, false);
         SharedPreferences sharedPref = PreferenceManager.getDefaultSharedPreferences(this);
-        languagePref_ID = sharedPref.getString(KEY_PREF_LANGUAGE, "1");
-        switch (languagePref_ID) {
-            case "1":
+        switch (KEY_PREF_LANGUAGE) {
+            case "EN":
                 Locale localeEN = new Locale("EN");
                 setLocaleOnCreate(localeEN);
                 break;
-            case "2":
+            case "DE":
                 Locale localeDE = new Locale("DE");
                 setLocaleOnCreate(localeDE);
                 break;
         }
-        if (sharedPref.getBoolean("darkMode", false)) {
+        if (sharedPref.getBoolean("key_darkmode", false)) {
             AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES);
         }
         else {
