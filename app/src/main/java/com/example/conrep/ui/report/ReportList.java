@@ -75,6 +75,7 @@ public class ReportList extends BaseActivity {
         reportRecyclerAdapter = new ReportRecyclerAdapter(new RecyclerViewItemClickListener() {
             @Override
             public void onItemClick(View v, int position) {
+                //depending if a search was made or not we use reportsTemp list or Reports to find the right item, reportstemp is the searched list
                 Log.d(TAG, "clicked position:" + position);
                 if (reportsTemp.size() > 0) Log.d(TAG, "clicked on: " + reportsTemp.get(position).toString());
 
@@ -116,6 +117,7 @@ public class ReportList extends BaseActivity {
 
     public class searchSite implements View.OnClickListener {
 
+        //searchlogic
         ReportList reportList;
 
         public searchSite(ReportList reportList) {

@@ -87,7 +87,7 @@ public class EditTask extends BaseActivity {
         }
         task.setName(etTaskName.getText().toString());
         task.setDescription(etTaskDesc.getText().toString());
-        if (etTaskStat.getText().equals("open")){
+        if (etTaskStat.getText().toString().toLowerCase().contains("open".toLowerCase())){
             task.setStatus(true);
         }else{
             task.setStatus(false);

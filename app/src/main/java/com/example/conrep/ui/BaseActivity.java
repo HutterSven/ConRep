@@ -62,20 +62,8 @@ public class BaseActivity extends AppCompatActivity{
         setContentView(R.layout.activity_base);
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         frameLayout = findViewById(R.id.flContent);
-    }
-
-    @Override
-    protected void onResume() {
-        super.onResume();
-    }
-
-    @Override
-    public void onBackPressed() {
-        BaseActivity.position = 0;
-        super.onBackPressed();
     }
 
     @Override

@@ -4,10 +4,7 @@ import androidx.room.Entity;
 import androidx.room.ForeignKey;
 import androidx.room.PrimaryKey;
 
-import com.example.conrep.database.report.ReportEntity;
 import com.example.conrep.database.site.ConstructionSiteEntity;
-
-import java.util.Date;
 
 @Entity(foreignKeys = {@ForeignKey(entity = ConstructionSiteEntity.class,
         parentColumns = "siteID",

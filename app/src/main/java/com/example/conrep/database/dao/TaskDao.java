@@ -36,6 +36,7 @@ public interface TaskDao {
     @Query("DELETE FROM TaskEntity")
     void deleteAll();
 
+    //To change status of task when it is referenced by a report
     @Query("UPDATE TaskEntity SET STATUS = :status WHERE taskID = :taskID")
     void ChangeStatus(int taskID, boolean status);
 }

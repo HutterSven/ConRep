@@ -12,7 +12,6 @@ import com.example.conrep.database.site.ConstructionSiteEntity;
 import com.example.conrep.BaseApp;
 import com.example.conrep.ui.util.OnAsyncEventListener;
 
-import java.util.ArrayList;
 import java.util.List;
 
 

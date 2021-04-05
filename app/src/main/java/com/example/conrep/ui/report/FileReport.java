@@ -13,6 +13,7 @@ import androidx.recyclerview.widget.DividerItemDecoration;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.conrep.BaseApp;
 import com.example.conrep.R;
 import com.example.conrep.adapter.TaskRecyclerAdapter;
 import com.example.conrep.database.async.constructionSite.UpdateHours;
@@ -21,6 +22,7 @@ import com.example.conrep.database.async.task.ChangeStatus;
 import com.example.conrep.database.async.task.UpdateTask;
 import com.example.conrep.database.report.ReportEntity;
 import com.example.conrep.database.repository.ConstructionSiteRepository;
+import com.example.conrep.database.repository.ReportRepository;
 import com.example.conrep.database.repository.TaskRepository;
 import com.example.conrep.database.site.ConstructionSiteEntity;
 import com.example.conrep.database.task.TaskEntity;
@@ -146,10 +148,9 @@ public class FileReport extends BaseActivity {
         report.setSiteReport(siteID);
 
 
-        // todo call insert function for construction site //probably incorrect, if possible replace with viewModel createReport call
+        // inserting report
 
-
-        CreateReport cr = new CreateReport(getApplication(), new OnAsyncEventListener()
+        ((BaseApp)getApplication()).getReportRepository().insert(report, new OnAsyncEventListener()
         {
             @Override
             public void onSuccess() {
@@ -160,12 +161,12 @@ public class FileReport extends BaseActivity {
             public void onFailure(Exception e) {
                 Log.d(TAG, "createReport: failure", e);
             }
-        });
-        cr.execute(report);
+        }, getApplication());
 
         task.setTaskID(report.getTaskReport());
         task.setStatus(!task.isStatus());
 
+        //updating tasks reference to report
         TaskRepository.getInstance().changeStatus(task, new OnAsyncEventListener() {
             @Override
             public void onSuccess() {
@@ -180,7 +181,7 @@ public class FileReport extends BaseActivity {
 
         site.setHours(report.getHours());
         site.setSiteID(report.getSiteReport());
-
+        //adding hours (update) site
         ConstructionSiteRepository.getInstance().addHours(site, new OnAsyncEventListener() {
             @Override
             public void onSuccess() {

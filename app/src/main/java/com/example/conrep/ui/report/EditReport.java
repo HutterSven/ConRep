@@ -38,6 +38,7 @@ public class EditReport extends BaseActivity {
 
         initiateView();
 
+        //Get report to edit by id
         ReportViewModel.Factory factory = new ReportViewModel.Factory(
                 getApplication(), reportID);
         viewModel = ViewModelProviders.of(this, factory).get(ReportViewModel.class);

@@ -3,7 +3,6 @@ package com.example.conrep.database.async.constructionSite;
 import android.app.Application;
 import android.os.AsyncTask;
 
-import com.example.conrep.database.repository.ConstructionSiteRepository;
 import com.example.conrep.database.site.ConstructionSiteEntity;
 import com.example.conrep.BaseApp;
 import com.example.conrep.ui.util.OnAsyncEventListener;

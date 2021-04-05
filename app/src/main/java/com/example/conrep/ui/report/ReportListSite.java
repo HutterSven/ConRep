@@ -26,6 +26,7 @@ import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.List;
 
+//reportlist connected to only one site with only one search edit text to search for the workername
 public class ReportListSite extends BaseActivity {
 
     private static final String TAG = "ReportList";
@@ -73,6 +74,7 @@ public class ReportListSite extends BaseActivity {
         reportRecyclerAdapter = new ReportRecyclerAdapter(new RecyclerViewItemClickListener() {
             @Override
             public void onItemClick(View v, int position) {
+                //reportstemp is already filtered for the one site, therefor only one list reportsTemp is used since it is always filtered
                 Log.d(TAG, "clicked position:" + position);
                 Log.d(TAG, "clicked on: " + reportsTemp.get(position).toString());
 
@@ -117,7 +119,7 @@ public class ReportListSite extends BaseActivity {
 
         @Override
         public void onClick(View v) {
-
+            //searchlogic
             ReportEntity report;
 
             reportsTemp = new ArrayList<ReportEntity>();

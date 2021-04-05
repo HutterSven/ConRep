@@ -9,7 +9,6 @@ import com.example.conrep.database.DateTypeConverter;
 import com.example.conrep.database.site.ConstructionSiteEntity;
 import com.example.conrep.database.task.TaskEntity;
 
-import java.util.Date;
 
 @Entity(foreignKeys = {@ForeignKey(entity = ConstructionSiteEntity.class,
         parentColumns = "siteID",

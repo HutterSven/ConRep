@@ -5,6 +5,7 @@ import androidx.room.TypeConverter;
 import java.util.Date;
 import java.util.logging.Logger;
 
+//DateTypeConverter needed for DAO
 public class DateTypeConverter {
     private static Logger log = Logger.getLogger("DateTypeConverter");
     @TypeConverter

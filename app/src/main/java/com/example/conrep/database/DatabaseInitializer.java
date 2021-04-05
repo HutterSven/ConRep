@@ -18,7 +18,7 @@ public class DatabaseInitializer {
 
     public static void populateDatabase(final AppDatabase db) {
         Log.i(TAG, "Inserting demo data.");
-        PopulateDbAsync task = new PopulateDbAsync(db);    //PopulateDbAsync ist eine interne klasse die hier unten gemacht wird
+        PopulateDbAsync task = new PopulateDbAsync(db);
         task.execute();
     }
 
@@ -37,8 +37,6 @@ public class DatabaseInitializer {
 
     private static void populateWithTestData(AppDatabase db){
         Log.i(TAG, "populating.");
-        //resetten
-        db.constructionSiteDao().deleteAll();
 
         // TestSite
         ConstructionSiteEntity constructionSite = new ConstructionSiteEntity();
@@ -57,10 +55,6 @@ public class DatabaseInitializer {
             e.printStackTrace();
         }
 
-
-        //resetten
-        db.taskDao().deleteAll();
-
         //TestTask
         TaskEntity task = new TaskEntity();
         task.setTaskID(1);
@@ -77,9 +71,6 @@ public class DatabaseInitializer {
         } catch (InterruptedException e){
             e.printStackTrace();
         }
-
-        //resetten
-        db.reportDao().deleteAll();
 
         //TestReport
         ReportEntity report = new ReportEntity();

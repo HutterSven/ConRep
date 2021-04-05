@@ -33,7 +33,7 @@ public class DeleteReport extends BaseActivity {
         int reportID = getIntent().getIntExtra("reportID", 1);
 
         initiateView();
-
+        //Get report to delete by id, id gotten from viewReport intent
         ReportViewModel.Factory factory = new ReportViewModel.Factory(
                 getApplication(), reportID);
         viewModel = ViewModelProviders.of(this, factory).get(ReportViewModel.class);

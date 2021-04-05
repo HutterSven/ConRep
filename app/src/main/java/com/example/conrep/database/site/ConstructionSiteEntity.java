@@ -1,10 +1,7 @@
 package com.example.conrep.database.site;
 
 import androidx.room.Entity;
-import androidx.room.ForeignKey;
 import androidx.room.PrimaryKey;
-
-import com.example.conrep.database.task.TaskEntity;
 
 import java.io.Serializable;
 
