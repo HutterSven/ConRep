@@ -25,11 +25,10 @@
             android:parentActivityName=".ui.MainActivity" />
         <activity android:name=".ui.site.DeleteConstructionSite" />
         <activity
-            android:name=".ui.BaseActivity"
-            android:parentActivityName=".ui.MainActivity" />
+            android:name=".ui.BaseActivity" />
         <activity
             android:name=".ui.actionBar.About"
-            android:parentActivityName=".ui.MainActivity" /> <!-- <activity android:name=".ui.actionBar.Settings" android:parentActivityName=".ui.MainActivity"/> -->
+            android:parentActivityName=".ui.MainActivity" />
         <activity
             android:name=".ui.site.EditConstructionSite"
             android:parentActivityName=".ui.site.ViewConstructionSite" />
