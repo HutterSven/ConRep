@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "941652438541",
+    "project_id": "conrep-be5e5",
+    "storage_bucket": "conrep-be5e5.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:941652438541:android:198713c4f2b33c3a4bef44",
+        "android_client_info": {
+          "package_name": "com.example.conrep"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "941652438541-3ld2sh8ktarq00275rt17ts4c6q78nih.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAeFtXvBFnHFq4vQXqRug_shJ2EBF11twU"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "941652438541-3ld2sh8ktarq00275rt17ts4c6q78nih.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
