@@ -86,7 +86,7 @@ public class ConstructionSiteList extends BaseActivity {
             }
         });
 
-        ConstructionSiteListViewModel.Factory factory = new ConstructionSiteListViewModel.Factory(getApplication(), 0);
+        ConstructionSiteListViewModel.Factory factory = new ConstructionSiteListViewModel.Factory(getApplication());
         viewModel = ViewModelProviders.of(this, factory).get(ConstructionSiteListViewModel.class);
         viewModel.getSites().observe(this, ConstructionSiteEntities -> {
             if (ConstructionSiteEntities != null) {

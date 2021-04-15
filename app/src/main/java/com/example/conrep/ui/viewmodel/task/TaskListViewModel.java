@@ -54,13 +54,10 @@ public class TaskListViewModel extends AndroidViewModel {
         @NonNull
         private final Application application;
 
-        private int siteId;
-
         private final TaskRepository taskRepository;
 
-        public Factory(@NonNull Application application, int siteId) {
+        public Factory(@NonNull Application application) {
             this.application = application;
-            this.siteId = siteId;
             taskRepository = ((BaseApp) application).getTaskRepository();
         }
 
@@ -80,16 +77,5 @@ public class TaskListViewModel extends AndroidViewModel {
 
     public LiveData<List<TaskEntity>> getTasksBySite(String siteID) {
         return repository.getTasksBySite(siteID);
-    }
-
-    /**
-     * CHANGE!!!!!!!
-     */
-    public LiveData<List<TaskEntity>> getOwnAccounts() {
-        return observableTasks;
-    }
-
-    public void deleteAccount(TaskEntity account, OnAsyncEventListener callback) {
-        repository.delete(account, callback);
     }
 }

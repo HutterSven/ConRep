@@ -42,9 +42,10 @@ public class TaskRepository {
     }
 
     public LiveData<List<TaskEntity>> getTasksBySite(String siteID) {
-
-        // todo get reference of tasks with site id return new TaskListLiveData(reference);
-        return null;
+        DatabaseReference reference = FirebaseDatabase.getInstance()
+                .getReference("tasks")
+                .orderByChild("site").equalTo(siteID).getRef();
+        return new TaskListLiveData(reference);
     }
 
 

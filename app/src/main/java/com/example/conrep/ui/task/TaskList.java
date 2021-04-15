@@ -73,7 +73,7 @@ public class TaskList extends BaseActivity {
             }
         });
 
-        TaskListViewModel.Factory factory = new TaskListViewModel.Factory(getApplication(), 0);
+        TaskListViewModel.Factory factory = new TaskListViewModel.Factory(getApplication());
         viewModel = ViewModelProviders.of(this, factory).get(TaskListViewModel.class);
         viewModel.getTasksBySite(siteID).observe(this, TaskEntities -> {
             if (TaskEntities != null) {

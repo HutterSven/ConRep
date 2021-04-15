@@ -55,13 +55,10 @@ public class ConstructionSiteListViewModel extends AndroidViewModel {
         @NonNull
         private final Application application;
 
-        private int siteId;
-
         private final ConstructionSiteRepository siteRepository;
 
-        public Factory(@NonNull Application application, int siteId) {
+        public Factory(@NonNull Application application) {
             this.application = application;
-            this.siteId = siteId;
             siteRepository = ((BaseApp) application).getConstructionSiteRepository();
         }
 
@@ -77,16 +74,5 @@ public class ConstructionSiteListViewModel extends AndroidViewModel {
      */
     public LiveData<List<ConstructionSiteEntity>> getSites() {
         return observableSites;
-    }
-
-    /**
-     * CHANGE!!!!!!!
-     */
-    public LiveData<List<ConstructionSiteEntity>> getOwnAccounts() {
-        return observableSites;
-    }
-
-    public void deleteAccount(ConstructionSiteEntity account, OnAsyncEventListener callback) {
-        repository.delete(account, callback);
     }
 }
