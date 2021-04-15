@@ -62,6 +62,7 @@ public class ConstructionSiteRepository {
         return new ConstructionSiteListLiveData(reference);
     }
 
+    // todo ?????
     public List<ConstructionSiteEntity> getConstructionSitesNonLive() {
         return null;//((BaseApp) application).getDatabase().constructionSiteDao().getAllNonLive();
     }
