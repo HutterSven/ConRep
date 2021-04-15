@@ -29,7 +29,7 @@ public class DeleteReport extends BaseActivity {
         super.onCreate(savedInstanceState);
         getLayoutInflater().inflate(R.layout.activity_delete_construction_site, frameLayout);
 
-        int reportID = getIntent().getIntExtra("reportID", 1);
+        String reportID = getIntent().getStringExtra("reportID");
 
         initiateView();
         //Get report to delete by id, id gotten from viewReport intent

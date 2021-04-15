@@ -22,7 +22,7 @@ import java.util.Date;
 
 public class AddTask extends BaseActivity  {
 
-    private int siteID;
+    private String siteID;
     private String dateDeadLine;
 
     private static final String TAG = "AddTask";
@@ -41,7 +41,7 @@ public class AddTask extends BaseActivity  {
         super.onCreate(savedInstanceState);
         getLayoutInflater().inflate(R.layout.activity_add_task, frameLayout);
 
-        siteID = getIntent().getIntExtra("siteID", 1);
+        siteID = getIntent().getStringExtra("siteID");
 
         initiateView();
 
@@ -110,7 +110,7 @@ public class AddTask extends BaseActivity  {
             public void onFailure(Exception e) {
                 Log.d(TAG, "createTask: failure", e);
             }
-        }, getApplication());
+        });
 
         Intent intent = new Intent(this, ViewConstructionSite.class);
         intent.putExtra("siteID", siteID);

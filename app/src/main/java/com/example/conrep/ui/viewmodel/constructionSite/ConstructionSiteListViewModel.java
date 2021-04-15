@@ -41,7 +41,7 @@ public class ConstructionSiteListViewModel extends AndroidViewModel {
         observableConstructionSites.setValue(null);
         observableSites.setValue(null);
 
-        sites = ConstructionSiteRepository.getConstructionSites(application);
+        sites = ConstructionSiteRepository.getConstructionSites();
 
         // observe the changes of the entities from the database and forward them
         observableSites.addSource(sites, observableSites::setValue);
@@ -79,10 +79,6 @@ public class ConstructionSiteListViewModel extends AndroidViewModel {
         return observableSites;
     }
 
-    public synchronized List<ConstructionSiteEntity> getSitesNonLive() {
-        return repository.getConstructionSitesNonLive(application);
-    }
-
     /**
      * CHANGE!!!!!!!
      */
@@ -91,6 +87,6 @@ public class ConstructionSiteListViewModel extends AndroidViewModel {
     }
 
     public void deleteAccount(ConstructionSiteEntity account, OnAsyncEventListener callback) {
-        repository.delete(account, callback, application);
+        repository.delete(account, callback);
     }
 }

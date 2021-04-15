@@ -26,7 +26,7 @@ public class ConstructionSiteViewModel extends AndroidViewModel {
     private final MediatorLiveData<ConstructionSiteEntity> observableConstructionSite;
 
     public ConstructionSiteViewModel(@NonNull Application application,
-                         final int constructionSiteId, ConstructionSiteRepository constructionSiteRepository) {
+                         final String constructionSiteId, ConstructionSiteRepository constructionSiteRepository) {
         super(application);
 
         this.application = application;
@@ -37,24 +37,10 @@ public class ConstructionSiteViewModel extends AndroidViewModel {
         // set by default null, until we get data from the database.
         observableConstructionSite.setValue(null);
 
-        LiveData<ConstructionSiteEntity> constructionSite = repository.getConstructionSite(constructionSiteId, application);
+        LiveData<ConstructionSiteEntity> constructionSite = repository.getConstructionSite(constructionSiteId);
 
         // observe the changes of the constructionSite entity from the database and forward them
         observableConstructionSite.addSource(constructionSite, observableConstructionSite::setValue);
-    }
-
-    public ConstructionSiteViewModel(Application application, ConstructionSiteRepository constructionSiteRepository) {
-        super(application);
-
-        this.application = application;
-
-        repository = constructionSiteRepository;
-
-        observableConstructionSite = new MediatorLiveData<>();
-        // set by default null, until we get data from the database.
-        observableConstructionSite.setValue(null);
-
-        LiveData<ConstructionSiteEntity> constructionSite;
     }
 
     /**
@@ -65,25 +51,15 @@ public class ConstructionSiteViewModel extends AndroidViewModel {
         @NonNull
         private final Application application;
 
-        private String constructionSiteName;
-        private final int constructionSiteId;
+        private final String constructionSiteId;
 
         private final ConstructionSiteRepository repository;
 
-        public Factory(@NonNull Application application, int constructionSiteId) {
+        public Factory(@NonNull Application application, String constructionSiteId) {
             this.application = application;
             this.constructionSiteId = constructionSiteId;
             repository = ((BaseApp) application).getConstructionSiteRepository();
         }
-
-        public Factory(@NonNull Application application, String name) {
-            this.application = application;
-            this.constructionSiteName = name;
-            repository = ((BaseApp) application).getConstructionSiteRepository();
-            constructionSiteId = repository.getConstructionSiteNameNonLive(name, application).getSiteID();
-        }
-
-
 
         @Override
         public <T extends ViewModel> T create(Class<T> modelClass) {
@@ -95,32 +71,25 @@ public class ConstructionSiteViewModel extends AndroidViewModel {
     /**
      * Expose the LiveData ConstructionSiteEntity query so the UI can observe it.
      */
-    public LiveData<ConstructionSiteEntity> getConstructionSite(String name) {
-        return repository.getConstructionSiteByName(name, getApplication());
-    }
 
-    public LiveData<ConstructionSiteEntity> getConstructionSite(int id) {
-        return repository.getConstructionSite(id, getApplication());
+    public LiveData<ConstructionSiteEntity> getConstructionSite(String id) {
+        return repository.getConstructionSite(id);
     }
 
     public LiveData<List<ConstructionSiteEntity>> getConstructionSites() {
-        return repository.getConstructionSites(getApplication());
-    }
-
-    public int getID() {
-        return repository.ccs.siteID;
+        return repository.getConstructionSites();
     }
 
     public void createConstructionSite(ConstructionSiteEntity constructionSite, OnAsyncEventListener callback) {
-        repository.insert(constructionSite, callback, application);
+        repository.insert(constructionSite, callback);
     }
 
     public void updateConstructionSite(ConstructionSiteEntity constructionSite, OnAsyncEventListener callback) {
-        repository.update(constructionSite, callback, application);
+        repository.update(constructionSite, callback);
     }
 
     public void deleteConstructionSite(ConstructionSiteEntity constructionSite, OnAsyncEventListener callback) {
-        repository.delete(constructionSite, callback, application);
+        repository.delete(constructionSite, callback);
     }
 
 

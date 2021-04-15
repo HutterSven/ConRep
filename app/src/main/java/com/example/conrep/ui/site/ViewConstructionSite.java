@@ -42,13 +42,13 @@ public class ViewConstructionSite extends BaseActivity {
         super.onCreate(savedInstanceState);
         getLayoutInflater().inflate(R.layout.activity_view_construction_site, frameLayout);
 
-        int siteID = getIntent().getIntExtra("siteID", 1);
+        String siteID = getIntent().getStringExtra("siteID");
 
 
         initiateView();
 
         ConstructionSiteViewModel.Factory factory = new ConstructionSiteViewModel.Factory(
-                getApplication(), 0);
+                getApplication(), "");
         viewModel = ViewModelProviders.of(this, factory).get(ConstructionSiteViewModel.class);
         viewModel.getConstructionSite(siteID).observe(this, constructionSiteEntity -> {
             if (constructionSiteEntity != null) {

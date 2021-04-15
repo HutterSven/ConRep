@@ -29,7 +29,7 @@ public class TaskList extends BaseActivity {
     private TaskRecyclerAdapter taskRecyclerAdapter;
     private TaskListViewModel viewModel;
 
-    private int siteID;
+    private String siteID;
 
     private Bundle savedInstanceState;
 
@@ -42,7 +42,7 @@ public class TaskList extends BaseActivity {
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        siteID = getIntent().getIntExtra("siteID", 1);
+        siteID = getIntent().getStringExtra("siteID");
 
         setTitle("Task List");
 

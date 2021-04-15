@@ -26,14 +26,14 @@ public class EditConstructionSite extends BaseActivity {
     private EditText etSiteAddress;
     private EditText etSiteOverseer;
 
-    int siteID;
+    String siteID;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         getLayoutInflater().inflate(R.layout.activity_edit_construction_site, frameLayout);
 
-        siteID = getIntent().getIntExtra("siteID", 1);
+        siteID = getIntent().getStringExtra("siteID");
 
         initiateView();
 

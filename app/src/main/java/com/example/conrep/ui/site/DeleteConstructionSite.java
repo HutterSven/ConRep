@@ -28,7 +28,7 @@ public class DeleteConstructionSite extends BaseActivity {
         super.onCreate(savedInstanceState);
         getLayoutInflater().inflate(R.layout.activity_delete_construction_site, frameLayout);
 
-        int siteID = getIntent().getIntExtra("siteID", 1);
+        String siteID = getIntent().getStringExtra("siteID");
 
         initiateView();
 

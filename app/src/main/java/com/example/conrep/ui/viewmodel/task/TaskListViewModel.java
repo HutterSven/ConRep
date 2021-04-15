@@ -38,7 +38,7 @@ public class TaskListViewModel extends AndroidViewModel {
         // set by default null, until we get data from the database.
         observableTasks.setValue(null);
 
-        task = taskRepository.getTasks(application);
+        task = taskRepository.getTasks();
 
         // observe the changes of the entities from the database and forward them
         observableTasks.addSource(task, observableTasks::setValue);
@@ -79,7 +79,7 @@ public class TaskListViewModel extends AndroidViewModel {
     }
 
     public LiveData<List<TaskEntity>> getTasksBySite(String siteID) {
-        return repository.getTasksBySite(getApplication(), siteID);
+        return repository.getTasksBySite(siteID);
     }
 
     /**

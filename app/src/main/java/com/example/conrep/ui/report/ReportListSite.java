@@ -35,7 +35,7 @@ public class ReportListSite extends BaseActivity {
     private ReportRecyclerAdapter reportRecyclerAdapter;
     private ReportListViewModel viewModel;
 
-    private int siteID;
+    private String siteID;
 
     List<ReportEntity> reportsTemp;
 
@@ -52,7 +52,7 @@ public class ReportListSite extends BaseActivity {
 
         setTitle("Report List");
 
-        siteID = getIntent().getIntExtra("siteID", 1);
+        siteID = getIntent().getStringExtra("siteID");
 
         RecyclerView recyclerView = findViewById(R.id.reportRecyclerView);
 
@@ -92,7 +92,7 @@ public class ReportListSite extends BaseActivity {
             if (ReportEntities != null) {
                 Reports = ReportEntities;
                     for (ReportEntity reportTemp : Reports) {
-                        if (reportTemp.getSiteReport() == siteID) reportsTemp.add(reportTemp);
+                        if (reportTemp.getSiteReport().contains(siteID)) reportsTemp.add(reportTemp);
                     }
                     if (reportsTemp != null) reportRecyclerAdapter.setData(reportsTemp);
                 }
@@ -125,7 +125,7 @@ public class ReportListSite extends BaseActivity {
                 for (int i = 0; i < Reports.size(); i++) {
                     report = Reports.get(i);
                     if ((report.getWorkerName().toLowerCase().contains(etWorkerName.getText().toString().toLowerCase()) || etWorkerName.getText().toString().isEmpty()) &&
-                            siteID == report.getSiteReport()) {
+                            siteID.contains(report.getSiteReport())) {
                         reportsTemp.add(report);
                     }
                 }

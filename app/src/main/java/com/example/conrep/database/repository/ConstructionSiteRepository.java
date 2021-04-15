@@ -4,10 +4,6 @@ import android.app.Application;
 
 import androidx.lifecycle.LiveData;
 
-import com.example.conrep.database.async.constructionSite.CreateConstructionSite;
-import com.example.conrep.database.async.constructionSite.DeleteConstructionSite;
-import com.example.conrep.database.async.constructionSite.UpdateConstructionSite;
-import com.example.conrep.database.async.constructionSite.UpdateHours;
 import com.example.conrep.database.entity.ConstructionSiteEntity;
 import com.example.conrep.BaseApp;
 import com.example.conrep.database.firebase.ConstructionSiteListLiveData;
@@ -22,7 +18,6 @@ import java.util.List;
 public class ConstructionSiteRepository {
 
     private static ConstructionSiteRepository instance;
-    public CreateConstructionSite ccs;
 
     public ConstructionSiteRepository() {
 
@@ -46,25 +41,10 @@ public class ConstructionSiteRepository {
         return new ConstructionSiteLiveData(reference);
     }
 
-    // todo ?????
-    public ConstructionSiteEntity getConstructionSiteNameNonLive(final String name) {
-        return null;//.getDatabase().constructionSiteDao().getByIdNonLive(name);
-    }
-
-    //todo how
-    public LiveData<ConstructionSiteEntity> getConstructionSiteByName(String name) {
-        return null;//((BaseApp) application).getDatabase().constructionSiteDao().getByName(name);
-    }
-
     public static LiveData<List<ConstructionSiteEntity>> getConstructionSites() {
         DatabaseReference reference = FirebaseDatabase.getInstance()
                 .getReference("constructionSites");
         return new ConstructionSiteListLiveData(reference);
-    }
-
-    // todo ?????
-    public List<ConstructionSiteEntity> getConstructionSitesNonLive() {
-        return null;//((BaseApp) application).getDatabase().constructionSiteDao().getAllNonLive();
     }
 
     public void insert(final ConstructionSiteEntity constructionSite, OnAsyncEventListener callback) {

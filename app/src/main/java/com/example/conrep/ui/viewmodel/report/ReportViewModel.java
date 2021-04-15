@@ -24,7 +24,7 @@ public class ReportViewModel extends AndroidViewModel {
     private final MediatorLiveData<ReportEntity> observableReport;
 
     public ReportViewModel(@NonNull Application application,
-                            final int reportId, ReportRepository reportRepository) {
+                            final String reportId, ReportRepository reportRepository) {
         super(application);
 
         this.application = application;
@@ -35,7 +35,7 @@ public class ReportViewModel extends AndroidViewModel {
         // set by default null, until we get data from the database.
         observableReport.setValue(null);
 
-        LiveData<ReportEntity> report = repository.getReport(reportId, application);
+        LiveData<ReportEntity> report = repository.getReport(reportId);
 
         // observe the changes of the report entity from the database and forward them
         observableReport.addSource(report, observableReport::setValue);
@@ -49,11 +49,11 @@ public class ReportViewModel extends AndroidViewModel {
         @NonNull
         private final Application application;
 
-        private final int reportId;
+        private final String reportId;
 
         private final ReportRepository repository;
 
-        public Factory(@NonNull Application application, int reportId) {
+        public Factory(@NonNull Application application, String reportId) {
             this.application = application;
             this.reportId = reportId;
             repository = ((BaseApp) application).getReportRepository();
@@ -69,20 +69,20 @@ public class ReportViewModel extends AndroidViewModel {
     /**
      * Expose the LiveData ReportEntity query so the UI can observe it.
      */
-    public LiveData<ReportEntity> getReport(int reportID) {
-        return repository.getReport(reportID, application);
+    public LiveData<ReportEntity> getReport(String reportID) {
+        return repository.getReport(reportID);
     }
 
     public void createReport(ReportEntity report, OnAsyncEventListener callback) {
-        repository.insert(report, callback, application);
+        repository.insert(report, callback);
     }
 
     public void updateReport(ReportEntity report, OnAsyncEventListener callback) {
-        repository.update(report, callback, application);
+        repository.update(report, callback);
     }
 
     public void deleteReport(ReportEntity report, OnAsyncEventListener callback) {
-        repository.delete(report, callback, application);
+        repository.delete(report, callback);
     }
 
 

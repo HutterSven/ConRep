@@ -32,7 +32,7 @@ public class EditReport extends BaseActivity {
         super.onCreate(savedInstanceState);
         getLayoutInflater().inflate(R.layout.activity_edit_report, frameLayout);
 
-        int reportID = getIntent().getIntExtra("reportID", 1);
+        String reportID = getIntent().getStringExtra("reportID");
 
         initiateView();
 

@@ -56,7 +56,7 @@ public class AddConstructionSite extends BaseActivity {
         });
 
         ConstructionSiteViewModel.Factory factory = new ConstructionSiteViewModel.Factory(
-                getApplication(), 0);
+                getApplication(), "");
 
         viewModel = ViewModelProviders.of(this, factory).get(ConstructionSiteViewModel.class);
     }
@@ -102,8 +102,6 @@ public class AddConstructionSite extends BaseActivity {
         });
 
         Intent intent = new Intent(this, ConstructionSiteList.class);
-        intent.putExtra("siteID", viewModel.getID());
-        intent.putExtra("siteName", conSite.getSiteName());
         startActivity(intent);
     }
 }

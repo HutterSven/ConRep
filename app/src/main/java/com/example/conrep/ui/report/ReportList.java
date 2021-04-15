@@ -137,12 +137,10 @@ public class ReportList extends BaseActivity {
                 }
 
 
-
-
             for (int i = 0; i < Reports.size(); i++) {
                 report = Reports.get(i);
-                if (report.getWorkerName().toLowerCase().contains(etWorkerName.getText().toString().toLowerCase()) &&
-                        (Integer.parseInt(etSiteID.getText().toString()) == report.getSiteReport() || etSiteID.getText().toString().isEmpty())) {
+                if ((report.getWorkerName().toLowerCase().contains(etWorkerName.getText().toString().toLowerCase()) || etWorkerName.getText().toString().isEmpty()) &&
+                        (report.getSiteReport().toLowerCase().contains(etSiteID.getText().toString())|| etSiteID.getText().toString().isEmpty())) {
                     reportsTemp.add(report);
                 }
             }
@@ -153,6 +151,8 @@ public class ReportList extends BaseActivity {
                 reportRecyclerAdapter.notifyDataSetChanged();
             }
         }
+
+
     }
 
 }
