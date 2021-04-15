@@ -9,7 +9,7 @@ import android.widget.Button;
 import android.widget.EditText;
 
 import com.example.conrep.R;
-import com.example.conrep.database.task.TaskEntity;
+import com.example.conrep.database.entity.TaskEntity;
 import com.example.conrep.ui.BaseActivity;
 import com.example.conrep.ui.util.OnAsyncEventListener;
 import com.example.conrep.ui.viewmodel.task.TaskViewModel;
@@ -24,14 +24,14 @@ public class EditTask extends BaseActivity {
     private EditText etTaskName;
     private EditText etTaskDesc;
     private EditText etTaskStat;
-    private int taskID;
+    private String taskID;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         getLayoutInflater().inflate(R.layout.activity_edit_task, frameLayout);
 
-        taskID = getIntent().getIntExtra("taskID", 1);
+        taskID = getIntent().getStringExtra("taskID");
 
         initiateView();
 

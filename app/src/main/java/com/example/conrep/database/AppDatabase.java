@@ -15,9 +15,9 @@ import androidx.sqlite.db.SupportSQLiteDatabase;
 import com.example.conrep.database.dao.ConstructionSiteDao;
 import com.example.conrep.database.dao.ReportDao;
 import com.example.conrep.database.dao.TaskDao;
-import com.example.conrep.database.report.ReportEntity;
-import com.example.conrep.database.site.ConstructionSiteEntity;
-import com.example.conrep.database.task.TaskEntity;
+import com.example.conrep.database.entity.ReportEntity;
+import com.example.conrep.database.entity.ConstructionSiteEntity;
+import com.example.conrep.database.entity.TaskEntity;
 
 import java.util.concurrent.Executors;
 

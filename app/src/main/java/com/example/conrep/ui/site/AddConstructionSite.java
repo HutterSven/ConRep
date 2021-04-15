@@ -1,26 +1,18 @@
 package com.example.conrep.ui.site;
 
-import android.app.Application;
 import android.content.Intent;
 import android.os.Bundle;
-import android.os.Parcelable;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.Toast;
 
-import androidx.appcompat.app.AppCompatActivity;
 import androidx.lifecycle.ViewModelProviders;
 
-import com.example.conrep.BaseApp;
 import com.example.conrep.R;
-import com.example.conrep.database.async.constructionSite.CreateConstructionSite;
-import com.example.conrep.database.site.ConstructionSiteEntity;
+import com.example.conrep.database.entity.ConstructionSiteEntity;
 import com.example.conrep.ui.BaseActivity;
 import com.example.conrep.ui.util.OnAsyncEventListener;
 import com.example.conrep.ui.viewmodel.constructionSite.ConstructionSiteViewModel;
-import com.example.conrep.ui.viewmodel.report.ReportViewModel;
 
 public class AddConstructionSite extends BaseActivity {
 

@@ -1,7 +1,6 @@
 package com.example.conrep.ui.report;
 
 import androidx.annotation.Nullable;
-import androidx.appcompat.app.AppCompatActivity;
 import androidx.lifecycle.ViewModelProviders;
 
 import android.os.Bundle;
@@ -9,7 +8,7 @@ import android.util.Log;
 import android.widget.TextView;
 
 import com.example.conrep.R;
-import com.example.conrep.database.report.ReportEntity;
+import com.example.conrep.database.entity.ReportEntity;
 import com.example.conrep.ui.BaseActivity;
 import com.example.conrep.ui.viewmodel.report.ReportViewModel;
 

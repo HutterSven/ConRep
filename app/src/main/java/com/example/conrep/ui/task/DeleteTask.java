@@ -1,7 +1,6 @@
 package com.example.conrep.ui.task;
 
 import androidx.annotation.Nullable;
-import androidx.appcompat.app.AppCompatActivity;
 import androidx.lifecycle.ViewModelProviders;
 
 import android.os.Bundle;
@@ -9,7 +8,7 @@ import android.util.Log;
 import android.widget.TextView;
 
 import com.example.conrep.R;
-import com.example.conrep.database.task.TaskEntity;
+import com.example.conrep.database.entity.TaskEntity;
 import com.example.conrep.ui.BaseActivity;
 import com.example.conrep.ui.viewmodel.task.TaskViewModel;
 
@@ -29,7 +28,7 @@ public class DeleteTask extends BaseActivity {
         super.onCreate(savedInstanceState);
         getLayoutInflater().inflate(R.layout.activity_delete_task, frameLayout);
 
-        int taskID = getIntent().getIntExtra("taskID", 1);
+        String taskID = getIntent().getStringExtra("taskID");
 
         initiateView();
 

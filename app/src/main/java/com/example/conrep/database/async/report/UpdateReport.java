@@ -3,7 +3,7 @@ package com.example.conrep.database.async.report;
 import android.app.Application;
 import android.os.AsyncTask;
 
-import com.example.conrep.database.report.ReportEntity;
+import com.example.conrep.database.entity.ReportEntity;
 import com.example.conrep.BaseApp;
 import com.example.conrep.ui.util.OnAsyncEventListener;
 

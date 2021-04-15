@@ -9,13 +9,11 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
-import android.view.Menu;
-import android.view.MenuItem;
 import android.view.View;
 
 import com.example.conrep.R;
 import com.example.conrep.adapter.TaskRecyclerAdapter;
-import com.example.conrep.database.task.TaskEntity;
+import com.example.conrep.database.entity.TaskEntity;
 import com.example.conrep.ui.BaseActivity;
 import com.example.conrep.ui.util.RecyclerViewItemClickListener;
 import com.example.conrep.ui.viewmodel.task.TaskListViewModel;

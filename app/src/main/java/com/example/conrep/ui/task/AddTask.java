@@ -8,26 +8,16 @@ import android.widget.CalendarView;
 import android.widget.EditText;
 
 import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.lifecycle.ViewModelProviders;
 
 import com.example.conrep.R;
-import com.example.conrep.database.async.report.CreateReport;
-import com.example.conrep.database.async.task.CreateTask;
-import com.example.conrep.database.report.ReportEntity;
 import com.example.conrep.database.repository.TaskRepository;
-import com.example.conrep.database.task.TaskEntity;
+import com.example.conrep.database.entity.TaskEntity;
 import com.example.conrep.ui.BaseActivity;
-import com.example.conrep.ui.report.ReportList;
-import com.example.conrep.ui.report.ViewReport;
 import com.example.conrep.ui.site.ViewConstructionSite;
 import com.example.conrep.ui.util.OnAsyncEventListener;
-import com.example.conrep.ui.viewmodel.report.ReportViewModel;
 import com.example.conrep.ui.viewmodel.task.TaskViewModel;
 
 import java.text.SimpleDateFormat;
-import java.time.LocalDateTime;
-import java.time.format.DateTimeFormatter;
 import java.util.Date;
 
 public class AddTask extends BaseActivity  {

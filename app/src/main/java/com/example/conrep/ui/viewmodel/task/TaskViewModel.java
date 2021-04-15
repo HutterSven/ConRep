@@ -10,7 +10,7 @@ import androidx.lifecycle.ViewModel;
 import androidx.lifecycle.ViewModelProvider;
 
 import com.example.conrep.database.repository.TaskRepository;
-import com.example.conrep.database.task.TaskEntity;
+import com.example.conrep.database.entity.TaskEntity;
 import com.example.conrep.BaseApp;
 import com.example.conrep.ui.util.OnAsyncEventListener;
 
@@ -24,7 +24,7 @@ public class TaskViewModel extends AndroidViewModel {
     private final MediatorLiveData<TaskEntity> observableTask;
 
     public TaskViewModel(@NonNull Application application,
-                         final int taskId, TaskRepository taskRepository) {
+                         final String taskId, TaskRepository taskRepository) {
         super(application);
 
         this.application = application;
@@ -35,7 +35,7 @@ public class TaskViewModel extends AndroidViewModel {
         // set by default null, until we get data from the database.
         observableTask.setValue(null);
 
-        LiveData<TaskEntity> task = repository.getTask(taskId, application);
+        LiveData<TaskEntity> task = repository.getTask(taskId);
 
         // observe the changes of the task entity from the database and forward them
         observableTask.addSource(task, observableTask::setValue);
@@ -49,11 +49,11 @@ public class TaskViewModel extends AndroidViewModel {
         @NonNull
         private final Application application;
 
-        private final int taskId;
+        private final String taskId;
 
         private final TaskRepository repository;
 
-        public Factory(@NonNull Application application, int taskId) {
+        public Factory(@NonNull Application application, String taskId) {
             this.application = application;
             this.taskId = taskId;
             repository = ((BaseApp) application).getTaskRepository();
@@ -69,20 +69,20 @@ public class TaskViewModel extends AndroidViewModel {
     /**
      * Expose the LiveData TaskEntity query so the UI can observe it.
      */
-    public LiveData<TaskEntity> getTask(int taskID) {
-        return repository.getTask(taskID, application);
+    public LiveData<TaskEntity> getTask(String taskID) {
+        return repository.getTask(taskID);
     }
 
     public void createTask(TaskEntity task, OnAsyncEventListener callback) {
-        repository.insert(task, callback, application);
+        repository.insert(task, callback);
     }
 
     public void updateTask(TaskEntity task, OnAsyncEventListener callback) {
-        repository.update(task, callback, application);
+        repository.update(task, callback);
     }
 
     public void deleteTask(TaskEntity task, OnAsyncEventListener callback) {
-        repository.delete(task, callback, application);
+        repository.delete(task, callback);
     }
 
 

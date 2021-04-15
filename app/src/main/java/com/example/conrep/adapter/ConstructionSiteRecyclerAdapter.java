@@ -8,7 +8,7 @@ import androidx.recyclerview.widget.DiffUtil;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.conrep.R;
-import com.example.conrep.database.site.ConstructionSiteEntity;
+import com.example.conrep.database.entity.ConstructionSiteEntity;
 import com.example.conrep.ui.util.RecyclerViewItemClickListener;
 
 import java.util.List;

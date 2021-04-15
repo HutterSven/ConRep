@@ -10,10 +10,10 @@ import androidx.lifecycle.ViewModel;
 import androidx.lifecycle.ViewModelProvider;
 
 import com.example.conrep.BaseApp;
-import com.example.conrep.database.report.ReportEntity;
+import com.example.conrep.database.entity.ReportEntity;
 import com.example.conrep.database.repository.ConstructionSiteRepository;
 import com.example.conrep.database.repository.ReportRepository;
-import com.example.conrep.database.site.ConstructionSiteEntity;
+import com.example.conrep.database.entity.ConstructionSiteEntity;
 import com.example.conrep.ui.util.OnAsyncEventListener;
 
 import java.util.List;
@@ -45,7 +45,7 @@ public class ReportListViewModel extends AndroidViewModel {
         observableConstructionSites.setValue(null);
         observableReports.setValue(null);
 
-        reports = reportRepository.getReports(application);
+        reports = reportRepository.getReports();
 
         // observe the changes of the entities from the database and forward them
         observableReports.addSource(reports, observableReports::setValue);
@@ -86,15 +86,6 @@ public class ReportListViewModel extends AndroidViewModel {
         return observableReports;
     }
 
-    public LiveData<List<ReportEntity>> getReportsBySite(int siteID) {
-        reports = repository.getReportsBySite(getApplication(), siteID);
-        return observableReports;
-    }
-
-    public LiveData<List<ReportEntity>> getReportsByName(String name) {
-        reports = repository.getReportsByName(getApplication(), name);
-        return observableReports;
-    }
 
     /**
      * CHANGE!!!!!!!
@@ -104,6 +95,6 @@ public class ReportListViewModel extends AndroidViewModel {
     }
 
     public void deleteAccount(ReportEntity account, OnAsyncEventListener callback) {
-        repository.delete(account, callback, application);
+        repository.delete(account, callback);
     }
 }

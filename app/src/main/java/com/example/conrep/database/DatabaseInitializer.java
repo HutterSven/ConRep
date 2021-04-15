@@ -3,14 +3,9 @@ package com.example.conrep.database;
 import android.os.AsyncTask;
 import android.util.Log;
 
-import com.example.conrep.database.report.ReportEntity;
-import com.example.conrep.database.site.ConstructionSiteEntity;
-import com.example.conrep.database.task.TaskEntity;
-
-import java.sql.Timestamp;
-import java.text.DateFormat;
-import java.time.LocalDate;
-import java.util.Date;
+import com.example.conrep.database.entity.ReportEntity;
+import com.example.conrep.database.entity.ConstructionSiteEntity;
+import com.example.conrep.database.entity.TaskEntity;
 
 public class DatabaseInitializer {
 

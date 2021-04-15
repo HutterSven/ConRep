@@ -4,7 +4,7 @@ import android.app.Application;
 import android.os.AsyncTask;
 
 import com.example.conrep.BaseApp;
-import com.example.conrep.database.site.ConstructionSiteEntity;
+import com.example.conrep.database.entity.ConstructionSiteEntity;
 import com.example.conrep.ui.util.OnAsyncEventListener;
 
 

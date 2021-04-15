@@ -11,15 +11,12 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.Button;
-import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.conrep.R;
-import com.example.conrep.database.async.report.DeleteReport;
-import com.example.conrep.database.report.ReportEntity;
+import com.example.conrep.database.entity.ReportEntity;
 import com.example.conrep.ui.BaseActivity;
-import com.example.conrep.ui.site.ConstructionSiteList;
 import com.example.conrep.ui.site.ViewConstructionSite;
 import com.example.conrep.ui.util.OnAsyncEventListener;
 import com.example.conrep.ui.viewmodel.report.ReportViewModel;

@@ -16,20 +16,13 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.conrep.BaseApp;
 import com.example.conrep.R;
 import com.example.conrep.adapter.TaskRecyclerAdapter;
-import com.example.conrep.database.async.constructionSite.UpdateHours;
-import com.example.conrep.database.async.report.CreateReport;
-import com.example.conrep.database.async.task.ChangeStatus;
-import com.example.conrep.database.async.task.UpdateTask;
-import com.example.conrep.database.report.ReportEntity;
+import com.example.conrep.database.entity.ReportEntity;
 import com.example.conrep.database.repository.ConstructionSiteRepository;
-import com.example.conrep.database.repository.ReportRepository;
 import com.example.conrep.database.repository.TaskRepository;
-import com.example.conrep.database.site.ConstructionSiteEntity;
-import com.example.conrep.database.task.TaskEntity;
+import com.example.conrep.database.entity.ConstructionSiteEntity;
+import com.example.conrep.database.entity.TaskEntity;
 import com.example.conrep.ui.BaseActivity;
 import com.example.conrep.ui.site.ViewConstructionSite;
-import com.example.conrep.ui.task.TaskList;
-import com.example.conrep.ui.task.ViewTask;
 import com.example.conrep.ui.util.OnAsyncEventListener;
 import com.example.conrep.ui.util.RecyclerViewItemClickListener;
 import com.example.conrep.ui.viewmodel.report.ReportViewModel;
@@ -41,8 +34,7 @@ import java.util.List;
 
 public class FileReport extends BaseActivity {
 
-    private int siteID;
-    private int reportID;
+    private String siteID;
 
     private static final String TAG = "FileReport";
 
@@ -59,14 +51,12 @@ public class FileReport extends BaseActivity {
     private TaskRecyclerAdapter taskRecyclerAdapter;
     private TaskListViewModel viewModelTask;
 
-    private Bundle savedInstanceState;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         getLayoutInflater().inflate(R.layout.activity_file_report, frameLayout);
 
-        siteID = getIntent().getIntExtra("siteID", 1);
+        siteID = getIntent().getStringExtra("siteID");
 
         initiateView();
 
@@ -161,7 +151,7 @@ public class FileReport extends BaseActivity {
             public void onFailure(Exception e) {
                 Log.d(TAG, "createReport: failure", e);
             }
-        }, getApplication());
+        });
 
         task.setTaskID(report.getTaskReport());
         task.setStatus(!task.isStatus());
@@ -182,7 +172,7 @@ public class FileReport extends BaseActivity {
         site.setHours(report.getHours());
         site.setSiteID(report.getSiteReport());
         //adding hours (update) site
-        ConstructionSiteRepository.getInstance().addHours(site, new OnAsyncEventListener() {
+        ConstructionSiteRepository.getInstance().update(site, new OnAsyncEventListener() {
             @Override
             public void onSuccess() {
                 Log.d(TAG, "updateHours: success");
@@ -192,7 +182,7 @@ public class FileReport extends BaseActivity {
             public void onFailure(Exception e) {
                 Log.d(TAG, "updateHours: failure", e);
             }
-        }, getApplication());
+        });
 
         Intent intent = new Intent(this, ViewConstructionSite.class);
         intent.putExtra("siteID", siteID);

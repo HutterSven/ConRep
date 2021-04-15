@@ -15,9 +15,8 @@ import androidx.appcompat.app.AlertDialog;
 import androidx.lifecycle.ViewModelProviders;
 
 import com.example.conrep.R;
-import com.example.conrep.database.task.TaskEntity;
+import com.example.conrep.database.entity.TaskEntity;
 import com.example.conrep.ui.BaseActivity;
-import com.example.conrep.ui.site.ConstructionSiteList;
 import com.example.conrep.ui.site.ViewConstructionSite;
 import com.example.conrep.ui.util.OnAsyncEventListener;
 import com.example.conrep.ui.viewmodel.task.TaskViewModel;
@@ -32,7 +31,7 @@ public class ViewTask extends BaseActivity {
     private TextView tvDescription;
     private TextView tvStatus;
     private TextView tvDeadline;
-    private int taskID;
+    private String taskID;
 
 
 
@@ -41,7 +40,7 @@ public class ViewTask extends BaseActivity {
         super.onCreate(savedInstanceState);
         getLayoutInflater().inflate(R.layout.activity_view_task, frameLayout);
 
-        taskID = getIntent().getIntExtra("taskID", 1);
+        taskID = getIntent().getStringExtra("taskID");
 
         initiateView();
 

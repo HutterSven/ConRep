@@ -1,6 +1,5 @@
 package com.example.conrep.ui.report;
 
-import androidx.appcompat.app.AppCompatActivity;
 import androidx.lifecycle.ViewModelProviders;
 
 import android.content.Intent;
@@ -10,8 +9,7 @@ import android.widget.Button;
 import android.widget.EditText;
 
 import com.example.conrep.R;
-import com.example.conrep.database.async.report.CreateReport;
-import com.example.conrep.database.report.ReportEntity;
+import com.example.conrep.database.entity.ReportEntity;
 import com.example.conrep.ui.BaseActivity;
 import com.example.conrep.ui.util.OnAsyncEventListener;
 import com.example.conrep.ui.viewmodel.report.ReportViewModel;

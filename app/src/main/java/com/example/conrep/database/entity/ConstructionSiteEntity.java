@@ -1,26 +1,26 @@
-package com.example.conrep.database.site;
+package com.example.conrep.database.entity;
 
-import androidx.room.Entity;
-import androidx.room.PrimaryKey;
+import com.google.firebase.database.Exclude;
 
 import java.io.Serializable;
+import java.util.HashMap;
+import java.util.Map;
 
-@Entity
 public class ConstructionSiteEntity implements Serializable {
 
-    @PrimaryKey(autoGenerate = true)
-    private int siteID;
+    private String siteID;
     private String siteName;
     private String city;
     private String address;
     private String overseer;
     private int hours;
 
-    public int getSiteID() {
+    @Exclude
+    public String getSiteID() {
         return siteID;
     }
 
-    public void setSiteID(int siteID) {
+    public void setSiteID(String siteID) {
         this.siteID = siteID;
     }
 
@@ -64,4 +64,15 @@ public class ConstructionSiteEntity implements Serializable {
         this.hours = hours;
     }
 
+    @Exclude
+    public Map<String, Object> toMap() {
+        HashMap<String, Object> result = new HashMap<>();
+        result.put("siteID", siteID);
+        result.put("siteName", siteName);
+        result.put("city", city);
+        result.put("address", address);
+        result.put("overseer", overseer);
+        result.put("hours", hours);
+        return result;
+    }
 }

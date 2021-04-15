@@ -1,21 +1,18 @@
-package com.example.conrep.database.task;
+package com.example.conrep.database.entity;
 
-import androidx.room.Entity;
-import androidx.room.ForeignKey;
-import androidx.room.PrimaryKey;
+import com.google.firebase.database.Exclude;
 
-import com.example.conrep.database.site.ConstructionSiteEntity;
+import java.util.HashMap;
+import java.util.Map;
 
-@Entity(foreignKeys = {@ForeignKey(entity = ConstructionSiteEntity.class,
-        parentColumns = "siteID",
-        childColumns = "siteTask",
-        onDelete = ForeignKey.CASCADE)})
 public class TaskEntity {
-    public int getTaskID() {
+
+    @Exclude
+    public String getTaskID() {
         return taskID;
     }
 
-    public void setTaskID(int taskID) {
+    public void setTaskID(String taskID) {
         this.taskID = taskID;
     }
 
@@ -51,21 +48,31 @@ public class TaskEntity {
         this.status = status;
     }
 
-    public int getSiteTask() {
+    public String getSiteTask() {
         return siteTask;
     }
 
-    public void setSiteTask(int siteTask) {
+    public void setSiteTask(String siteTask) {
         this.siteTask = siteTask;
     }
 
-
-    @PrimaryKey(autoGenerate = true)
-    private int taskID;
+    private String taskID;
     private String name;
     private String description;
     private String deadline;
     private boolean status;
-    private int siteTask;
+    private String siteTask;
+
+    @Exclude
+    public Map<String, Object> toMap() {
+        HashMap<String, Object> result = new HashMap<>();
+        result.put("taskID", taskID);
+        result.put("name", name);
+        result.put("description", description);
+        result.put("deadline", deadline);
+        result.put("status", status);
+        result.put("siteTask", siteTask);
+        return result;
+    }
 
 }

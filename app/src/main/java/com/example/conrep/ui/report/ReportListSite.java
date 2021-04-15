@@ -3,8 +3,6 @@ package com.example.conrep.ui.report;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
-import android.view.Menu;
-import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -17,12 +15,11 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.conrep.R;
 import com.example.conrep.adapter.ReportRecyclerAdapter;
-import com.example.conrep.database.report.ReportEntity;
+import com.example.conrep.database.entity.ReportEntity;
 import com.example.conrep.ui.BaseActivity;
 import com.example.conrep.ui.util.RecyclerViewItemClickListener;
 import com.example.conrep.ui.viewmodel.report.ReportListViewModel;
 
-import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.List;
 

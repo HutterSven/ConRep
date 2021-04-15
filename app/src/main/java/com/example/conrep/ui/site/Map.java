@@ -1,27 +1,15 @@
 package com.example.conrep.ui.site;
 
 import android.content.Context;
-import android.content.Intent;
 import android.location.Address;
 import android.location.Geocoder;
 import android.os.Bundle;
-import android.util.Log;
-import android.view.View;
 
 import androidx.appcompat.widget.Toolbar;
-import androidx.lifecycle.ViewModelProviders;
-import androidx.recyclerview.widget.DividerItemDecoration;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.conrep.BaseApp;
 import com.example.conrep.R;
-import com.example.conrep.adapter.ConstructionSiteRecyclerAdapter;
-import com.example.conrep.database.repository.ConstructionSiteRepository;
-import com.example.conrep.database.site.ConstructionSiteEntity;
+import com.example.conrep.database.entity.ConstructionSiteEntity;
 import com.example.conrep.ui.BaseActivity;
-import com.example.conrep.ui.util.RecyclerViewItemClickListener;
-import com.example.conrep.ui.viewmodel.constructionSite.ConstructionSiteListViewModel;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;

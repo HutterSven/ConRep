@@ -15,24 +15,14 @@ import androidx.appcompat.app.AlertDialog;
 import androidx.lifecycle.ViewModelProviders;
 
 import com.example.conrep.R;
-import com.example.conrep.adapter.ConstructionSiteRecyclerAdapter;
-import com.example.conrep.adapter.ReportRecyclerAdapter;
-import com.example.conrep.database.repository.ConstructionSiteRepository;
-import com.example.conrep.database.site.ConstructionSiteEntity;
+import com.example.conrep.database.entity.ConstructionSiteEntity;
 import com.example.conrep.ui.BaseActivity;
 import com.example.conrep.ui.report.FileReport;
-import com.example.conrep.ui.report.ReportList;
 import com.example.conrep.ui.report.ReportListSite;
-import com.example.conrep.ui.report.ViewReport;
 import com.example.conrep.ui.task.AddTask;
 import com.example.conrep.ui.task.TaskList;
 import com.example.conrep.ui.util.OnAsyncEventListener;
-import com.example.conrep.ui.util.RecyclerViewItemClickListener;
-import com.example.conrep.ui.viewmodel.constructionSite.ConstructionSiteListViewModel;
 import com.example.conrep.ui.viewmodel.constructionSite.ConstructionSiteViewModel;
-import com.example.conrep.ui.viewmodel.report.ReportListViewModel;
-
-import java.util.List;
 
 public class ViewConstructionSite extends BaseActivity {
 

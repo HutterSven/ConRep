@@ -8,9 +8,13 @@ import com.example.conrep.database.async.constructionSite.CreateConstructionSite
 import com.example.conrep.database.async.constructionSite.DeleteConstructionSite;
 import com.example.conrep.database.async.constructionSite.UpdateConstructionSite;
 import com.example.conrep.database.async.constructionSite.UpdateHours;
-import com.example.conrep.database.site.ConstructionSiteEntity;
+import com.example.conrep.database.entity.ConstructionSiteEntity;
 import com.example.conrep.BaseApp;
+import com.example.conrep.database.firebase.ConstructionSiteListLiveData;
+import com.example.conrep.database.firebase.ConstructionSiteLiveData;
 import com.example.conrep.ui.util.OnAsyncEventListener;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 
 import java.util.List;
 
@@ -35,44 +39,70 @@ public class ConstructionSiteRepository {
         return instance;
     }
 
-    public LiveData<ConstructionSiteEntity> getConstructionSite(final int constructionSiteId, Application application) {
-        return ((BaseApp) application).getDatabase().constructionSiteDao().getById(constructionSiteId);
+    public LiveData<ConstructionSiteEntity> getConstructionSite(final String constructionSiteId) {
+        DatabaseReference reference = FirebaseDatabase.getInstance()
+                .getReference("constructionSites")
+                .child(constructionSiteId);
+        return new ConstructionSiteLiveData(reference);
     }
 
-    public ConstructionSiteEntity getConstructionSiteNameNonLive(final String name, Application application) {
-        return ((BaseApp) application).getDatabase().constructionSiteDao().getByIdNonLive(name);
+    // todo ?????
+    public ConstructionSiteEntity getConstructionSiteNameNonLive(final String name) {
+        return null;//.getDatabase().constructionSiteDao().getByIdNonLive(name);
     }
 
-
-    public static LiveData<List<ConstructionSiteEntity>> getConstructionSites(Application application) {
-        return ((BaseApp) application).getDatabase().constructionSiteDao().getAll();
+    //todo how
+    public LiveData<ConstructionSiteEntity> getConstructionSiteByName(String name) {
+        return null;//((BaseApp) application).getDatabase().constructionSiteDao().getByName(name);
     }
 
-    public List<ConstructionSiteEntity> getConstructionSitesNonLive(Application application) {
-        return ((BaseApp) application).getDatabase().constructionSiteDao().getAllNonLive();
+    public static LiveData<List<ConstructionSiteEntity>> getConstructionSites() {
+        DatabaseReference reference = FirebaseDatabase.getInstance()
+                .getReference("constructionSites");
+        return new ConstructionSiteListLiveData(reference);
     }
 
-    public void insert(final ConstructionSiteEntity constructionSite, OnAsyncEventListener callback,
-                       Application application) {
-        ccs = new CreateConstructionSite(application, callback);
-        ccs.execute(constructionSite);
+    public List<ConstructionSiteEntity> getConstructionSitesNonLive() {
+        return null;//((BaseApp) application).getDatabase().constructionSiteDao().getAllNonLive();
     }
 
-    public void update(final ConstructionSiteEntity constructionSite, OnAsyncEventListener callback,
-                       Application application) {
-        new UpdateConstructionSite(application, callback).execute(constructionSite);
+    public void insert(final ConstructionSiteEntity constructionSite, OnAsyncEventListener callback) {
+        String id = FirebaseDatabase.getInstance().getReference("constructionSites").push().getKey();
+        FirebaseDatabase.getInstance()
+                .getReference("constructionSites")
+                .child(id)
+                .setValue(constructionSite, (databaseError, databaseReference) -> {
+                    if (databaseError != null) {
+                        callback.onFailure(databaseError.toException());
+                    } else {
+                        callback.onSuccess();
+                    }
+                });
     }
 
-    public void delete(final ConstructionSiteEntity constructionSite, OnAsyncEventListener callback,
-                       Application application) {
-        new DeleteConstructionSite(application, callback).execute(constructionSite);
+    public void update(final ConstructionSiteEntity constructionSite, OnAsyncEventListener callback) {
+        FirebaseDatabase.getInstance()
+                .getReference("constructionSites")
+                .child(constructionSite.getSiteID())
+                .updateChildren(constructionSite.toMap(), (databaseError, databaseReference) -> {
+                    if (databaseError != null) {
+                        callback.onFailure(databaseError.toException());
+                    } else {
+                        callback.onSuccess();
+                    }
+                });
     }
 
-    public LiveData<ConstructionSiteEntity> getConstructionSiteByName(String name, Application application) {
-        return ((BaseApp) application).getDatabase().constructionSiteDao().getByName(name);
-    }
-
-    public void addHours(ConstructionSiteEntity site, OnAsyncEventListener callback, Application application) {
-        new UpdateHours(application, callback).execute(site);
+    public void delete(final ConstructionSiteEntity constructionSite, OnAsyncEventListener callback) {
+        FirebaseDatabase.getInstance()
+                .getReference("constructionSites")
+                .child(constructionSite.getSiteID())
+                .removeValue((databaseError, databaseReference) -> {
+                    if (databaseError != null) {
+                        callback.onFailure(databaseError.toException());
+                    } else {
+                        callback.onSuccess();
+                    }
+                });
     }
 }

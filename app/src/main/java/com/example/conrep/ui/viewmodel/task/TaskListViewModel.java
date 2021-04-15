@@ -10,10 +10,8 @@ import androidx.lifecycle.ViewModel;
 import androidx.lifecycle.ViewModelProvider;
 
 import com.example.conrep.BaseApp;
-import com.example.conrep.database.repository.ConstructionSiteRepository;
 import com.example.conrep.database.repository.TaskRepository;
-import com.example.conrep.database.site.ConstructionSiteEntity;
-import com.example.conrep.database.task.TaskEntity;
+import com.example.conrep.database.entity.TaskEntity;
 import com.example.conrep.ui.util.OnAsyncEventListener;
 
 import java.util.List;
@@ -80,7 +78,7 @@ public class TaskListViewModel extends AndroidViewModel {
         return observableTasks;
     }
 
-    public LiveData<List<TaskEntity>> getTasksBySite(int siteID) {
+    public LiveData<List<TaskEntity>> getTasksBySite(String siteID) {
         return repository.getTasksBySite(getApplication(), siteID);
     }
 
@@ -92,6 +90,6 @@ public class TaskListViewModel extends AndroidViewModel {
     }
 
     public void deleteAccount(TaskEntity account, OnAsyncEventListener callback) {
-        repository.delete(account, callback, application);
+        repository.delete(account, callback);
     }
 }
