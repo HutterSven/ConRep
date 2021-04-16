@@ -1,7 +1,9 @@
 package com.example.conrep.database.repository;
 
 import android.app.Application;
+import android.util.Log;
 
+import androidx.annotation.NonNull;
 import androidx.lifecycle.LiveData;
 
 import com.example.conrep.database.entity.ConstructionSiteEntity;
@@ -9,6 +11,9 @@ import com.example.conrep.BaseApp;
 import com.example.conrep.database.firebase.ConstructionSiteListLiveData;
 import com.example.conrep.database.firebase.ConstructionSiteLiveData;
 import com.example.conrep.ui.util.OnAsyncEventListener;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
@@ -72,6 +77,12 @@ public class ConstructionSiteRepository {
                         callback.onSuccess();
                     }
                 });
+    }
+
+    public void updateHours(final ConstructionSiteEntity constructionSite, OnAsyncEventListener callback) {
+        FirebaseDatabase.getInstance()
+                .getReference("constructionSites")
+                .child(constructionSite.getSiteID()).child("hours").setValue(constructionSite.getHours());
     }
 
     public void delete(final ConstructionSiteEntity constructionSite, OnAsyncEventListener callback) {

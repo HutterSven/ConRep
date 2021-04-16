@@ -15,10 +15,12 @@ import androidx.appcompat.app.AlertDialog;
 import androidx.lifecycle.ViewModelProviders;
 
 import com.example.conrep.R;
+import com.example.conrep.database.entity.ConstructionSiteEntity;
 import com.example.conrep.database.entity.TaskEntity;
 import com.example.conrep.ui.BaseActivity;
 import com.example.conrep.ui.site.ViewConstructionSite;
 import com.example.conrep.ui.util.OnAsyncEventListener;
+import com.example.conrep.ui.viewmodel.constructionSite.ConstructionSiteViewModel;
 import com.example.conrep.ui.viewmodel.task.TaskViewModel;
 
 public class ViewTask extends BaseActivity {
@@ -26,7 +28,9 @@ public class ViewTask extends BaseActivity {
     private static final String TAG = "ViewTaskActivity";
 
     private TaskEntity task;
+    private ConstructionSiteEntity conSite;
     private TaskViewModel viewModel;
+    private ConstructionSiteViewModel viewModelSite;
     private TextView tvName;
     private TextView tvDescription;
     private TextView tvStatus;
@@ -53,6 +57,7 @@ public class ViewTask extends BaseActivity {
                 updateContent();
             }
         });
+
     }
 
     private void updateContent() {

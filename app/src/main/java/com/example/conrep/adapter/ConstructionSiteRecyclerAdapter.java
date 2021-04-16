@@ -52,7 +52,7 @@ public class ConstructionSiteRecyclerAdapter<T> extends RecyclerView.Adapter<Con
     @Override
     public void onBindViewHolder(ConstructionSiteRecyclerAdapter.ViewHolder holder, int position) {
         ConstructionSiteEntity item = mData.get(position);
-        holder.mTextView.setText(((ConstructionSiteEntity) item).getSiteID() + "          "  + ((ConstructionSiteEntity) item).getSiteName()+ "          "+((ConstructionSiteEntity) item).getAddress());
+        holder.mTextView.setText(((ConstructionSiteEntity) item).getSiteName()+" "+((ConstructionSiteEntity) item).getAddress()+" "+((ConstructionSiteEntity) item).getCity());
     }
 
     @Override

@@ -52,7 +52,7 @@ public class ReportRecyclerAdapter<T> extends RecyclerView.Adapter<ReportRecycle
     @Override
     public void onBindViewHolder(ReportRecyclerAdapter.ViewHolder holder, int position) {
         ReportEntity item = mData.get(position);
-        holder.mTextView.setText(((ReportEntity) item).getReportID() + "               " + ((ReportEntity) item).getSiteReport() + "               " + ((ReportEntity) item).getWorkerName());
+        holder.mTextView.setText(((ReportEntity) item).getWorkerName()+"          "+((ReportEntity) item).getHours());
     }
 
     @Override

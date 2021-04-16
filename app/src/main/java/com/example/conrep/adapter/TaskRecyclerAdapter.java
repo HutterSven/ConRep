@@ -57,7 +57,7 @@ public class TaskRecyclerAdapter<T> extends RecyclerView.Adapter<TaskRecyclerAda
             open = "closed";
         }
         else open = "open";
-        holder.mTextView.setText(((TaskEntity) item).getTaskID() + "        " + ((TaskEntity) item).getSiteTask() + "        " + ((TaskEntity) item).getName()+ "        " + open);
+        holder.mTextView.setText(((TaskEntity) item).getName()+ "        " + open);
     }
 
     @Override

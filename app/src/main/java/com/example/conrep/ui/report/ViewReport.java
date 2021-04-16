@@ -15,11 +15,17 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.conrep.R;
+import com.example.conrep.database.entity.ConstructionSiteEntity;
 import com.example.conrep.database.entity.ReportEntity;
+import com.example.conrep.database.entity.TaskEntity;
+import com.example.conrep.database.repository.ConstructionSiteRepository;
+import com.example.conrep.database.repository.TaskRepository;
 import com.example.conrep.ui.BaseActivity;
 import com.example.conrep.ui.site.ViewConstructionSite;
 import com.example.conrep.ui.util.OnAsyncEventListener;
+import com.example.conrep.ui.viewmodel.constructionSite.ConstructionSiteViewModel;
 import com.example.conrep.ui.viewmodel.report.ReportViewModel;
+import com.example.conrep.ui.viewmodel.task.TaskViewModel;
 
 public class ViewReport extends BaseActivity {
 
@@ -30,8 +36,8 @@ public class ViewReport extends BaseActivity {
     private TextView tvName;
     private TextView tvHours;
     private TextView tvDate;
-    private TextView tvSite;
-    private TextView tvTasks;
+
+
 
 
     @Override
@@ -52,6 +58,7 @@ public class ViewReport extends BaseActivity {
                 updateContent();
             }
         });
+
     }
 
     private void updateContent() {
@@ -60,8 +67,6 @@ public class ViewReport extends BaseActivity {
             tvName.setText(report.getWorkerName());
             tvHours.setText(report.getHours() + " hours");
             tvDate.setText(report.getDate());
-            tvSite.setText(report.getSiteReport()+"");
-            tvTasks.setText(report.getTaskReport()+"");
             Log.i(TAG, "Activity populated.");
         }
     }
@@ -70,8 +75,6 @@ public class ViewReport extends BaseActivity {
         tvName = findViewById(R.id.tvReportName);
         tvHours = findViewById(R.id.tvReportHours);
         tvDate = findViewById(R.id.tvReportDate);
-        tvSite = findViewById(R.id.tvReportSite);
-        tvTasks = findViewById(R.id.tvReportTasks);
 
 
         Button EditBtn = findViewById(R.id.btnEditReport);

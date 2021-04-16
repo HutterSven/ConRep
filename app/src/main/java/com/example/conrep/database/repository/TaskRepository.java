@@ -4,6 +4,7 @@ import android.app.Application;
 
 import androidx.lifecycle.LiveData;
 
+import com.example.conrep.database.entity.ConstructionSiteEntity;
 import com.example.conrep.database.entity.TaskEntity;
 import com.example.conrep.database.firebase.TaskListLiveData;
 import com.example.conrep.database.firebase.TaskLiveData;
@@ -30,7 +31,7 @@ public class TaskRepository {
 
     public LiveData<TaskEntity> getTask(final String taskId) {
         DatabaseReference reference = FirebaseDatabase.getInstance()
-                .getReference("Tasks")
+                .getReference("tasks")
                 .child(taskId);
         return new TaskLiveData(reference);
     }
@@ -44,7 +45,7 @@ public class TaskRepository {
     public LiveData<List<TaskEntity>> getTasksBySite(String siteID) {
         DatabaseReference reference = FirebaseDatabase.getInstance()
                 .getReference("tasks")
-                .orderByChild("site").equalTo(siteID).getRef();
+                .orderByChild("siteTask").equalTo(siteID).getRef();
         return new TaskListLiveData(reference);
     }
 
@@ -89,16 +90,9 @@ public class TaskRepository {
                 });
     }
 
-    public void changeStatus(TaskEntity task, OnAsyncEventListener callback, Application application) {
+    public void changeStatus(TaskEntity task, OnAsyncEventListener callback) {
         FirebaseDatabase.getInstance()
                 .getReference("tasks")
-                .child(task.getTaskID())
-                .updateChildren(task.toMap(), (databaseError, databaseReference) -> {
-                    if (databaseError != null) {
-                        callback.onFailure(databaseError.toException());
-                    } else {
-                        callback.onSuccess();
-                    }
-                });
+                .child(task.getTaskID()).child("status").setValue(false);
     }
 }

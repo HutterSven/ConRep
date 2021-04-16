@@ -46,6 +46,7 @@ public class FileReport extends BaseActivity {
 
     private View vTemp;
     private int positionOld;
+    private int hours;
 
     private List<TaskEntity> Tasks;
     private TaskRecyclerAdapter taskRecyclerAdapter;
@@ -57,6 +58,7 @@ public class FileReport extends BaseActivity {
         getLayoutInflater().inflate(R.layout.activity_file_report, frameLayout);
 
         siteID = getIntent().getStringExtra("siteID");
+        hours = getIntent().getIntExtra("hours", 0);
 
         initiateView();
 
@@ -167,12 +169,12 @@ public class FileReport extends BaseActivity {
             public void onFailure(Exception e) {
                 Log.d(TAG, "updateTask: failure", e);
             }
-        }, getApplication());
+        });
 
-        site.setHours(report.getHours());
+        site.setHours(report.getHours()+hours);
         site.setSiteID(report.getSiteReport());
         //adding hours (update) site
-        ConstructionSiteRepository.getInstance().update(site, new OnAsyncEventListener() {
+        ConstructionSiteRepository.getInstance().updateHours(site, new OnAsyncEventListener() {
             @Override
             public void onSuccess() {
                 Log.d(TAG, "updateHours: success");
