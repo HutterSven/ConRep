@@ -1,9 +1,12 @@
 package com.example.conrep.ui.site;
 
+import android.app.Activity;
 import android.content.ActivityNotFoundException;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.graphics.drawable.BitmapDrawable;
 import android.os.Bundle;
 import android.provider.MediaStore;
 import android.util.Log;
@@ -14,6 +17,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AlertDialog;
 import androidx.lifecycle.ViewModelProviders;
@@ -27,7 +31,13 @@ import com.example.conrep.ui.task.AddTask;
 import com.example.conrep.ui.task.TaskList;
 import com.example.conrep.ui.util.OnAsyncEventListener;
 import com.example.conrep.ui.viewmodel.constructionSite.ConstructionSiteViewModel;
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.storage.FirebaseStorage;
+import com.google.firebase.storage.StorageReference;
+import com.google.firebase.storage.UploadTask;
+
+import java.io.ByteArrayOutputStream;
 
 public class ViewConstructionSite extends BaseActivity {
 
@@ -76,6 +86,22 @@ public class ViewConstructionSite extends BaseActivity {
             tvOverseer.setText(conSite.getOverseer());
             tvHours.setText(conSite.getHours() + " hours");
             Log.i(TAG, "Activity populated.");
+
+            final long ONE_MEGABYTE = 1024 * 1024;
+            StorageReference ref = storage.getReference("images/"+conSite.getSiteID()+".jpg");
+
+            ref.getBytes(ONE_MEGABYTE).addOnSuccessListener(new OnSuccessListener<byte[]>() {
+                @Override
+                public void onSuccess(byte[] bytes) {
+                    Bitmap bitmap = BitmapFactory.decodeByteArray(bytes, 0, bytes.length);
+                    ivPicture.setImageBitmap(bitmap);
+                }
+            }).addOnFailureListener(new OnFailureListener() {
+                @Override
+                public void onFailure(@NonNull Exception exception) {
+                    Log.e("ImageDownload", exception.getMessage(), exception);
+                }
+            });
         }
     }
 
@@ -113,13 +139,11 @@ public class ViewConstructionSite extends BaseActivity {
     }
 
     private void addPicture() {
-
-
         Intent takePictureIntent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
         try {
             startActivityForResult(takePictureIntent, REQUEST_IMAGE_CAPTURE);
         } catch (ActivityNotFoundException e) {
-            // display error state to the user
+            Log.e("SitePicture", e.getMessage(), e);
         }
     }
 
@@ -130,6 +154,26 @@ public class ViewConstructionSite extends BaseActivity {
             Bundle extras = data.getExtras();
             Bitmap imageBitmap = (Bitmap) extras.get("data");
             ivPicture.setImageBitmap(imageBitmap);
+            ivPicture.setDrawingCacheEnabled(true);
+            ivPicture.buildDrawingCache();
+            ByteArrayOutputStream baos = new ByteArrayOutputStream();
+            imageBitmap.compress(Bitmap.CompressFormat.JPEG, 100, baos);
+            byte[] dataBytes = baos.toByteArray();
+            UploadTask uploadTask = storage.getReference().child("images/"+conSite.getSiteID()+".jpg").putBytes(dataBytes);
+            uploadTask.addOnFailureListener(new OnFailureListener() {
+                @Override
+                public void onFailure(@NonNull Exception e) {
+                    Log.e("ImageStorage", e.getMessage(), e);
+                }
+            }).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
+                @Override
+                public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
+                    taskSnapshot.getMetadata();
+                    Log.i("ImageStorage", "Image Uploaded");
+                }
+            });
+            ivPicture.setImageBitmap(imageBitmap);
+            recreate();
         }
     }
 
