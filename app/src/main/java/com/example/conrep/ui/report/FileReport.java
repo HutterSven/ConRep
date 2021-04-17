@@ -110,6 +110,11 @@ public class FileReport extends BaseActivity {
         viewModelTask.getTasks().observe(this, TaskEntities -> {
             if (TaskEntities != null) {
                 Tasks = TaskEntities;
+                for (int i = 0; i < Tasks.size(); i++) {
+                    if (!Tasks.get(i).getSiteTask().contains(siteID) ) {
+                        Tasks.remove(i);
+                    }
+                }
                 taskRecyclerAdapter.setData(Tasks);
             }
         });

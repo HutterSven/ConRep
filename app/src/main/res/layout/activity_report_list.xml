@@ -20,16 +20,6 @@
             android:orientation="vertical">
 
             <EditText
-                android:id="@+id/etSearchReportBySite"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="10dp"
-                android:layout_marginRight="10dp"
-                android:ems="10"
-                android:hint="@string/construction_site"
-                android:inputType="textPersonName" />
-
-            <EditText
                 android:id="@+id/etWorkerName"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"

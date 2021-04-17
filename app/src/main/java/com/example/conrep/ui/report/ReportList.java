@@ -28,14 +28,13 @@ public class ReportList extends BaseActivity {
     private static final String TAG = "ReportList";
 
     private Button btnSearchReport;
-    private EditText etSiteID;
     private EditText etWorkerName;
 
     private List<ReportEntity> Reports;
     private ReportRecyclerAdapter reportRecyclerAdapter;
     private ReportListViewModel viewModel;
 
-    private int siteID;
+    private String siteID;
 
     private Bundle savedInstanceState;
 
@@ -62,7 +61,6 @@ public class ReportList extends BaseActivity {
         recyclerView.addItemDecoration(dividerItemDecoration);
 
         btnSearchReport = findViewById(R.id.btnSearchReportSite);
-        etSiteID = findViewById(R.id.etSearchReportBySite);
         etWorkerName = findViewById(R.id.etWorkerName);
 
         Reports = new ArrayList<>();
@@ -96,14 +94,6 @@ public class ReportList extends BaseActivity {
             }
         });
 
-        if (Reports != null) {
-            if (Reports.size() > 0) {
-                for (ReportEntity reportTemp : Reports) {
-                    reportsTemp.add(reportTemp);
-                }
-            }
-        }
-
 
         btnSearchReport.setOnClickListener(new searchSite(this));
 
@@ -123,36 +113,28 @@ public class ReportList extends BaseActivity {
         @Override
         public void onClick(View v) {
 
+            //searchlogic
             ReportEntity report;
 
             reportsTemp = new ArrayList<ReportEntity>();
 
             if (Reports != null) {
-                if (Reports.size() > 0) {
-                    if (etSiteID.getText().toString().isEmpty() && etSiteID.getText().toString().isEmpty()) {
-                        reportRecyclerAdapter.setData(Reports);
-                        reportRecyclerAdapter.notifyDataSetChanged();
-                        return;
+                for (int i = 0; i < Reports.size(); i++) {
+                    report = Reports.get(i);
+                    if ((report.getWorkerName().toLowerCase().contains(etWorkerName.getText().toString().toLowerCase()) || etWorkerName.getText().toString().isEmpty())) {
+                        reportsTemp.add(report);
                     }
                 }
 
-
-            for (int i = 0; i < Reports.size(); i++) {
-                report = Reports.get(i);
-                if ((report.getWorkerName().toLowerCase().contains(etWorkerName.getText().toString().toLowerCase()) || etWorkerName.getText().toString().isEmpty()) &&
-                        (report.getSiteReport().toLowerCase().contains(etSiteID.getText().toString())|| etSiteID.getText().toString().isEmpty())) {
-                    reportsTemp.add(report);
+                if (reportsTemp != null) {
+                    reportRecyclerAdapter.setData(reportsTemp);
+                    reportRecyclerAdapter.notifyDataSetChanged();
                 }
-            }
+
             }
 
-            if (reportsTemp.size() > 0) {
-                reportRecyclerAdapter.setData(reportsTemp);
-                reportRecyclerAdapter.notifyDataSetChanged();
-            }
+
         }
 
-
     }
-
 }
