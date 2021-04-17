@@ -73,9 +73,6 @@ public class ReportViewModel extends AndroidViewModel {
         return repository.getReport(reportID);
     }
 
-    public void createReport(ReportEntity report, OnAsyncEventListener callback) {
-        repository.insert(report, callback);
-    }
 
     public void updateReport(ReportEntity report, OnAsyncEventListener callback) {
         repository.update(report, callback);

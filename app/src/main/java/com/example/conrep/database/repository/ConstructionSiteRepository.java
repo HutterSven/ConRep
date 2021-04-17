@@ -46,7 +46,7 @@ public class ConstructionSiteRepository {
         return new ConstructionSiteLiveData(reference);
     }
 
-    public static LiveData<List<ConstructionSiteEntity>> getConstructionSites() {
+    public LiveData<List<ConstructionSiteEntity>> getConstructionSites() {
         DatabaseReference reference = FirebaseDatabase.getInstance()
                 .getReference("constructionSites");
         return new ConstructionSiteListLiveData(reference);

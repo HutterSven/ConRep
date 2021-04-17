@@ -17,7 +17,6 @@ import java.util.List;
 public class TaskRepository {
     private static TaskRepository instance;
 
-
     public static TaskRepository getInstance() {
         if (instance == null) {
             synchronized (TaskRepository.class) {

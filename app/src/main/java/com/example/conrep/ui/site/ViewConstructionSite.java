@@ -116,6 +116,8 @@ public class ViewConstructionSite extends BaseActivity {
         Intent intent = new Intent(this, FileReport.class);
         intent.putExtra("siteID", conSite.getSiteID());
         intent.putExtra("hours", conSite.getHours());
+        intent.putExtra("overseer", conSite.getOverseer());
+        intent.putExtra("siteName", conSite.getSiteName());
         startActivity(intent);
     }
 

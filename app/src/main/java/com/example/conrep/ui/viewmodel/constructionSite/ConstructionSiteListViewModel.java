@@ -41,7 +41,7 @@ public class ConstructionSiteListViewModel extends AndroidViewModel {
         observableConstructionSites.setValue(null);
         observableSites.setValue(null);
 
-        sites = ConstructionSiteRepository.getConstructionSites();
+        sites = ConstructionSiteRepository.getInstance().getConstructionSites();
 
         // observe the changes of the entities from the database and forward them
         observableSites.addSource(sites, observableSites::setValue);

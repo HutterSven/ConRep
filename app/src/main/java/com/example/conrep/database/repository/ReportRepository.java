@@ -1,7 +1,10 @@
 package com.example.conrep.database.repository;
 
+import android.util.Log;
+
 import androidx.lifecycle.LiveData;
 
+import com.example.conrep.database.GmailSender;
 import com.example.conrep.database.firebase.ReportListLiveData;
 import com.example.conrep.database.firebase.ReportLiveData;
 import com.example.conrep.database.entity.ReportEntity;
@@ -44,7 +47,7 @@ public class ReportRepository {
         return new ReportListLiveData(reference);
     }
 
-    public void insert(final ReportEntity report, OnAsyncEventListener callback ) {
+    public void insert(final ReportEntity report, String receiver, String siteName, OnAsyncEventListener callback ) {
         String id = FirebaseDatabase.getInstance().getReference("reports").push().getKey();
         FirebaseDatabase.getInstance()
                 .getReference("reports")
@@ -56,6 +59,30 @@ public class ReportRepository {
                         callback.onSuccess();
                     }
                 });
+
+        Thread thread = new Thread(new Runnable() {
+
+            @Override
+            public void run() {
+                try  {
+                    GmailSender sender = new GmailSender("conrep.app@gmail.com",
+                            "Con.Rep123");
+                    try {
+                        sender.sendMail("Change on your Construction Site",
+                                "Hello, \n\nA report has just been created on the Site: " + siteName + "\n\n"+ report.getWorkerName()+ " worked for " + report.getHours() + " hours\n\nSincerely, \nYour ConRep Team",
+                                "conrep.app@gmail.com",
+                                receiver);
+                        Log.i("SendMail", "E-Mail sent");
+                    } catch (Exception e) {
+                        Log.e("SendMail", e.getMessage(), e);
+                    }
+                } catch (Exception e) {
+                    Log.e("SendMailThread", e.getMessage(), e);
+                }
+            }
+        });
+
+        thread.start();
     }
 
     public void update(final ReportEntity report, OnAsyncEventListener callback) {

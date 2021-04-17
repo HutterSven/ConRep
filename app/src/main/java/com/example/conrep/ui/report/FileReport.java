@@ -47,6 +47,7 @@ public class FileReport extends BaseActivity {
     private View vTemp;
     private int positionOld;
     private int hours;
+    private String receiver, siteName;
 
     private List<TaskEntity> Tasks;
     private TaskRecyclerAdapter taskRecyclerAdapter;
@@ -59,7 +60,8 @@ public class FileReport extends BaseActivity {
 
         siteID = getIntent().getStringExtra("siteID");
         hours = getIntent().getIntExtra("hours", 0);
-
+        receiver = getIntent().getStringExtra("overseer");
+        siteName = getIntent().getStringExtra("siteName");
         initiateView();
 
     }
@@ -142,7 +144,7 @@ public class FileReport extends BaseActivity {
 
         // inserting report
 
-        ((BaseApp)getApplication()).getReportRepository().insert(report, new OnAsyncEventListener()
+        ((BaseApp)getApplication()).getReportRepository().insert(report, receiver, siteName, new OnAsyncEventListener()
         {
             @Override
             public void onSuccess() {
