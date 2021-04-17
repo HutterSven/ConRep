@@ -7,6 +7,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import androidx.lifecycle.ViewModelProviders;
 import androidx.recyclerview.widget.DividerItemDecoration;
@@ -52,6 +53,7 @@ public class FileReport extends BaseActivity {
     private List<TaskEntity> Tasks;
     private TaskRecyclerAdapter taskRecyclerAdapter;
     private TaskListViewModel viewModelTask;
+    private int positionTemp;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -68,6 +70,7 @@ public class FileReport extends BaseActivity {
 
     private void initiateView() {
 
+        positionTemp = 0;
         etReportName = findViewById(R.id.etReportName);
         etReportHours = findViewById(R.id.etReportHours);
         report = new ReportEntity();
@@ -75,7 +78,23 @@ public class FileReport extends BaseActivity {
 
         Button fileReportBtn = findViewById(R.id.btnSaveReport);
 
-        fileReportBtn.setOnClickListener(view -> addReport());
+        fileReportBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // TODO Auto-generated method stub
+
+                etReportName.getText().toString().trim();
+                if (etReportHours.getText().toString().trim().length() > 0 && etReportName.getText().toString().trim().length() > 0 && report.getTaskReport().length() > 0) {
+                    addReport();
+                } else {
+                    etReportHours.requestFocus();
+                    etReportHours.setError("Enter Hours");
+                    etReportName.requestFocus();
+                    etReportName.setError("Enter Name");
+                    Toast.makeText(getApplicationContext(),"Enter all fields and choose a task by clicking on it",Toast.LENGTH_SHORT).show();
+                }
+            }
+        });
 
         RecyclerView recyclerView = findViewById(R.id.reportTaskRecyclerView);
 
@@ -111,7 +130,7 @@ public class FileReport extends BaseActivity {
             if (TaskEntities != null) {
                 Tasks = TaskEntities;
                 for (int i = 0; i < Tasks.size(); i++) {
-                    if (!Tasks.get(i).getSiteTask().contains(siteID) ) {
+                    if (!Tasks.get(i).getSiteTask().contains(siteID) && siteID.length() == Tasks.get(i).getSiteTask().length() ) {
                         Tasks.remove(i);
                     }
                 }
@@ -121,6 +140,13 @@ public class FileReport extends BaseActivity {
 
 
         recyclerView.setAdapter(taskRecyclerAdapter);
+
+        for (int i = 0; i < Tasks.size(); i++) {
+            if (!Tasks.get(i).getSiteTask().contains(siteID) && siteID.length() == Tasks.get(i).getSiteTask().length() ) {
+                Tasks.remove(i);
+            }
+        }
+        taskRecyclerAdapter.setData(Tasks);
     }
 
     private void addReport() {

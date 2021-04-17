@@ -3,9 +3,11 @@ package com.example.conrep.ui.task;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
 import android.widget.Button;
 import android.widget.CalendarView;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 
@@ -35,6 +37,7 @@ public class AddTask extends BaseActivity  {
     private CalendarView cvTaskDeadLine;
     private EditText status;
     private EditText etSiteTask;
+    private String selectedDate;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -59,7 +62,22 @@ public class AddTask extends BaseActivity  {
 
         cvTaskDeadLine.setOnDateChangeListener(new myCalendarListener());
 
-        addTaskBtn.setOnClickListener(view -> addTask());
+        addTaskBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // TODO Auto-generated method stub
+                if (etTaskName.getText().toString().trim().length() > 0 && etTaskDescription.getText().toString().trim().length() > 0) {
+                    addTask();
+                } else {
+                    etTaskName.requestFocus();
+                    etTaskName.setError("Enter Name");
+                    etTaskDescription.requestFocus();
+                    etTaskDescription.setError("Enter Description");
+
+                    Toast.makeText(getApplicationContext(),"Enter all fields and choose a date by clicking on it",Toast.LENGTH_SHORT).show();
+                }
+            }
+        });
     }
 
     public class myCalendarListener implements CalendarView.OnDateChangeListener {
@@ -91,7 +109,7 @@ public class AddTask extends BaseActivity  {
         task = new TaskEntity();
 
         SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
-        String selectedDate = sdf.format(new Date(cvTaskDeadLine.getDate()));
+        selectedDate = sdf.format(new Date(cvTaskDeadLine.getDate()));
 
         task.setDeadline(dateDeadLine);
         task.setName(etTaskName.getText().toString());

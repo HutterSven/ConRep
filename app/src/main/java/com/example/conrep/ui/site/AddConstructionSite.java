@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import androidx.lifecycle.ViewModelProviders;
 
@@ -59,6 +60,30 @@ public class AddConstructionSite extends BaseActivity {
                 getApplication(), "");
 
         viewModel = ViewModelProviders.of(this, factory).get(ConstructionSiteViewModel.class);
+
+        addSiteBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // TODO Auto-generated method stub
+
+                etSiteCity.getText().toString().trim();
+                if (etSiteName.getText().toString().trim().length() > 0 && etSiteCity.getText().toString().trim().length() > 0 && etSiteAddress.getText().toString().trim().length() > 0 && etSiteOverseer.getText().toString().trim().length() > 0
+                        && etSiteOverseer.getText().toString().trim().contains("@")) {
+                    addSite();
+                } else {
+                    etSiteName.requestFocus();
+                    etSiteName.setError("Enter Name");
+                    etSiteCity.requestFocus();
+                    etSiteCity.setError("Enter City");
+                    etSiteAddress.requestFocus();
+                    etSiteAddress.setError("Enter Address");
+                    etSiteOverseer.requestFocus();
+                    etSiteOverseer.setError("Enter valid E-Mail");
+                    Toast.makeText(getApplicationContext(),"Enter all fields and fill in a valid E-Mail in Overseer",Toast.LENGTH_SHORT).show();
+                }
+            }
+        });
+
     }
 
     private void addSite() {
