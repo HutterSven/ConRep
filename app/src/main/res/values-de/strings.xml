@@ -60,6 +60,7 @@
     <string name="settings">Einstellungen</string>
     <string name="about">Über uns</string>
     <string name="title_activity_settings">Einstellungen</string>
+    <string name="add_picture">Bild hinzufügen</string>
 
     <!-- Preference Titles -->
     <string name="messages_header">Benachrichtigungen</string>

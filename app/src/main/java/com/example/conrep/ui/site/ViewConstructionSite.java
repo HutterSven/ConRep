@@ -1,12 +1,16 @@
 package com.example.conrep.ui.site;
 
+import android.content.ActivityNotFoundException;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.graphics.Bitmap;
 import android.os.Bundle;
+import android.provider.MediaStore;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -23,6 +27,7 @@ import com.example.conrep.ui.task.AddTask;
 import com.example.conrep.ui.task.TaskList;
 import com.example.conrep.ui.util.OnAsyncEventListener;
 import com.example.conrep.ui.viewmodel.constructionSite.ConstructionSiteViewModel;
+import com.google.firebase.storage.FirebaseStorage;
 
 public class ViewConstructionSite extends BaseActivity {
 
@@ -35,6 +40,9 @@ public class ViewConstructionSite extends BaseActivity {
     private TextView tvCity;
     private TextView tvOverseer;
     private TextView tvHours;
+    private ImageView ivPicture;
+    private FirebaseStorage storage;
+    private static  final int REQUEST_IMAGE_CAPTURE = 1;
 
 
     @Override
@@ -44,6 +52,7 @@ public class ViewConstructionSite extends BaseActivity {
 
         String siteID = getIntent().getStringExtra("siteID");
 
+        storage = FirebaseStorage.getInstance();
 
         initiateView();
 
@@ -76,7 +85,7 @@ public class ViewConstructionSite extends BaseActivity {
         tvCity = findViewById(R.id.tvCityVD);
         tvOverseer = findViewById(R.id.tvOverSeerVD);
         tvHours = findViewById(R.id.tvHoursVD);
-
+        ivPicture = findViewById(R.id.ivPictureSite);
 
         Button FileBtn = findViewById(R.id.btnFileReport);
         FileBtn.setOnClickListener(view -> openFileReport());
@@ -98,6 +107,30 @@ public class ViewConstructionSite extends BaseActivity {
 
         Button ShowMapBtn = findViewById(R.id.btnShowOnMap);
         ShowMapBtn.setOnClickListener(view -> openMap());
+
+        Button AddPicture = findViewById(R.id.btnAddPicture);
+        AddPicture.setOnClickListener(view -> addPicture());
+    }
+
+    private void addPicture() {
+
+
+        Intent takePictureIntent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
+        try {
+            startActivityForResult(takePictureIntent, REQUEST_IMAGE_CAPTURE);
+        } catch (ActivityNotFoundException e) {
+            // display error state to the user
+        }
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (requestCode == REQUEST_IMAGE_CAPTURE && resultCode == RESULT_OK) {
+            Bundle extras = data.getExtras();
+            Bitmap imageBitmap = (Bitmap) extras.get("data");
+            ivPicture.setImageBitmap(imageBitmap);
+        }
     }
 
     private void openMap() {

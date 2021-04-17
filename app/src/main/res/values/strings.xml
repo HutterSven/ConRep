@@ -99,6 +99,7 @@
     <string name="key_darkmode">key_darkmode</string>
     <string name="back_to_main_menu">Back to Main Menu</string>
     <string name="General">General</string>
+    <string name="add_picture">Add picture</string>
 
     <string-array name="languages_array">
         <item>English</item>
