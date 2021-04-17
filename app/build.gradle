@@ -60,4 +60,5 @@ dependencies {
     // Firebase Dependencies
     def firebase_version = "19.4.0"
     implementation "com.google.firebase:firebase-database:$firebase_version"
+    implementation 'com.google.firebase:firebase-storage'
 }
