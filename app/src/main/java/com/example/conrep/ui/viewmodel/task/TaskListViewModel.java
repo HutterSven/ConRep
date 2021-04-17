@@ -74,8 +74,4 @@ public class TaskListViewModel extends AndroidViewModel {
     public LiveData<List<TaskEntity>> getTasks() {
         return observableTasks;
     }
-
-    public LiveData<List<TaskEntity>> getTasksBySite(String siteID) {
-        return repository.getTasksBySite(siteID);
-    }
 }

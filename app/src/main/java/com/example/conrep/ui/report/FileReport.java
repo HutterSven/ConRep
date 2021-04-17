@@ -105,7 +105,7 @@ public class FileReport extends BaseActivity {
 
         TaskListViewModel.Factory factory = new TaskListViewModel.Factory(getApplication());
         viewModelTask = ViewModelProviders.of(this, factory).get(TaskListViewModel.class);
-        viewModelTask.getTasksBySite(siteID).observe(this, TaskEntities -> {
+        viewModelTask.getTasks().observe(this, TaskEntities -> {
             if (TaskEntities != null) {
                 Tasks = TaskEntities;
                 taskRecyclerAdapter.setData(Tasks);

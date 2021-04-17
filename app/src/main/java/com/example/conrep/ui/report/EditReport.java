@@ -25,7 +25,6 @@ public class EditReport extends BaseActivity {
 
     private EditText etReportName;
     private EditText etReportHours;
-    private EditText etReportSite;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -53,7 +52,6 @@ public class EditReport extends BaseActivity {
 
         etReportName = findViewById(R.id.etReportNameE);
         etReportHours = findViewById(R.id.etReportHoursE);
-        etReportSite = findViewById(R.id.etReportSiteE);
 
         Button fileReportBtn = findViewById(R.id.btnSaveEditReport);
 
@@ -63,7 +61,6 @@ public class EditReport extends BaseActivity {
     private void updateContent() {
         etReportName.setText(report.getWorkerName());
         etReportHours.setText(String.valueOf(report.getHours()));
-        etReportSite.setText(String.valueOf(report.getSiteReport()));
     }
 
 
@@ -77,21 +74,9 @@ public class EditReport extends BaseActivity {
             etReportHours.setError(getString(R.string.error_empty_field));
             testBool = true;
         }
-        if (etReportSite.getText().toString() == null){
-            etReportSite.setError(getString(R.string.error_empty_field));
-            testBool = true;
-        }
-        if(testBool){
-            return;
-        }
+
         report.setWorkerName(etReportName.getText().toString());
         report.setHours(Integer.parseInt(etReportHours.getText().toString()));
-        LocalDateTime now = LocalDateTime.now();
-        report.setTaskReport(report.getTaskReport());
-        report.setDate(now.toString());
-        report.setSiteReport(report.getSiteReport());
-        report.setReportID(report.getReportID());
-
 
 
         viewModel.updateReport(report, new OnAsyncEventListener() {

@@ -75,12 +75,18 @@ public class TaskList extends BaseActivity {
 
         TaskListViewModel.Factory factory = new TaskListViewModel.Factory(getApplication());
         viewModel = ViewModelProviders.of(this, factory).get(TaskListViewModel.class);
-        viewModel.getTasksBySite(siteID).observe(this, TaskEntities -> {
+        viewModel.getTasks().observe(this, TaskEntities -> {
             if (TaskEntities != null) {
                 Tasks = TaskEntities;
+                for (int i = 0; i < Tasks.size(); i++) {
+                    if (!Tasks.get(i).getSiteTask().contains(siteID) ) {
+                        Tasks.remove(i);
+                    }
+                }
                 taskRecyclerAdapter.setData(Tasks);
             }
         });
+
 
 
         recyclerView.setAdapter(taskRecyclerAdapter);

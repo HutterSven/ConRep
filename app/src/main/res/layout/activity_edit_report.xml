@@ -52,25 +52,6 @@
             android:hint="@string/hours"
             android:inputType="textPersonName" />
 
-        <TextView
-            android:id="@+id/tvReportSiteE"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="20dp"
-            android:layout_marginTop="20dp"
-            android:text="@string/site" />
-
-        <EditText
-            android:id="@+id/etReportSiteE"
-            android:layout_width="match_parent"
-            android:layout_height="50dp"
-            android:layout_margin="10dp"
-            android:layout_marginLeft="20dp"
-            android:layout_marginRight="20dp"
-            android:ems="10"
-            android:hint="@string/site"
-            android:inputType="textPersonName" />
-
     </LinearLayout>
 
     <Button

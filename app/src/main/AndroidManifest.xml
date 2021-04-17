@@ -31,7 +31,7 @@
             android:parentActivityName=".ui.MainActivity" />
         <activity
             android:name=".ui.site.EditConstructionSite"
-            android:parentActivityName=".ui.site.ViewConstructionSite" />
+            android:parentActivityName=".ui.site.ConstructionSiteList" />
         <activity
             android:name=".ui.site.AddConstructionSite"
             android:parentActivityName=".ui.MainActivity" />
@@ -53,31 +53,31 @@
         <activity
             android:name=".ui.site.Map"
             android:label="@string/title_activity_map"
-            android:parentActivityName=".ui.site.ViewConstructionSite" />
+            android:parentActivityName=".ui.site.ConstructionSiteList" />
         <activity
             android:name=".ui.report.EditReport"
-            android:parentActivityName=".ui.report.ViewReport" />
+            android:parentActivityName=".ui.site.ConstructionSiteList" />
         <activity
             android:name=".ui.report.ViewReport"
-            android:parentActivityName=".ui.report.ReportListSite" />
+            android:parentActivityName=".ui.report.ReportList" />
         <activity
             android:name=".ui.task.EditTask"
-            android:parentActivityName=".ui.task.ViewTask" />
+            android:parentActivityName=".ui.site.ConstructionSiteList" />
         <activity
             android:name=".ui.task.ViewTask"
-            android:parentActivityName=".ui.task.TaskList" />
+            android:parentActivityName=".ui.site.ConstructionSiteList" />
         <activity
             android:name=".ui.task.TaskList"
-            android:parentActivityName=".ui.site.ViewConstructionSite" />
+            android:parentActivityName=".ui.site.ConstructionSiteList" />
         <activity
             android:name=".ui.task.AddTask"
-            android:parentActivityName=".ui.site.ViewConstructionSite" />
+            android:parentActivityName=".ui.site.ConstructionSiteList" />
         <activity
             android:name=".ui.report.ReportListSite"
-            android:parentActivityName=".ui.site.ViewConstructionSite" />
+            android:parentActivityName=".ui.site.ConstructionSiteList" />
         <activity
             android:name=".ui.report.FileReport"
-            android:parentActivityName=".ui.site.ViewConstructionSite" />
+            android:parentActivityName=".ui.site.ConstructionSiteList" />
         <activity
             android:name=".ui.site.ViewConstructionSite"
             android:parentActivityName=".ui.site.ConstructionSiteList" />
