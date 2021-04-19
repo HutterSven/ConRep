@@ -132,6 +132,7 @@ public class FileReport extends BaseActivity {
                 for (int i = 0; i < Tasks.size(); i++) {
                     if (!Tasks.get(i).getSiteTask().contains(siteID) && siteID.length() == Tasks.get(i).getSiteTask().length() ) {
                         Tasks.remove(i);
+                        i--;
                     }
                 }
                 taskRecyclerAdapter.setData(Tasks);

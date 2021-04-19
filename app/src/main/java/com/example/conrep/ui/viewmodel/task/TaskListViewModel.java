@@ -45,7 +45,6 @@ public class TaskListViewModel extends AndroidViewModel {
     }
 
 
-
     /**
      * A creator is used to inject the account id into the ViewModel
      */
@@ -73,5 +72,9 @@ public class TaskListViewModel extends AndroidViewModel {
      */
     public LiveData<List<TaskEntity>> getTasks() {
         return observableTasks;
+    }
+
+    public LiveData<List<TaskEntity>> getTasksBySite(String siteID) {
+        return repository.getTasksBySite(siteID);
     }
 }
