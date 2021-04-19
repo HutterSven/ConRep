@@ -94,18 +94,7 @@ public class AddTask extends BaseActivity  {
     }
 
     private void addTask() {
-        boolean testBool = false;
-        if(etTaskName.getText().toString() == null){
-            etTaskName.setError(getString(R.string.error_empty_field));
-            testBool = true;
-        }
-        if(etTaskName.getText().toString() == null){
-            etTaskDescription.setError(getString(R.string.error_empty_field));
-            testBool = true;
-        }
-        if(testBool){
-            return;
-        }
+
         task = new TaskEntity();
 
         SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");

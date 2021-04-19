@@ -2,8 +2,8 @@
     <string name="app_name">ConRep</string>
     <string name="map">Karte</string>
     <string name="view_reports">Rapport anzeigen</string>
-    <string name="add_construction_site">Baustelle anzeigen</string>
-    <string name="title_activity_view_construction_site">BaustelleAnzeigen</string>
+    <string name="add_construction_site">Baustelle hinzufügen</string>
+    <string name="title_activity_view_construction_site">Baustelle anzeigen</string>
     <!-- Strings used for fragments for navigation -->
     <string name="first_fragment_label">Erstes Fragment</string>
     <string name="second_fragment_label">Zweites  Fragment</string>

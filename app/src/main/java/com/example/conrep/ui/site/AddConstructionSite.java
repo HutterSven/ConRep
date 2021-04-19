@@ -64,9 +64,7 @@ public class AddConstructionSite extends BaseActivity {
         addSiteBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                // TODO Auto-generated method stub
 
-                etSiteCity.getText().toString().trim();
                 if (etSiteName.getText().toString().trim().length() > 0 && etSiteCity.getText().toString().trim().length() > 0 && etSiteAddress.getText().toString().trim().length() > 0 && etSiteOverseer.getText().toString().trim().length() > 0
                         && etSiteOverseer.getText().toString().trim().contains("@")) {
                     addSite();
@@ -87,26 +85,7 @@ public class AddConstructionSite extends BaseActivity {
     }
 
     private void addSite() {
-        boolean testBool = false;
-        if(etSiteName.getText().toString() == null){
-            etSiteName.setError(getString(R.string.error_empty_field));
-            testBool = true;
-        }
-        if (etSiteCity.getText().toString() == null){
-            etSiteCity.setError(getString(R.string.error_empty_field));
-            testBool = true;
-        }
-        if(etSiteAddress.getText().toString() == null){
-            etSiteAddress.setError(getString(R.string.error_empty_field));
-            testBool = true;
-        }
-        if (etSiteOverseer.getText().toString() == null){
-            etSiteOverseer.setError(getString(R.string.error_empty_field));
-            testBool = true;
-        }
-        if(testBool){
-            return;
-        }
+
         conSite = new ConstructionSiteEntity();
         conSite.setSiteName(etSiteName.getText().toString());
         conSite.setCity(etSiteCity.getText().toString());
