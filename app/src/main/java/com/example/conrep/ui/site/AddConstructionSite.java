@@ -49,36 +49,27 @@ public class AddConstructionSite extends BaseActivity {
         etSiteOverseer = findViewById(R.id.etSiteOverseer);
 
         addSiteBtn = findViewById(R.id.AddSiteSite);
-        addSiteBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                addSite();
-            }
-        });
 
         ConstructionSiteViewModel.Factory factory = new ConstructionSiteViewModel.Factory(
                 getApplication(), "");
 
         viewModel = ViewModelProviders.of(this, factory).get(ConstructionSiteViewModel.class);
 
-        addSiteBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
+        addSiteBtn.setOnClickListener(v -> {
 
-                if (etSiteName.getText().toString().trim().length() > 0 && etSiteCity.getText().toString().trim().length() > 0 && etSiteAddress.getText().toString().trim().length() > 0 && etSiteOverseer.getText().toString().trim().length() > 0
-                        && etSiteOverseer.getText().toString().trim().contains("@")) {
-                    addSite();
-                } else {
-                    etSiteName.requestFocus();
-                    etSiteName.setError("Enter Name");
-                    etSiteCity.requestFocus();
-                    etSiteCity.setError("Enter City");
-                    etSiteAddress.requestFocus();
-                    etSiteAddress.setError("Enter Address");
-                    etSiteOverseer.requestFocus();
-                    etSiteOverseer.setError("Enter valid E-Mail");
-                    Toast.makeText(getApplicationContext(),"Enter all fields and fill in a valid E-Mail in Overseer",Toast.LENGTH_SHORT).show();
-                }
+            if (etSiteName.getText().toString().trim().length() > 0 && etSiteCity.getText().toString().trim().length() > 0 && etSiteAddress.getText().toString().trim().length() > 0 && etSiteOverseer.getText().toString().trim().length() > 0
+                    && etSiteOverseer.getText().toString().trim().contains("@")) {
+                addSite();
+            } else {
+                etSiteName.requestFocus();
+                etSiteName.setError("Enter Name");
+                etSiteCity.requestFocus();
+                etSiteCity.setError("Enter City");
+                etSiteAddress.requestFocus();
+                etSiteAddress.setError("Enter Address");
+                etSiteOverseer.requestFocus();
+                etSiteOverseer.setError("Enter valid E-Mail");
+                Toast.makeText(getApplicationContext(),"Enter all fields and fill in a valid E-Mail in Overseer",Toast.LENGTH_SHORT).show();
             }
         });
 
